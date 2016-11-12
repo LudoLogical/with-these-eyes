@@ -38,19 +38,19 @@ document.onkeydown = function (e) {
 document.onkeyup = function (e) {
     switch(e.keyCode){
         case 87:
-            wpress=0;
+            wpress=true;
             break;
         case 65:
-            apress=0;
+            apress=true;
             break;
         case 83:
-            spress=0;
+            spress=true;
             break;
         case 68:
-            dpress=0;
+            dpress=true;
             break;
         case 13:
-            enterpress=0;
+            enterpress=true;
             break;
     }
 };
@@ -70,4 +70,4 @@ document.onclick = function(mouse) {
         player.doAttack();
         console.log(player.aimangle);
     }
-}
+};

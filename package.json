@@ -1,0 +1,7 @@
+{
+    "name": "with-these-eyes",
+    "version": "1.0.0",
+    "scripts": {
+        "commit": "git add . && git commit && git push origin gh-pages"
+    }
+}
