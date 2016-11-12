@@ -36,16 +36,17 @@ document.onkeydown = function (e) {
 
 //MOVE VAR RESET
 document.onkeyup = function (e) {
-    if (e.keyCode === 87) { //w
-        wpress = false;
-    } else if (e.keyCode === 65) { //a
-        apress = false;
-    } else if (e.keyCode === 83) { //s
-        spress = false;
-    } else if (e.keyCode === 68) { //d
-        dpress = false;
-    } else if (e.keyCode === 13) { //enter
-        enterpress = false;
+    switch(e.keyCode){
+        case 87:wpress=0;
+            break;
+        case 65:apress=0;
+            break;
+        case 83:spress=0;
+            break;
+        case 68:dpress=0;
+            break;
+        case 13:enterpress=0;
+            break;
     }
 };
 
