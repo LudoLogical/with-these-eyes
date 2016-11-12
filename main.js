@@ -59,7 +59,7 @@ var main = function () {
         drawUI();
 
         //DRAW DIRECTIONAL KEYS IF NOT LEARNED
-        if (moved === false && writing === false) {
+        if (!move&&!writing) {
             for (var b in wasd) {
                 wasd[b].update();
             }
@@ -71,8 +71,9 @@ var main = function () {
     spamcatch --;
     textlock = false;
     for (var a in characters) {
-        if (characters[a].movecount != 0) {
-            textlock = true;
+        if (!characters[a].movecount) {
+            textlock = 1;
+            //1 is truthy
         }
     }
 
