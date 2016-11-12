@@ -28,7 +28,7 @@ document.onkeydown = function (e) {
     } else if (e.keyCode === 13) { //enter
         enterpress = true;
     }
-    
+
     if ((e.keyCode === 87 || e.keyCode === 65 || e.keyCode === 83 || e.keyCode === 68) && writing === false) {
         moved = true;
     }
@@ -37,15 +37,20 @@ document.onkeydown = function (e) {
 //MOVE VAR RESET
 document.onkeyup = function (e) {
     switch(e.keyCode){
-        case 87:wpress=0;
+        case 87:
+            wpress=0;
             break;
-        case 65:apress=0;
+        case 65:
+            apress=0;
             break;
-        case 83:spress=0;
+        case 83:
+            spress=0;
             break;
-        case 68:dpress=0;
+        case 68:
+            dpress=0;
             break;
-        case 13:enterpress=0;
+        case 13:
+            enterpress=0;
             break;
     }
 };
@@ -57,7 +62,7 @@ document.onmousemove = function(mouse) {
     var angX = mX - (ctx.canvas.width/2);
     var angY = mY - (ctx.canvas.height/2);
     player.aimangle = Math.atan2(angY,angX); //removed from sample WoU code to measure only in radians
-    
+
 };
 
 document.onclick = function(mouse) {
