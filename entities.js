@@ -106,8 +106,11 @@ class Player extends Character {
         this.lv = 1;
         this.aimangle = 0;
         this.dmg = 1;
+        this.bulletcatch = 0;
+        this.bulletmax = 5;
     }
     doAttack() {
+        this.bulletcatch = 15;
         var id = Math.random();
         playerBullets[id] = new Bullet(this,10,10,"img/test/test_entity.png","plyr",80,4,this.dmg); //80f = 2 sec
         console.log(playerBullets);
@@ -115,8 +118,22 @@ class Player extends Character {
     testmobility() {
         var canMove = true;
         for (var f in curroom.fixed_areas) {
-            if (testcollisionrect(player,curroom.fixed_areas[f])) {
+            if (testcollisionrect(this,curroom.fixed_areas[f])) {
                 canMove = false;
+            }
+        }
+        for (var g in curroom.enemies) {
+            if (curroom.enemies[g].spdX === 0 && curroom.enemies[g].spdY === 0) {
+                var dummy = {
+                    x: curroom.enemies[g].x+5,
+                    y: curroom.enemies[g].y+5,
+                    w: curroom.enemies[g].w-5,
+                    h: curroom.enemies[g].h-5,
+                }
+                if (testcollisionrect(this,dummy)) {
+                    canMove = false;
+                }
+                
             }
         }
         return canMove;
@@ -159,6 +176,7 @@ class Player extends Character {
             this.updatePos();
         }
         this.draw();
+        this.bulletcatch --;
     }
 }
 
