@@ -42,16 +42,16 @@ document.onkeyup = function (e) {
     //block, it will end the switch statement.
     switch(e.keyCode){
         case 87:
-            wpress=false;
+            wpress=true;
             break;
         case 65:
-            apress=false;
+            apress=true;
             break;
         case 83:
-            spress=false;
+            spress=true;
             break;
         case 68:
-            dpress=false;
+            dpress=true;
             break;
         case 13:
             enterpress=false;
@@ -74,4 +74,4 @@ document.onclick = function(mouse) {
         player.doAttack();
         console.log(player.aimangle);
     }
-}
+};
