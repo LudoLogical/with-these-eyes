@@ -18,11 +18,32 @@ class Entity {
 
 //ENEMY SETUP
 class Enemy extends Entity {
-    constructor(x,y,w,h,sprite,spd,atk,dmg) {
+    constructor(x,y,w,h,sprite,spdX,spdY,hp,atk,dmg) {
         super(x,y,w,h,sprite);
-        this.spd = spd;
+        this.spdX = spdX;
+        this.spdY = spdY;
+        this.hp = hp;
         this.atk = atk; //contact
         this.dmg = dmg; //bullet
+        this.removeMark = false;
+    }
+    updatePos() {
+        if (this.x <= 0 || this.x >= curroom.map.w - this.w) {
+            this.spdX = -this.spdX;
+            this.spdY = -this.spdY;
+        }
+        this.x += this.spdX;
+        this.y += this.spdY;
+    }
+    draw() {
+        ctx.drawImage(this.sprite,this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
+    }
+    update() {
+        if (this.hp <= 0) {
+            this.removeMark = true;
+        }
+        this.updatePos();
+        this.draw();
     }
 }
 
@@ -88,7 +109,7 @@ class Player extends Character {
     }
     doAttack() {
         var id = Math.random();
-        playerBullets[id] = new Bullet(player,10,10,"img/test/test_entity.png","plyr",80,4); //80f = 2 sec
+        playerBullets[id] = new Bullet(this,10,10,"img/test/test_entity.png","plyr",80,4,this.dmg); //80f = 2 sec
         console.log(playerBullets);
     }
     testmobility() {

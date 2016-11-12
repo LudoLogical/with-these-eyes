@@ -56,7 +56,7 @@ var rooms = [
          [characters.boyM,"...","","",[characters.girlE,"down",5,[characters.girlE,"right",40,[characters.girlE,"up",3,[characters.girlE,"right",5,"remove"]]]]],
          [characters.boyM,"I have to keep her safe...","","",[songs.sheHasLeft,"play"]]],
         { 
-            //entity: new Entity(100,980,40,40,"img/test/test_entity.png"),
+            //noenemies
         },
         {
             standleft: new Entity(165,205,30,30),
@@ -68,7 +68,7 @@ var rooms = [
          [characters.door,"(The door can't move, but","somehow attacks you","anyway.)"],
          [characters.girlE,"It's a battle then... Let's go!","",""]],
         { 
-            door: new Entity(460,60,40,80,"img/sprites/door_action.png"),
+            door: new Enemy(460,60,40,80,"img/sprites/door_action.png",0,0,1,1,1),
         },
         {
             door: new Entity(465,65,30,70),

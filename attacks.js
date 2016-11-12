@@ -2,7 +2,7 @@ var playerBullets = [];
 var enemyBullets = [];
 
 class Bullet extends Entity {
-    constructor(source,w,h,sprite,type,dur,spd) {
+    constructor(source,w,h,sprite,type,dur,spd,dmg) {
         super(source.x,source.y,w,h,sprite);
         this.type = type;
         this.dur = dur;
@@ -49,6 +49,14 @@ class Bullet extends Entity {
         }
     }
     update() {
+        if (this.type = "plyr") {
+            for (var e in curroom.enemies) {
+                if (testcollisionrect(this,curroom.enemies[e])) {
+                    curroom.enemies[e].hp -= this.dmg;
+                    this.removeMark = true;
+                }
+            }
+        }
         this.updatePos();
         this.draw();
         this.dur--;

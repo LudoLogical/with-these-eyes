@@ -48,7 +48,10 @@ var main = function () {
         for (var e in curroom.enemies) {
             curroom.enemies[e].update();
             if (testcollisionrect(player,curroom.enemies[e])) {
-                player.hp --;
+                player.hp -= curroom.enemies[e].atk;
+            }
+            if (curroom.enemies[e].removeMark) {
+                delete curroom.enemies[e];
             }
         }
         
