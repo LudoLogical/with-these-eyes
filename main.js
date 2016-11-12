@@ -14,7 +14,7 @@ var testcollisionrect = function(a,b) {
 var main = function () {
     //CLEAR RECT
     ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-    
+
     if (!gameStart) {
         doTitleScreen();
     } else if (player.hp <= 0) {
@@ -23,12 +23,12 @@ var main = function () {
     } else {
         //UPDATE MAP
         curroom.map.update();
-        
+
         //UPDATE BULLETS
         for (var d in playerBullets) {
             playerBullets[d].update();
             if (playerBullets[d].removeMark) {
-                delete playerBullets[d];
+                playerBullets.splice(d,1);
             }
         }
         for (var g in enemyBullets) {
@@ -38,12 +38,12 @@ var main = function () {
                 console.log("removed");
             }
         }
-        
+
         //UPDATE CHARACTERS
         for (var c in characters) {
             characters[c].update();
         }
-        
+
         //UPDATE ENTITIES, TEST COLLISIONS
         for (var e in curroom.enemies) {
             curroom.enemies[e].update();
@@ -51,13 +51,13 @@ var main = function () {
                 player.hp --;
             }
         }
-        
+
         //UPDATE PLAYER
         player.update();
-        
+
         //DRAW USER INTERFACE
         drawUI();
-        
+
         //DRAW DIRECTIONAL KEYS IF NOT LEARNED
         if (moved === false && writing === false) {
             for (var b in wasd) {
@@ -65,7 +65,7 @@ var main = function () {
             }
         }
     }
-    
+
     //DRAW TEXT BOX, STOP CONSISTANT ENTER COMMANDS, CHECK LOCKED ADVANCEMENT
     doDialogue();
     spamcatch --;
@@ -75,10 +75,10 @@ var main = function () {
             textlock = true;
         }
     }
-    
+
     //HANDLE MUSIC INFO FADE OUT
     doRepeatMusic();
-    
+
     //CHECK FOR LEVEL ADVANCEMENT
     if (curroom) {
         curroom.checkFinish();

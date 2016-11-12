@@ -59,7 +59,7 @@ class Character extends Entity {
         } else {
             resolveAction(this);
         }
-        
+
     }
     draw() {
         if (this.face === "l") {
@@ -87,8 +87,7 @@ class Player extends Character {
         this.dmg = 1;
     }
     doAttack() {
-        var id = Math.random();
-        playerBullets[id] = new Bullet(player,10,10,"img/test/test_entity.png","plyr",80,4); //80f = 2 sec
+        playerBullets.push(new Bullet(player,10,10,"img/test/test_entity.png","plyr",80,4)); //80f = 2 sec
         console.log(playerBullets);
     }
     testmobility() {
