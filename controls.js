@@ -36,21 +36,25 @@ document.onkeydown = function (e) {
 
 //MOVE VAR RESET
 document.onkeyup = function (e) {
+    //This is basically an extended if else function. Use break after every action.
+    //Switch just matches e.keyCode to every case. If it finds a case, it will
+    //Execute the following code block. If switch encounters break within that code
+    //block, it will end the switch statement.
     switch(e.keyCode){
         case 87:
-            wpress=true;
+            wpress=false;
             break;
         case 65:
-            apress=true;
+            apress=false;
             break;
         case 83:
-            spress=true;
+            spress=false;
             break;
         case 68:
-            dpress=true;
+            dpress=false;
             break;
         case 13:
-            enterpress=true;
+            enterpress=false;
             break;
     }
 };
@@ -70,4 +74,4 @@ document.onclick = function(mouse) {
         player.doAttack();
         console.log(player.aimangle);
     }
-};
+}
