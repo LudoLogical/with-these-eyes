@@ -61,7 +61,7 @@ document.onmousemove = function(mouse) {
 };
 
 document.onclick = function(mouse) {
-    if (writing === false && gameStart && player.hp > 0) {
+    if (!writing&&gameStart&&player.hp>0) {
         player.doAttack();
         console.log(player.aimangle);
     }
