@@ -50,20 +50,45 @@ class Enemy extends Entity {
 
 //CHARACTER SETUP
 class Character extends Entity {
-    constructor(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd) {
+    constructor(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd,spriteleft_anim,spriteright_anim) {
         super(x,y,w,h);
         this.passable = passable;
         this.movedir = "";
         this.movecount = 0;
         this.afteraction = "";
-        this.face = "l";
+        this.face = 0; //0-l, 1-r
         this.spd = spd;
-        this.spriteleft = new Image();
+        this.norm = [new Image(), new Image()];
+        this.anim = [new Image(), new Image()];
+        this.track = "norm";
+        this.norm[0].src = spriteleft;
+        this.norm[1].src = spriteright;
+        this.anim[0].src = spriteleft_anim;
+        this.anim[1].src = spriteright_anim;
+        /*this.spriteleft = new Image();
         this.spriteleft.src = spriteleft;
         this.spriteright = new Image();
         this.spriteright.src = spriteright;
+        this.spriteleft_anim = new Image();
+        this.spriteleft_anim.src = spriteright;
+        this.spriteright_anim = new Image();
+        this.spriteright_anim.src = spriteright;*/
         this.spritespeak = new Image();
         this.spritespeak.src = spritespeak;
+        this.animcount = 15;
+    }
+    anim_check() {
+        if (this.animcount >= 0) {
+            if (this.track = "norm") {
+                this.track = "anim";
+            } else {
+               this.track = "norm" 
+            }
+            this.animcount = 15;
+            console.log(this);
+        }
+        this.animcount--;
+        
     }
     updatePos() {
         if (this.movecount > 0) {
@@ -73,10 +98,10 @@ class Character extends Entity {
                 this.y += this.spd;
             } else if (this.movedir === "left") {
                 this.x -= this.spd;
-                this.face = "l";
+                this.face = 0;
             } else if (this.movedir === "right") {
                 this.x += this.spd;
-                this.face = "r";
+                this.face = 1;
             }
             this.movecount --;
         } else if (this.afteraction != "") {
@@ -85,13 +110,23 @@ class Character extends Entity {
         
     }
     draw() {
-        if (this.face === "l") {
-            ctx.drawImage(this.spriteleft,this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
-        } else if (this.face === "r") {
-            ctx.drawImage(this.spriteright,this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
+        if (this.tarck = "norm") {
+            if (this.face === 0) {
+                ctx.drawImage(this.norm[0],this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
+            } else if (this.face === 1) {
+                ctx.drawImage(this.norm[1],this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
+            }
+        } else {
+            if (this.face === 0) {
+                ctx.drawImage(this.anim[0],this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
+            } else if (this.face === 1) {
+                ctx.drawImage(this.anim[1],this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
+            }
         }
+        
     }
     update() {
+        this.anim_check();
         this.updatePos();
         this.draw();
     }
@@ -99,8 +134,8 @@ class Character extends Entity {
 
 //PLAYER SETUP
 class Player extends Character {
-    constructor(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd) {
-        super(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd);
+    constructor(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd,spriteleft_anim,spriteright_anim) {
+        super(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd,spriteleft_anim,spriteright_anim);
         this.hp = 50;
         this.power = 100;
         this.xp = 0; //levelup = 100xp * curlevel
@@ -173,10 +208,18 @@ class Player extends Character {
         }
     }
     draw() {
-        if (lastpress === "a") {
-            ctx.drawImage(this.spriteleft,ctx.canvas.width / 2 - player.w / 2, ctx.canvas.height / 2 - player.h / 2, player.w, player.h);
-        } else if (lastpress === "d") {
-            ctx.drawImage(this.spriteright,ctx.canvas.width / 2 - player.w / 2, ctx.canvas.height / 2 - player.h / 2, player.w, player.h);
+        if (this.track = "norm") {
+            if (lastpress === "a") {
+                ctx.drawImage(this.norm[0],ctx.canvas.width / 2 - player.w / 2, ctx.canvas.height / 2 - player.h / 2, player.w, player.h);
+            } else if (lastpress === "d") {
+                ctx.drawImage(this.norm[1],ctx.canvas.width / 2 - player.w / 2, ctx.canvas.height / 2 - player.h / 2, player.w, player.h);
+            }
+        } else {
+            if (lastpress === "a") {
+                ctx.drawImage(this.anim[0],ctx.canvas.width / 2 - player.w / 2, ctx.canvas.height / 2 - player.h / 2, player.w, player.h);
+            } else if (lastpress === "d") {
+                ctx.drawImage(this.anim[1],ctx.canvas.width / 2 - player.w / 2, ctx.canvas.height / 2 - player.h / 2, player.w, player.h);
+            }
         }
     }
     update() {
@@ -184,6 +227,7 @@ class Player extends Character {
             this.xp -= this.lv*100;
             this.lv ++;
         }
+        this.anim_check();
         if (writing === false) {
             this.updatePos();
         }
@@ -193,13 +237,13 @@ class Player extends Character {
 }
 
 //ENTITY CREATION
-var player = new Player(215,220,33,45,true,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5);
+var player = new Player(215,220,33,45,true,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5,"img/sprites/boy_left.png","img/sprites/boy_right.png");
 var characters = {
-    carpet: new Character(-500,-500,30,45,true,"img/sprites/carpet.png"),
-    boyM: new Character(-500,-500,33,45,true,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5),
-    girlE: new Character(-500,-500,33,45,true,"img/sprites/girl_left.png","img/sprites/girl_right.png","img/sprites/girl_speak.png",5),
-    door: new Character(-500,-500,40,80,false,"img/sprites/door_action.png","img/sprites/door_action.png","img/sprites/door_speak.png",0),
-    snowman: new Character(-500,-500,27.5,45,false,"img/sprites/snowman_good_1.png","img/sprites/snowman_good_1.png","img/sprites/snowman_speak.PNG",0),
+    carpet: new Character(-500,-500,30,45,true,"img/sprites/carpet.png","img/sprites/carpet.png","",0,"img/sprites/carpet.png","img/sprites/carpet.png"),
+    boyM: new Character(-500,-500,33,45,true,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5,"img/sprites/boy_left.png","img/sprites/boy_right.png"),
+    girlE: new Character(-500,-500,33,45,true,"img/sprites/girl_left.png","img/sprites/girl_right.png","img/sprites/girl_speak.png",5,"img/sprites/girl_left.png","img/sprites/girl_right.png"),
+    door: new Character(-500,-500,40,80,false,"img/sprites/door_action.png","img/sprites/door_action.png","img/sprites/door_speak.png",0,"img/sprites/door_action.png","img/sprites/door_action.png"),
+    snowman: new Character(-500,-500,27.5,45,false,"img/sprites/snowman_good_1.png","img/sprites/snowman_good_1.png","img/sprites/snowman_speak.PNG",0,"img/sprites/snowman_good_2.png","img/sprites/snowman_good_2.png"),
 };
 var wasd = {
     w: new Entity(player.x+1.5,player.y-35,30,30,"img/controls/w.png"),

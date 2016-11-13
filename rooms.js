@@ -29,12 +29,18 @@ class Room {
     setPlayerInfo(x,y) {
         player.spriteleft = this.playas.spriteleft;
         player.spriteright = this.playas.spriteright;
+        player.spriteleft_anim = this.playas.spriteleft_anim;
+        player.spriteright_anim = this.playas.spriteright_anim;
         player.spritespeak = this.playas.spritespeak;
         player.x = x;
         player.y = y;
     }
     begin() {
         curroom = this;
+        if (!cursong) {
+            cursong = this.musicstart;
+            fadeIn(cursong,2000);
+        }
         if (cursong && cursong != this.musicstart) {
             fadeOut(2000); 
             cursong = this.musicstart;
