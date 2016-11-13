@@ -103,7 +103,7 @@ var rooms = [
             //no fixed_areas
         }
     ),
-    new Room(500,200,"img/bg/snow_1.png",characters.boyM,20,90,485,105,15,20,songs.adventure,0,
+    new Room(500,200,"img/bg/snow_1.png",characters.boyM,20,90,485,105,15,20,songs.adventure,3,
         [],
         [[characters.boyM,"Emily, come back!","",""],
          [characters.boyM,"Hey, who are you?","",""],
@@ -118,5 +118,18 @@ var rooms = [
         {
             //no fixed_areas
         }
+    ),
+    new Room(500,200,"img/bg/snow_2.png",characters.girlE,20,90,485,105,15,20,song.adventure,0,
+        [[characters.deercry,240,70]],
+        [[characters.deercry,"...stupid...lights...","",""],
+         [characters.girlE,"Hello!","",""],
+         [characters.deercry,"Oh hi.","",""],
+         [characters.girlE,"I'm Emily","What's your name?",""],
+         [characters.deercry,"I am Chris Mas Eve, the deer.","",""],
+         [characters.girlE,"It's nice to meet you, Chris.","Do you know how to get to the market?",""],
+         [characters.deercry,"It's just a little further forward.","Could you help break me free?","My antlers are caught on this tree."],
+         [characters.girlE,"Of course!","",""]],
+        {},
+        {}
     ),
 ];
