@@ -287,6 +287,8 @@ var characters = {
     deermad: new Character(-500,-500,50,50,false,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG","img/sprites/evildeer_speak.png",0,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG"),
     gnomered: new Character(-500,-500,33,45,false,"img/sprites/gnomered_1.PNG","img/sprites/gnomered_1.PNG","img/sprites/gnomered_speak.png",0,"img/sprites/gnomered_2.PNG","img/sprites/gnomered_2.PNG"),
     gnomeblue: new Character(-500,-500,33,45,false,"img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_speak.png",0,"img/sprites/gnomeblue_2.PNG","img/sprites/gnomeblue_2.PNG"),
+    lumberjack: new Character(-500,-500,33,45,"img/sprites/lumberjack.png","img/sprites/lumberjack.png","img/sprites/lumberjack_speak.png",0,"img/sprites/lumberjack.png","img/sprites/lumberjack.png"),
+    banker: new Character(-500,-500,33,45,"img/sprites/banker.png","img/sprites/banker.png","img/sprites/banker_speak.png",0,"img/sprites/banker.png","img/sprites/banker.png"),
 };
 var wasd = {
     w: new Entity(player.x+1.5,player.y-35,30,30,"img/controls/w.png"),
