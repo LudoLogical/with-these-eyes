@@ -290,8 +290,8 @@ var characters = {
     gnomeblue: new Character(-500,-500,33,45,false,"img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_speak.png",0,"img/sprites/gnomeblue_2.PNG","img/sprites/gnomeblue_2.PNG"),
     gnomeredmad: new Character(-500,-500,33,45,false,"img/sprites/gnomered_1.PNG","img/sprites/gnomered_1.PNG","img/sprites/gnomered_speak_mad.png",0,"img/sprites/gnomered_2.PNG","img/sprites/gnomered_2.PNG"),
     gnomebluemad: new Character(-500,-500,33,45,false,"img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_speak_mad.png",0,"img/sprites/gnomeblue_2.PNG","img/sprites/gnomeblue_2.PNG"),
-    lumberjack: new Character(-500,-500,33,45,"img/sprites/lumberjack.png","img/sprites/lumberjack.png","img/sprites/lumberjack_speak.png",0,"img/sprites/lumberjack.png","img/sprites/lumberjack.png"),
-    banker: new Character(-500,-500,33,45,"img/sprites/banker.png","img/sprites/banker.png","img/sprites/banker_speak.png",0,"img/sprites/banker.png","img/sprites/banker.png"),
+    lumberjack: new Character(-500,-500,33,45,"img/sprites/lumberjack.PNG","img/sprites/lumberjack.PNG","img/sprites/lumberjack_speak.PNG",0,"img/sprites/lumberjack.PNG","img/sprites/lumberjack.PNG"),
+    banker: new Character(-500,-500,33,45,"img/sprites/banker.PNG","img/sprites/banker.PNG","img/sprites/banker_speak.PNG",0,"img/sprites/banker.PNG","img/sprites/banker.PNG"),
 };
 var wasd = {
     w: new Entity(player.x+1.5,player.y-35,30,30,"img/controls/w.png"),
