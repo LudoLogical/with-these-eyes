@@ -148,7 +148,7 @@ var rooms = [
             //no fixed_areas
         ]
     ),
-    new Room(500,200,"img/bg/snow_2.png",characters.boyM,20,60,485,75,15,20,songs.adventure,0,
+    new Room(500,200,"img/bg/snow_2.png",characters.boyM,20,60,485,75,15,20,songs.adventure,5,
         [[characters.tree,80,140]],
         [[characters.boyM,"Emily?","...","Emily?"],
          [characters.boyM,"Ack!","Who are you?",""],
@@ -163,12 +163,11 @@ var rooms = [
         ]
     ),
     new Room(500,200,"img/bg/snow_3.png",characters.girlE,20,60,485,75,15,20,songs.adventure,0,
-        [],
-        [[characters.boyM,"Emily?","...","Emily?"],
-         [characters.boyM,"Ack!","Who are you?",""],
-         [characters.deercry,"My name's Chris Mas Eve.","",""],
-         [characters.boyM,"Wow... you're just standing","here crying...","Alone."],
-         [characters.deercry,"Hey!  Don't make fun of","me when you have no idea","what I've been through!"]],
+        [[characters.gnomered,x,y],[characters.gnomeblue,x,y]],
+        [[characters.girlE,"Oh yay! The market.","",""],
+         [characters.gnomered,"Welcome to Gnome-Mart!","We have the best deals!",""],
+         [characters.girlE,"I'm looking for some veggies.","",""],
+         [characters.gnomeblue,"I'm sure you'll find","what you desire inside",""]],
         [
             //yet-to-add
         ],
