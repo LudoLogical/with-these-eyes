@@ -258,6 +258,9 @@ var characters = {
     girlE: new Character(-500,-500,33,45,true,"img/sprites/girl_left.png","img/sprites/girl_right.png","img/sprites/girl_speak.png",5,"img/sprites/girl_left.png","img/sprites/girl_right.png"),
     door: new Character(-500,-500,40,80,false,"img/sprites/door_action.png","img/sprites/door_action.png","img/sprites/door_speak.png",0,"img/sprites/door_action.png","img/sprites/door_action.png"),
     snowman: new Character(-500,-500,27.5,45,false,"img/sprites/snowman_good_1.png","img/sprites/snowman_good_1.png","img/sprites/snowman_speak.PNG",0,"img/sprites/snowman_good_2.png","img/sprites/snowman_good_2.png"),
+    deer: new Character(-500,-500,50,50,false,"img/sprites/deer2.png","img/sprites/deer2.png","img/sprites/deer_speak.png",0,"img/sprites/deer3.png","img/sprites/deer3.png"),
+    deercry: new Character(-500,-500,50,50,false,"img/sprites/deer2.png","img/sprites/deer2.png","img/sprites/deer_speak.png",0,"img/sprites/deer1.png","img/sprites/deer1.png"),
+    deermad: new Character(-500,-500,50,50,false,"img/sprites/deer2.png","img/sprites/deer2.png","img/sprites/evildeer_speak.png",0,"img/sprites/deer2.png","img/sprites/deer2.png"),
 };
 var wasd = {
     w: new Entity(player.x+1.5,player.y-35,30,30,"img/controls/w.png"),
