@@ -190,7 +190,7 @@ class Player extends Character {
 var player = new Player(215,220,33,45,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5);
 var characters = {
     boyM: new Character(-500,-500,33,45,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5),
-    girlE: new Character(252,220,33,45,"img/sprites/girl_left.png","img/sprites/girl_right.png","img/sprites/girl_speak.png",5),
+    girlE: new Character(-500,-500,33,45,"img/sprites/girl_left.png","img/sprites/girl_right.png","img/sprites/girl_speak.png",5),
     door: new Character(-500,-500,40,80,"img/sprites/door_action.png","img/sprites/door_action.png","img/sprites/door_speak.png",0),
 };
 var wasd = {

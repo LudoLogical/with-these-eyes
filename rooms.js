@@ -13,7 +13,7 @@ class Map extends Entity {
 
 //ROOM SETUP
 class Room {
-    constructor(w,h,mapsprite,playas,playerx,playery,finx,finy,finw,finh,musicstart,nextLV,dialoguestart,enemies,fixed_areas) {
+    constructor(w,h,mapsprite,playas,playerx,playery,finx,finy,finw,finh,musicstart,nextLV,character_imp,dialoguestart,enemies,fixed_areas) {
         this.map = new Map(w,h,mapsprite);
         this.playas = playas;
         this.playerx = playerx;
@@ -21,6 +21,7 @@ class Room {
         this.fin = new Entity(finx,finy,finw,finh);
         this.musicstart = musicstart;
         this.nextLV = nextLV;
+        this.character_imp = character_imp;
         this.dialoguestart = dialoguestart;
         this.enemies = enemies;
         this.fixed_areas = fixed_areas;
@@ -40,6 +41,11 @@ class Room {
             fadeIn(cursong,2000);
         }
         this.setPlayerInfo(this.playerx,this.playery);
+        for (var c in this.character_imp) {
+            this.character_imp[c][0].x = this.character_imp[c][1];
+            this.character_imp[c][0].y = this.character_imp[c][2];
+            
+        }
         doDialogue(this.dialoguestart);
     }
     checkFinish() {
@@ -51,6 +57,7 @@ class Room {
 
 var rooms = [
     new Room(500,500,"img/bg/bedroom_rev1.png",characters.boyM,215,220,485,240,15,20,songs.welcomeHome,1,
+        [[characters.girlE,252,220]],
         [[characters.boyM,"It's not safe out there...","","(Press [ENTER] to advance)"],
          [characters.girlE,"I'll only be to the market,","stop worrying about","everything so much!"],
          [characters.boyM,"I can't... I can't let anything","happen to you...",""],
@@ -66,6 +73,7 @@ var rooms = [
         }
     ),
     new Room(500,200,"img/bg/snow-tut-1.png",characters.girlE,75,80,485,90,15,20,songs.adventure,0,
+        [],
         [[characters.girlE,"Let's go get some food!","",""],
          [characters.door,"(The door can't move, but","somehow attacks you","anyway.)"],
          [characters.girlE,"It's a battle then... Let's go!","",""]],
@@ -78,6 +86,7 @@ var rooms = [
         }
     ),
     /*new Room(r_w,r_h,"thing.png",characters.girlE,x,y,fx,fy,fw,fh,songs.adventure,0,
+        [],
         [[characters.girlE,"Let's go get some food!","",""],
          [characters.door,"(The door can't move, but","somehow attacks you","anyway.)"],
          [characters.girlE,"It's a battle then... Let's go!","",""]],
