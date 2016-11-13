@@ -78,8 +78,8 @@ class Character extends Entity {
         this.animcount = 15;
     }
     anim_check() {
-        if (this.animcount >= 0) {
-            if (this.track = "norm") {
+        if (this.animcount <= 0) {
+            if (this.track === "norm") {
                 this.track = "anim";
             } else {
                this.track = "norm" 
@@ -110,7 +110,7 @@ class Character extends Entity {
         
     }
     draw() {
-        if (this.tarck = "norm") {
+        if (this.track === "norm") {
             if (this.face === 0) {
                 ctx.drawImage(this.norm[0],this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
             } else if (this.face === 1) {
@@ -208,7 +208,7 @@ class Player extends Character {
         }
     }
     draw() {
-        if (this.track = "norm") {
+        if (this.track === "norm") {
             if (lastpress === "a") {
                 ctx.drawImage(this.norm[0],ctx.canvas.width / 2 - player.w / 2, ctx.canvas.height / 2 - player.h / 2, player.w, player.h);
             } else if (lastpress === "d") {
