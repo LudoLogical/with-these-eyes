@@ -285,7 +285,7 @@ var characters = {
     deer: new Character(-500,-500,50,50,false,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG","img/sprites/deer_speak.png",0,"img/sprites/deer_3.PNG","img/sprites/deer_3.PNG"),
     deercry: new Character(-500,-500,50,50,false,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG","img/sprites/deer_speak.png",0,"img/sprites/deer_1.PNG","img/sprites/deer_1.PNG"),
     deermad: new Character(-500,-500,50,50,false,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG","img/sprites/evildeer_speak.png",0,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG"),
-    gnomered: new Character(-500,-500,33,45,false,"img.sprites/gnomered_1.png","img.sprites/gnomered_1.png","img.sprites/gnomered_speak.png",0,"img.sprites/gnomered_2.png","img.sprites/gnomered_2.png"),
+    gnomered: new Character(-500,-500,33,45,false,"img.sprites/gnomered_1.PNG","img.sprites/gnomered_1.PNG","img/sprites/gnomered_speak.png",0,"img.sprites/gnomered_2.PNG","img.sprites/gnomered_2.PNG"),
     //gnomeblue: new Character(),
 };
 var wasd = {
