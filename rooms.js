@@ -186,10 +186,59 @@ var rooms = [
         [characters.gnomered,"So you aren't going to","buy anything?",""],
         [characters.gnomeblue,"Well, in that case,","get out of here.",""]],
         [
-    
+        
         ],
         [
-    
+         
         ]
    ),
+    new Room(250,100,"img/bg/market.png",characters.boyM,40,50,15,50,15,20,songs.adventure,0,
+        [[characters.girlE,200,50]],
+        [[characters.boyM,"Emily!","",""],
+         [characters.girlE,"Oh hi Matt!","Look they've got fresh","leeks and potatoes!"],
+         [characters.boyM,"Emily, you've been","so reckless.","It's dangerous out here."],
+         [characters.girlE,"No it's not",""],
+         [characters.boyM,"Are you sure?","There were so many","dangers on the way."],
+         [characters.girlE,"Of course I'm sure.","Look, I'll show you.",""]
+	 [characters.girlE,"down",10,[characters.girlE,"left",150,[characters.girlE,"up",10,[characters.girlE,"left",20,"remove"]]]],
+	 [characters.boyM,"Wait!","","",]],
+        [
+            //no enemies
+        ],
+        [
+            //no fixed_areas
+        ]
+    ),
+    new Room(500,200,"img/bg/snow_3.png",characters.girlE,485,65,15,60,15,20,songs.adventure,0,
+        [[characters.boyM,485,50][characters.lumberjack,50,65]],
+        [[characters.boyM,"Ugh, this guy is","in the way.","I'll take care of it."],
+         [characters.girlE,"No, wait.!","Let me try.",""],
+	    [characters.girlE,"Hello, sir!","",""],
+         [characters.lumberjack,"Hello, miss!","Unfortunately, this road","is old."],
+	    [characters.lumberjack,"My truck is stuck in","a pothole.",""],
+         [characters.girlE,"Mind if we help out?","I'll see what I can do.",""],
+         [characters.lumberjack,"Thank you very much, miss.","",""],
+         [characters.boyM,"Hey, that was a pretty good","idea. Looks like we're gonna","get through."]],
+        [
+            //enemies
+        ],
+        [
+            //no fixed_areas
+        ]
+    ),
+    new Room(500,200,"img/bg/snow_1.png",/* character where they are together */,485,105,15,90,15,20,songs.adventure,0,
+        [],
+        [[characters.banker,"Ah, yes, Matt and Emily.","I've been waiting for you.",""],
+         [characters.girlE,"Good afternoon, Mr. Banker.",""],
+	    [characters.boyM,"What are you here for?","",""],
+         [characters.banker,"It has come to my attention","that your debts are underpaid.",""],
+	    [characters.boyM,"Yes, we just need a few","more weeks.",""],
+         [characters.banker,"I don't think so.","",""]],
+        [
+            //banker enemy
+        ],
+        [
+            //no fixed_areas
+        ]
+),
 ];
