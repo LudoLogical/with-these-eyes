@@ -131,7 +131,7 @@ var rooms = [
             //no fixed_areas
         ]
     ),
-    new Room(500,200,"img/bg/snow_2.png",characters.girlE,20,60,485,75,15,20,songs.adventure,0,
+    new Room(500,200,"img/bg/snow_2.png",characters.girlE,20,60,485,75,15,20,songs.adventure,4,
         [[characters.deercry,360,135],[characters.deer,-500,-500],[characters.tree,80,140]],
         [[characters.deercry,"...Stupid...lights...","",""],
          [characters.girlE,"Hello!","",""],
@@ -143,6 +143,34 @@ var rooms = [
          [characters.girlE,"Of course!","",""]],
         [
             new Enemy(360,125,60,60,"img/sprites/lights_tree_1.PNG","img/sprites/lights_tree_2.PNG",0,0,1,1,1,100,false),//lights_tree
+        ],
+        [
+            //no fixed_areas
+        ]
+    ),
+    new Room(500,200,"img/bg/snow_2.png",characters.boyM,20,60,485,75,15,20,songs.adventure,0,
+        [[characters.tree,80,140]],
+        [[characters.boyM,"Emily?","...","Emily?"],
+         [characters.boyM,"Ack!","Who are you?",""],
+         [characters.deercry,"My name's Chris Mas Eve.","",""],
+         [characters.boyM,"Wow... you're just standing","here crying...","Alone."],
+         [characters.deercry,"Hey!  Don't make fun of","me when you have no idea","what I've been through!"]],
+        [
+            new Enemy(360,125,60,60,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG",0,0,1,1,1,100,true),//evildeer
+        ],
+        [
+            //no fixed_areas
+        ]
+    ),
+    new Room(500,200,"img/bg/snow_3.png",characters.girlE,20,60,485,75,15,20,songs.adventure,0,
+        [],
+        [[characters.boyM,"Emily?","...","Emily?"],
+         [characters.boyM,"Ack!","Who are you?",""],
+         [characters.deercry,"My name's Chris Mas Eve.","",""],
+         [characters.boyM,"Wow... you're just standing","here crying...","Alone."],
+         [characters.deercry,"Hey!  Don't make fun of","me when you have no idea","what I've been through!"]],
+        [
+            //yet-to-add
         ],
         [
             //no fixed_areas
