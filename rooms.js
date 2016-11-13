@@ -163,7 +163,7 @@ var rooms = [
         ]
     ),
     new Room(500,200,"img/bg/snow_3.png",characters.girlE,20,60,485,75,15,20,songs.adventure,0,
-        [[characters.gnomered,x,y],[characters.gnomeblue,x,y]],
+        [[characters.gnomered,400,50],[characters.gnomeblue,400,150]],
         [[characters.girlE,"Oh yay! The market.","",""],
          [characters.gnomered,"Welcome to Gnome-Mart!","We have the best deals!",""],
          [characters.girlE,"I'm looking for some veggies.","",""],
