@@ -18,15 +18,28 @@ class Entity {
 
 //ENEMY SETUP
 class Enemy extends Entity {
-    constructor(x,y,w,h,sprite,spdX,spdY,hp,atk,dmg,xp) {
+    constructor(x,y,w,h,sprite,spdX,spdY,hp,atk,dmg,xp,do_atk) {
         super(x,y,w,h,sprite);
         this.spdX = spdX;
         this.spdY = spdY;
         this.hp = hp;
         this.atk = atk; //contact
         this.dmg = dmg; //bullet
+        this.actcount = 80;
+        this.aimangle = 0;
         this.xp = xp;
+        this.do_atk = do_atk;
         this.removeMark = false;
+    }
+    doAttackCheck() {
+        if (this.actcount <= 0 && writing === false && this.do_atk) {
+            this.actcount = 80;
+            var dy = (player.y + (player.h/2))-(this.y + (this.h/2));
+            var dx = (player.x + (player.w/2))-(this.x + (this.w/2));
+            this.aimangle = Math.atan2(dy,dx);
+            enemyBullets.push(new Bullet(this,10,10,"img/test/test_entity.png","enmy",80,4,this.dmg)); //80f = 2 sec
+        }
+        this.actcount--;
     }
     updatePos() {
         if (this.x <= 0 || this.x >= curroom.map.w - this.w) {
@@ -43,6 +56,7 @@ class Enemy extends Entity {
         if (this.hp <= 0) {
             this.removeMark = true;
         }
+        this.doAttackCheck();
         this.updatePos();
         this.draw();
     }

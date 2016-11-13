@@ -107,7 +107,11 @@ var rooms = [
         [],
         [[characters.boyM,"Emily come back!","",""],
          [characters.boyM,"Hey, who are you?","",""]],
-        {},
-        {}
+        {
+            snowman: new Enemy(320,125,27.5,45,"img/sprites/snowman_bad_1.png",0,0,1,1,1,100,true),
+        },
+        {
+            //no fixed_areas
+        }
     ),
 ];

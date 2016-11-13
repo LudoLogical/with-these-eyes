@@ -34,7 +34,7 @@ var main = function () {
         for (var g in enemyBullets) {
             enemyBullets[g].update();
             if (enemyBullets[g].removeMark) {
-                delete enemyBullets[g];
+                enemyBullets.splice(g,1);
             }
         }
         

@@ -13,11 +13,8 @@ class Bullet extends Entity {
         this.dmg = source.dmg;
         this.x -= (this.w/2);
         this.y -= (this.h/2);
-        if (type === "plyr") {
-            this.x += (player.w/2);
-            this.y += (player.h/2);
-        } else if (type === "enmy") {
-        }
+        this.x += (source.w/2);
+        this.y += (source.h/2);
     }
     testmobility() {
         var canMove = true;
@@ -49,12 +46,17 @@ class Bullet extends Entity {
         }
     }
     update() {
-        if (this.type = "plyr") {
+        if (this.type === "plyr") {
             for (var e in curroom.enemies) {
                 if (testcollisionrect(this,curroom.enemies[e])) {
                     curroom.enemies[e].hp -= this.dmg;
                     this.removeMark = true;
                 }
+            }
+        } else if (this.type === "enmy") {
+            if (testcollisionrect(this,player)) {
+                player.hp -= this.dmg;
+                this.removeMark = true;
             }
         }
         this.updatePos();
