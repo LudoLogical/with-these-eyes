@@ -46,6 +46,8 @@ class Room {
             this.character_imp[c][0].y = this.character_imp[c][2];
             
         }
+        characters.carpet.x = this.fin.x-15;
+        characters.carpet.y = this.fin.y-12.5;//470,92.5,
         doDialogue(this.dialoguestart);
     }
     checkFinish() {
@@ -61,13 +63,13 @@ class Room {
 }
 
 var rooms = [
-    new Room(500,500,"img/bg/bedroom_rev1.png",characters.boyM,215,220,485,240,15,20,songs.welcomeHome,1,
+    new Room(500,500,"img/bg/bedroom.png",characters.boyM,215,220,485,240,15,20,songs.welcomeHome,1,
         [[characters.girlE,252,220]],
         [[characters.boyM,"It's not safe out there...","","(Press [ENTER] to advance)"],
          [characters.girlE,"I'll only be to the market,","stop worrying about","everything so much!"],
          [characters.boyM,"I can't... I can't let anything","happen to you...",""],
          [characters.girlE,"I'll be fiiiiine!","See you in a little!","",[songs.welcomeHome,"fade"]],
-         [characters.boyM,"...","","",[characters.girlE,"down",5,[characters.girlE,"right",40,[characters.girlE,"up",3,[characters.girlE,"right",5,"remove"]]]]],
+         [characters.boyM,"...","","",[characters.girlE,"down",5,[characters.girlE,"right",40,[characters.girlE,"up",4,[characters.girlE,"right",5,"remove"]]]]],
          [characters.boyM,"I have to keep her safe...","","",[songs.sheHasLeft,"play"]]],
         { 
             //noenemies
@@ -77,20 +79,20 @@ var rooms = [
             standright: new Entity(305,205,35,30),
         }
     ),
-    new Room(500,200,"img/bg/snow_tut_1.png",characters.girlE,20,90,485,90,15,20,songs.adventure,2,
-        [],
+    new Room(500,200,"img/bg/snow_1.png",characters.girlE,20,90,485,105,15,20,songs.adventure,2,
+        [[characters.snowman,320,125]],
         [[characters.girlE,"Let's go get some food!","",""],
+         [characters.snowman,"Hello Miss!","",""],
          [characters.door,"(The door can't move, but","somehow attacks you","anyway.)"],
          [characters.girlE,"It's a battle then... Let's go!","",""]],
         { 
             door: new Enemy(460,75,40,80,"img/sprites/door_action.png",0,0,1,1,1,7000),
         },
         {
-            snow1: new Entity(115,20,40,35),
-            snow2: new Entity(380,150,20,20),
+            //no fixed_areas
         }
     ),
-    new Room(500,200,"img/bg/snow_tut_1.png",characters.boyM,20,90,485,90,15,20,songs.adventure,0,
+    new Room(500,200,"img/bg/snow_1.png",characters.boyM,20,90,485,105,15,20,songs.adventure,0,
         [],
         [[characters.boyM,"Emily come back!","",""],
          [characters.boyM,"Hey, who are you?","",""]],

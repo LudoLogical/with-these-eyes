@@ -50,8 +50,9 @@ class Enemy extends Entity {
 
 //CHARACTER SETUP
 class Character extends Entity {
-    constructor(x,y,w,h,spriteleft,spriteright,spritespeak,spd) {
+    constructor(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd) {
         super(x,y,w,h);
+        this.passable = passable;
         this.movedir = "";
         this.movecount = 0;
         this.afteraction = "";
@@ -98,8 +99,8 @@ class Character extends Entity {
 
 //PLAYER SETUP
 class Player extends Character {
-    constructor(x,y,w,h,spriteleft,spriteright,spritespeak,spd) {
-        super(x,y,w,h,spriteleft,spriteright,spritespeak,spd);
+    constructor(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd) {
+        super(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd);
         this.hp = 50;
         this.power = 100;
         this.xp = 0; //levelup = 100xp * curlevel
@@ -136,6 +137,11 @@ class Player extends Character {
                 if (testcollisionrect(this,dummy)) {
                     canMove = false;
                 }
+            }
+        }
+        for (var c in characters) {
+            if (testcollisionrect(this,characters[c]) && characters[c].passable === false) {
+                canMove = false;
             }
         }
         return canMove;
@@ -187,11 +193,13 @@ class Player extends Character {
 }
 
 //ENTITY CREATION
-var player = new Player(215,220,33,45,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5);
+var player = new Player(215,220,33,45,true,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5);
 var characters = {
-    boyM: new Character(-500,-500,33,45,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5),
-    girlE: new Character(-500,-500,33,45,"img/sprites/girl_left.png","img/sprites/girl_right.png","img/sprites/girl_speak.png",5),
-    door: new Character(-500,-500,40,80,"img/sprites/door_action.png","img/sprites/door_action.png","img/sprites/door_speak.png",0),
+    carpet: new Character(-500,-500,30,45,true,"img/sprites/carpet.png"),
+    boyM: new Character(-500,-500,33,45,true,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5),
+    girlE: new Character(-500,-500,33,45,true,"img/sprites/girl_left.png","img/sprites/girl_right.png","img/sprites/girl_speak.png",5),
+    door: new Character(-500,-500,40,80,false,"img/sprites/door_action.png","img/sprites/door_action.png","img/sprites/door_speak.png",0),
+    snowman: new Character(-500,-500,27.5,45,false,"img/sprites/snowman_good_1.png","img/sprites/snowman_good_1.png","img/sprites/snowman_speak.png",0),
 };
 var wasd = {
     w: new Entity(player.x+1.5,player.y-35,30,30,"img/controls/w.png"),
