@@ -192,7 +192,7 @@ var rooms = [
          
         ]
    ),
-    new Room(250,100,"img/bg/market.png",characters.boyM,40,50,15,50,15,20,songs.adventure,8,
+    new Room(500,200,"img/bg/market.png",characters.boyM,40,50,15,50,15,20,songs.adventure,8,
         [[characters.girlE,200,50]],
         [[characters.boyM,"Emily!","",""],
          [characters.girlE,"Oh hi Matt!","Look they've got fresh","leeks and potatoes!"],
