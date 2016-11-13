@@ -27,10 +27,10 @@ class Room {
         this.fixed_areas = fixed_areas;
     }
     setPlayerInfo(x,y) {
-        player.spriteleft = this.playas.spriteleft;
-        player.spriteright = this.playas.spriteright;
-        player.spriteleft_anim = this.playas.spriteleft_anim;
-        player.spriteright_anim = this.playas.spriteright_anim;
+        player.norm[0] = this.playas.norm[0];
+        player.norm[1] = this.playas.norm[1];
+        player.anim[0] = this.playas.anim[0];
+        player.anim[1] = this.playas.anim[1];
         player.spritespeak = this.playas.spritespeak;
         player.x = x;
         player.y = y;
