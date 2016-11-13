@@ -108,13 +108,15 @@ class Player extends Character {
         this.aimangle = 0;
         this.dmg = 1;
         this.bulletcatch = 0;
-        this.bulletmax = 5;
+        this.bulletmax = 2;
     }
     doAttack() {
-        this.bulletcatch = 15;
-        var id = Math.random();
-        playerBullets[id] = new Bullet(this,10,10,"img/test/test_entity.png","plyr",80,4,this.dmg); //80f = 2 sec
-        console.log(playerBullets);
+        if (this.bulletcatch <= 0 && playerBullets.length < this.bulletmax) {
+            this.bulletcatch = 15;
+            playerBullets.push(new Bullet(this,10,10,"img/test/test_entity.png","plyr",80,4,this.dmg)); //80f = 2 sec
+            console.log(playerBullets);
+            console.log(playerBullets.length);
+        }
     }
     testmobility() {
         var canMove = true;

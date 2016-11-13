@@ -28,14 +28,13 @@ var main = function () {
         for (var d in playerBullets) {
             playerBullets[d].update();
             if (playerBullets[d].removeMark) {
-                delete playerBullets[d];
+                playerBullets.splice(d,1);
             }
         }
         for (var g in enemyBullets) {
             enemyBullets[g].update();
             if (enemyBullets[g].removeMark) {
                 delete enemyBullets[g];
-                console.log("removed");
             }
         }
         
