@@ -261,6 +261,7 @@ var characters = {
     deer: new Character(-500,-500,50,50,false,"img/sprites/deer_2.png","img/sprites/deer_2.png","img/sprites/deer_speak.png",0,"img/sprites/deer_3.png","img/sprites/deer_3.png"),
     deercry: new Character(-500,-500,50,50,false,"img/sprites/deer_2.png","img/sprites/deer_2.png","img/sprites/deer_speak.png",0,"img/sprites/deer_1.png","img/sprites/deer_1.png"),
     deermad: new Character(-500,-500,50,50,false,"img/sprites/deer_2.png","img/sprites/deer_2.png","img/sprites/evildeer_speak.png",0,"img/sprites/deer_2.png","img/sprites/deer_2.png"),
+    lightstree: new Character(-500,-500,60,60,false,"img/sprites/lights_tree_1.png","img/sprites/lights_tree_1.png","img/sprites/lights_tree_1.png",0,"img/sprites/lights_tree_2.png","img/sprites/lights_tree_2.png")
 };
 var wasd = {
     w: new Entity(player.x+1.5,player.y-35,30,30,"img/controls/w.png"),
