@@ -280,6 +280,7 @@ var characters = {
     girlE: new Character(-500,-500,33,45,true,"img/sprites/girl_left.png","img/sprites/girl_right.png","img/sprites/girl_speak.png",5,"img/sprites/girl_left.png","img/sprites/girl_right.png"),
     door: new Character(-500,-500,40,80,false,"img/sprites/door_action.png","img/sprites/door_action.png","img/sprites/door_speak.png",0,"img/sprites/door_action.png","img/sprites/door_action.png"),
     snowman: new Character(-500,-500,27.5,45,false,"img/sprites/snowman_good_1.png","img/sprites/snowman_good_1.png","img/sprites/snowman_speak.PNG",0,"img/sprites/snowman_good_2.png","img/sprites/snowman_good_2.png"),
+    snowmanmad: new Character(-500,-500,27.5,45,false,"img/sprites/snowman_good_1.png","img/sprites/snowman_good_1.png","img/sprites/snowmanmad_speak.PNG",0,"img/sprites/snowman_good_2.png","img/sprites/snowman_good_2.png"),
     tree: new Character(-500,-500,36,48,false,"img/sprites/tree_1.png","img/sprites/tree_1.png","img/sprites/tree_1.png",0,"img/sprites/tree_2.png","img/sprites/tree_2.png"),
     christmastree: new Character(-500,-500,30,45,false,"img/sprites/christmas_tree.png","img/sprites/christmas_tree.png","img/sprites/christmas_tree.png",0,"img/sprites/christmas_tree.png","img/sprites/christmas_tree.png"),
     deer: new Character(-500,-500,50,50,false,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG","img/sprites/deer_speak.png",0,"img/sprites/deer_3.PNG","img/sprites/deer_3.PNG"),
@@ -287,6 +288,8 @@ var characters = {
     deermad: new Character(-500,-500,50,50,false,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG","img/sprites/evildeer_speak.png",0,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG"),
     gnomered: new Character(-500,-500,33,45,false,"img/sprites/gnomered_1.PNG","img/sprites/gnomered_1.PNG","img/sprites/gnomered_speak.png",0,"img/sprites/gnomered_2.PNG","img/sprites/gnomered_2.PNG"),
     gnomeblue: new Character(-500,-500,33,45,false,"img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_speak.png",0,"img/sprites/gnomeblue_2.PNG","img/sprites/gnomeblue_2.PNG"),
+    gnomeredmad: new Character(-500,-500,33,45,false,"img/sprites/gnomered_1.PNG","img/sprites/gnomered_1.PNG","img/sprites/gnomered_speak_mad.png",0,"img/sprites/gnomered_2.PNG","img/sprites/gnomered_2.PNG"),
+    gnomebluemad: new Character(-500,-500,33,45,false,"img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_speak_mad.png",0,"img/sprites/gnomeblue_2.PNG","img/sprites/gnomeblue_2.PNG"),
     lumberjack: new Character(-500,-500,33,45,"img/sprites/lumberjack.png","img/sprites/lumberjack.png","img/sprites/lumberjack_speak.png",0,"img/sprites/lumberjack.png","img/sprites/lumberjack.png"),
     banker: new Character(-500,-500,33,45,"img/sprites/banker.png","img/sprites/banker.png","img/sprites/banker_speak.png",0,"img/sprites/banker.png","img/sprites/banker.png"),
 };

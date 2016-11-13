@@ -123,7 +123,7 @@ var rooms = [
          [characters.boyM,"I'm Matt.","What are you doing","outside my house?"],
          [characters.snowman,"I was built here.","I can't move.",""],
          [characters.boyM,"Well, you need to go.","You're messing up","my front yard."],
-         [characters.snowman,"I was here first!","",""]],
+         [characters.snowmanmad,"I was here first!","",""]],
         [
             new Enemy(320,125,27.5,45,"img/sprites/snowman_bad_1.png","img/sprites/snowman_bad_2.png",0,0,1,1,1,100,true),//snowman
         ],
@@ -175,7 +175,7 @@ var rooms = [
             //no fixed_areas
         ]
     ),
-    new Room(500,200,"img/bg/snow_3.png",characters.boyM,20,60,485,65,15,20,songs.adventure,0,
+    new Room(500,200,"img/bg/snow_3.png",characters.boyM,20,60,485,65,15,20,songs.adventure,7,
        [[characters.gnomered,442,0],[characters.gnomeblue,442,115]],
        [[characters.gnomered,"Welcome to Gnome-Mart!","Would you be interested in -",""],
         [characters.boyM,"Oh no.","More salespeople","trying to rip me off."],
@@ -183,8 +183,8 @@ var rooms = [
         [characters.gnomered,"Our customers save incredible","amounts of money from","shopping at Gnome-Mart!"],
         [characters.gnomeblue,"Other markets' savings","are gnome match for ours.",""],
         [characters.boyM,"Uh huh.","Now let me through.","I'm looking for someone."],
-        [characters.gnomered,"So you aren't going to","buy anything?",""],
-        [characters.gnomeblue,"Well, in that case,","get out of here.",""]],
+        [characters.gnomeredmad,"So you aren't going to","buy anything?",""],
+        [characters.gnomebluemad,"Well, in that case,","get out of here.",""]],
         [
         
         ],
@@ -192,7 +192,7 @@ var rooms = [
          
         ]
    ),
-    new Room(250,100,"img/bg/market.png",characters.boyM,40,50,15,50,15,20,songs.adventure,0,
+    new Room(250,100,"img/bg/market.png",characters.boyM,40,50,15,50,15,20,songs.adventure,8,
         [[characters.girlE,200,50]],
         [[characters.boyM,"Emily!","",""],
          [characters.girlE,"Oh hi Matt!","Look they've got fresh","leeks and potatoes!"],
@@ -209,7 +209,7 @@ var rooms = [
             //no fixed_areas
         ]
     ),
-    new Room(500,200,"img/bg/snow_3.png",characters.girlE,485,65,15,60,15,20,songs.adventure,0,
+    new Room(500,200,"img/bg/snow_3.png",characters.girlE,485,65,15,60,15,20,songs.adventure,9,
         [[characters.boyM,485,50][characters.lumberjack,50,65]],
         [[characters.boyM,"Ugh, this guy is","in the way.","I'll take care of it."],
          [characters.girlE,"No, wait.!","Let me try.",""],
@@ -226,7 +226,7 @@ var rooms = [
             //no fixed_areas
         ]
     ),
-    new Room(500,200,"img/bg/snow_1.png",/* character where they are together */,485,105,15,90,15,20,songs.adventure,0,
+    new Room(500,200,"img/bg/snow_1.png",485,105,15,90,15,20,songs.adventure,0,
         [],
         [[characters.banker,"Ah, yes, Matt and Emily.","I've been waiting for you.",""],
          [characters.girlE,"Good afternoon, Mr. Banker.",""],
