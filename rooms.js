@@ -77,7 +77,7 @@ var rooms = [
             standright: new Entity(305,205,35,30),
         }
     ),
-    new Room(500,200,"img/bg/snow-tut-1.png",characters.girlE,75,80,485,90,15,20,songs.adventure,0,
+    new Room(500,200,"img/bg/snow_tut_1.png",characters.girlE,75,80,485,90,15,20,songs.adventure,0,
         [],
         [[characters.girlE,"Let's go get some food!","",""],
          [characters.door,"(The door can't move, but","somehow attacks you","anyway.)"],
