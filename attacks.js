@@ -2,8 +2,9 @@ var playerBullets = [];
 var enemyBullets = [];
 
 class Bullet extends Entity {
-    constructor(source,w,h,sprite,type,dur,spd,dmg) {
-        super(source.x,source.y,w,h,sprite);
+    constructor(source,w,h,type,dur,spd,dmg) {
+        super(source.x,source.y,w,h);
+        this.sprite = new Image();
         this.type = type;
         this.dur = dur;
         this.removeMark = false;
@@ -15,6 +16,15 @@ class Bullet extends Entity {
         this.y -= (this.h/2);
         this.x += (source.w/2);
         this.y += (source.h/2);
+        if (source.bullet_type === "snow") {
+            this.sprite.src = "img/sprites/snowball.png";
+        } else if (source.bullet_type === "tear") {
+            this.sprite.src = "img/sprites/tears.png";
+        } else if (source.bullet_type === "shovel") {
+            this.sprite.src = "img/sprites/shovel.png";
+        } else {
+            this.sprite.src = "img/sprites/fireball.PNG";
+        }
     }
     testmobility() {
         var canMove = true;

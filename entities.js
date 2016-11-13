@@ -18,7 +18,7 @@ class Entity {
 
 //ENEMY SETUP
 class Enemy extends Entity {
-    constructor(x,y,w,h,spritenorm,spriteanim,spdX,spdY,hp,atk,dmg,xp,do_atk) {
+    constructor(x,y,w,h,spritenorm,spriteanim,spdX,spdY,hp,atk,dmg,xp,do_atk,bullet_type) {
         super(x,y,w,h);
         this.spritenorm = new Image();
         this.spriteanim = new Image();
@@ -35,6 +35,7 @@ class Enemy extends Entity {
         this.aimangle = 0;
         this.xp = xp;
         this.do_atk = do_atk;
+        this.bullet_type = bullet_type;
         this.removeMark = false;
     }
     doAttackCheck() {
@@ -43,7 +44,7 @@ class Enemy extends Entity {
             var dy = (player.y + (player.h/2))-(this.y + (this.h/2));
             var dx = (player.x + (player.w/2))-(this.x + (this.w/2));
             this.aimangle = Math.atan2(dy,dx);
-            enemyBullets.push(new Bullet(this,10,10,"img/sprites/fireball.PNG","enmy",80,4,this.dmg)); //80f = 2 sec
+            enemyBullets.push(new Bullet(this,10,10,"enmy",80,4,this.dmg)); //80f = 2 sec
         }
         this.actcount--;
     }
@@ -185,9 +186,7 @@ class Player extends Character {
     doAttack() {
         if (this.bulletcatch <= 0 && playerBullets.length < this.bulletmax) {
             this.bulletcatch = 15;
-            playerBullets.push(new Bullet(this,10,10,"img/sprites/fireball.PNG","plyr",80,4,this.dmg)); //80f = 2 sec
-            console.log(playerBullets);
-            console.log(playerBullets.length);
+            playerBullets.push(new Bullet(this,10,10,"plyr",80,4,this.dmg)); //80f = 2 sec
         }
     }
     testmobility() {

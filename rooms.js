@@ -50,7 +50,10 @@ class Room {
         for (var c in this.character_imp) {
             this.character_imp[c][0].x = this.character_imp[c][1];
             this.character_imp[c][0].y = this.character_imp[c][2];
-            
+        }
+        
+        if (curroom === rooms[7]) {
+            characters.girlE.face = 0;
         }
         
         characters.carpet.x = -500;
@@ -125,7 +128,7 @@ var rooms = [
          [characters.boyM,"Well, you need to go.","You're messing up","my front yard."],
          [characters.snowmanmad,"I was here first!","",""]],
         [
-            new Enemy(320,125,27.5,45,"img/sprites/snowman_bad_1.png","img/sprites/snowman_bad_2.png",0,0,1,1,1,100,true),//snowman
+            new Enemy(320,125,27.5,45,"img/sprites/snowman_bad_1.png","img/sprites/snowman_bad_2.png",0,0,1,1,1,100,true,"snow"),//snowman
         ],
         [
             //no fixed_areas
@@ -156,7 +159,7 @@ var rooms = [
          [characters.boyM,"Wow... you're just standing","here crying...","Alone."],
          [characters.deercry,"Hey!  Don't make fun of","me when you have no idea","what I've been through!"]],
         [
-            new Enemy(360,125,60,60,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG",0,0,1,1,1,100,true),//evildeer
+            new Enemy(360,125,60,60,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG",0,0,1,1,1,100,true,"tear"),//evildeer
         ],
         [
             //no fixed_areas
@@ -169,14 +172,14 @@ var rooms = [
          [characters.girlE,"I'm looking for some veggies.","",""],
          [characters.gnomeblue,"I'm sure you'll find","what you're looking for inside.",""]],
         [
-            //yet-to-add
+            //noenemies
         ],
         [
             //no fixed_areas
         ]
     ),
     new Room(500,200,"img/bg/snow_3.png",characters.boyM,20,60,485,65,15,20,songs.adventure,7,
-       [[characters.gnomered,442,0],[characters.gnomeblue,442,115]],
+       [],
        [[characters.gnomered,"Welcome to Gnome-Mart!","Would you be interested in -",""],
         [characters.boyM,"Oh no.","More salespeople","trying to rip me off."],
         [characters.gnomeblue,"On the contrary,","our deals are far","from a rip-off."],
@@ -186,22 +189,22 @@ var rooms = [
         [characters.gnomeredmad,"So you aren't going to","buy anything?",""],
         [characters.gnomebluemad,"Well, in that case,","get out of here.",""]],
         [
-        
+            new Enemy(442,0,33,45,"img/sprites/gnomered_1.PNG","img/sprites/gnomered_2.PNG",0,0,1,1,1,100,true,"shovel"),//gnomered
+            new Enemy(442,115,33,45,"img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_2.PNG",0,0,1,1,1,100,true,"shovel"),//gnomeblue
         ],
         [
-         
+            //no fixed_areas
         ]
-   ),
-    new Room(500,200,"img/bg/market.png",characters.boyM,40,50,15,50,15,20,songs.adventure,8,
-        [[characters.girlE,200,50]],
+    ),
+    new Room(500,200,"img/bg/market.png",characters.boyM,30,80,15,92.5,15,20,songs.adventure,8,
+        [[characters.girlE,420,80]],
         [[characters.boyM,"Emily!","",""],
          [characters.girlE,"Oh hi Matt!","Look they've got fresh","leeks and potatoes!"],
          [characters.boyM,"Emily, you've been","so reckless.","It's dangerous out here."],
-         [characters.girlE,"No it's not",""],
+         [characters.girlE,"No it's not!","",""],
          [characters.boyM,"Are you sure?","There were so many","dangers on the way."],
-         [characters.girlE,"Of course I'm sure.","Look, I'll show you.",""]
-	 [characters.girlE,"down",10,[characters.girlE,"left",150,[characters.girlE,"up",10,[characters.girlE,"left",20,"remove"]]]],
-	 [characters.boyM,"Wait!","","",]],
+         [characters.girlE,"Of course I'm sure.","Look, I'll show you!","",[characters.girlE,"left",85,"remove"]],
+	     [characters.boyM,"Wait!","",""]],
         [
             //no enemies
         ],
@@ -210,12 +213,12 @@ var rooms = [
         ]
     ),
     new Room(500,200,"img/bg/snow_3.png",characters.girlE,485,65,15,60,15,20,songs.adventure,9,
-        [[characters.boyM,485,50][characters.lumberjack,50,65]],
+        [[characters.boyM,485,50],[characters.lumberjack,50,65]],
         [[characters.boyM,"Ugh, this guy is","in the way.","I'll take care of it."],
          [characters.girlE,"No, wait.!","Let me try.",""],
-	    [characters.girlE,"Hello, sir!","",""],
+	     [characters.girlE,"Hello, sir!","",""],
          [characters.lumberjack,"Hello, miss!","Unfortunately, this road","is old."],
-	    [characters.lumberjack,"My truck is stuck in","a pothole.",""],
+	     [characters.lumberjack,"My truck is stuck in","a pothole.",""],
          [characters.girlE,"Mind if we help out?","I'll see what I can do.",""],
          [characters.lumberjack,"Thank you very much, miss.","",""],
          [characters.boyM,"Hey, that was a pretty good","idea. Looks like we're gonna","get through."]],
