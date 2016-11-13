@@ -77,30 +77,17 @@ var rooms = [
             standright: new Entity(305,205,35,30),
         }
     ),
-    new Room(500,200,"img/bg/snow_tut_1.png",characters.girlE,75,80,485,90,15,20,songs.adventure,0,
+    new Room(500,200,"img/bg/snow_tut_1.png",characters.girlE,20,90,485,90,15,20,songs.adventure,0,
         [],
         [[characters.girlE,"Let's go get some food!","",""],
          [characters.door,"(The door can't move, but","somehow attacks you","anyway.)"],
          [characters.girlE,"It's a battle then... Let's go!","",""]],
         { 
-            door: new Enemy(460,60,40,80,"img/sprites/door_action.png",0,0,1,1,1,7000),
+            door: new Enemy(460,75,40,80,"img/sprites/door_action.png",0,0,1,1,1,7000),
         },
         {
             snow1: new Entity(115,20,40,35),
             snow2: new Entity(380,150,20,20),
         }
     ),
-    /*new Room(r_w,r_h,"thing.png",characters.girlE,x,y,fx,fy,fw,fh,songs.adventure,0,
-        [],
-        [[characters.girlE,"Let's go get some food!","",""],
-         [characters.door,"(The door can't move, but","somehow attacks you","anyway.)"],
-         [characters.girlE,"It's a battle then... Let's go!","",""]],
-        { 
-            door: new Enemy(460,60,40,80,"img/sprites/door_action.png",0,0,1,1,1),
-        },
-        {
-            snow1: new Entity(115,20,40,35),
-            snow2: new Entity(380,150,20,20),
-        }
-    ),*/
 ];
