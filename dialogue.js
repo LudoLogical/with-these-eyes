@@ -63,6 +63,7 @@ var resolveAction = function(actor) {
     if (actor.afteraction === "remove") {
         actor.x = -500;
         actor.y = -500;
+        actor.afteraction = "";
     } else if (actor.afteraction[1]) {
         doAction(actor.afteraction);
     }

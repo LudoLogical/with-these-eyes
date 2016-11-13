@@ -78,7 +78,7 @@ class Character extends Entity {
                 this.face = "r";
             }
             this.movecount --;
-        } else {
+        } else if (this.afteraction != "") {
             resolveAction(this);
         }
         

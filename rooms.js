@@ -50,6 +50,11 @@ class Room {
     }
     checkFinish() {
         if (testcollisionrect(this.fin,player)) {
+            for (var c in this.character_imp) {
+            this.character_imp[c][0].x = -500;
+            this.character_imp[c][0].y = -500;
+            
+        }
             rooms[this.nextLV].begin();
         }
     }
