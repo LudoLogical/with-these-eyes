@@ -107,7 +107,7 @@ var rooms = [
         [],
         [[characters.boyM,"Emily, come back!","",""],
          [characters.boyM,"Hey, who are you?","",""],
-         [characters.snowman,"I'm Florence","Nice to meet you!",""],
+         [characters.snowman,"I'm Florence.","Nice to meet you!",""],
          [characters.boyM,"I'm Matt.","What are you doing","outside my house?"],
          [characters.snowman,"I was built here.","I can't move.",""],
          [characters.boyM,"Well, you need to go.","You're messing up","my front yard."],
