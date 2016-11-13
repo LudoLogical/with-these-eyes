@@ -77,7 +77,7 @@ var rooms = [
             standright: new Entity(305,205,35,30),
         }
     ),
-    new Room(500,200,"img/bg/snow_tut_1.png",characters.girlE,20,90,485,90,15,20,songs.adventure,0,
+    new Room(500,200,"img/bg/snow_tut_1.png",characters.girlE,20,90,485,90,15,20,songs.adventure,2,
         [],
         [[characters.girlE,"Let's go get some food!","",""],
          [characters.door,"(The door can't move, but","somehow attacks you","anyway.)"],
@@ -89,5 +89,11 @@ var rooms = [
             snow1: new Entity(115,20,40,35),
             snow2: new Entity(380,150,20,20),
         }
+    ),
+    new Room(500,200,"img/bg/snow_tut_1.png",characters.boyM,20,90,485,90,15,20,songs.adventure,0,
+        [],
+        [[characters.boyM,"Emily come back!","",""]],
+        {},
+        {},
     ),
 ];
