@@ -162,12 +162,12 @@ var rooms = [
             //no fixed_areas
         ]
     ),
-    new Room(500,200,"img/bg/snow_3.png",characters.girlE,20,60,485,75,15,20,songs.adventure,0,
+    new Room(500,200,"img/bg/snow_3.png",characters.girlE,20,60,485,75,15,20,songs.adventure,6,
         [[characters.gnomered,400,50],[characters.gnomeblue,400,150]],
         [[characters.girlE,"Oh yay! The market.","",""],
          [characters.gnomered,"Welcome to Gnome-Mart!","We have the best deals!",""],
          [characters.girlE,"I'm looking for some veggies.","",""],
-         [characters.gnomeblue,"I'm sure you'll find","what you desire inside",""]],
+         [characters.gnomeblue,"I'm sure you'll find","what you're looking for inside.",""]],
         [
             //yet-to-add
         ],
@@ -175,4 +175,21 @@ var rooms = [
             //no fixed_areas
         ]
     ),
+    new Room(500,200,"img/bg/snow_3.png",characters.boyM,20,60,485,75,15,20,songs.adventure,0,
+       [[characters.gnomered,400,50],[characters.gnomeblue,400,150]],
+       [[characters.gnomered,"Welcome to Gnome-Mart!","Would you be interested in--",""],
+        [characters.boyM,"Oh no.","More salespeople trying to rip me off.",""],
+        [characters.gnomeblue,"On the contrary,","our deals are far from a rip-off.",""],
+        [characters.gnomered,"Our customers save incredible","amounts of money from buying","at Gnome-Mart!"],
+        [characters.gnomeblue,"Other markets' savings","are gnome match for ours.",""],
+        [characters.boyM,"Uh huh.","Now let me through.","I'm looking for someone."],
+        [characters.gnomered,"So you aren't going to","buy anything?",""],
+        [characters.gnomeblue,"Well, in that case,","get out of here.",""]],
+        [
+    
+        ],
+        [
+    
+        ]
+   ),
 ];
