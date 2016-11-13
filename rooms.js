@@ -65,7 +65,7 @@ class Room {
                 if (curroom === rooms[3]) {
                     characters.deercry.x = -500;
                     characters.deercry.y = -500;
-                    characters.deer.x = 240;
+                    characters.deer.x = 360;
                     characters.deer.y = 135;
                 }
             }
@@ -98,7 +98,7 @@ var rooms = [
         ]
     ),
     new Room(500,200,"img/bg/snow_1.png",characters.girlE,20,90,485,105,15,20,songs.adventure,2,
-        [[characters.snowman,320,125]],
+        [[characters.snowman,320,125],[characters.christmastree,120,15]],
         [[characters.girlE,"Let's go get some food!","",""],
          [characters.snowman,"Hello Miss!","",""],
          [characters.girlE,"Wow, a talking snowman!","What's your name?",""],
@@ -116,7 +116,7 @@ var rooms = [
         ]
     ),
     new Room(500,200,"img/bg/snow_1.png",characters.boyM,20,90,485,105,15,20,songs.adventure,3,
-        [],
+        [[characters.christmastree,120,15]],
         [[characters.boyM,"Emily, come back!","",""],
          [characters.boyM,"Hey, who are you?","",""],
          [characters.snowman,"I'm Florence.","Nice to meet you!",""],
@@ -132,7 +132,7 @@ var rooms = [
         ]
     ),
     new Room(500,200,"img/bg/snow_2.png",characters.girlE,20,60,485,75,15,20,songs.adventure,0,
-        [[characters.deercry,240,135],[characters.deer,-500,-500]],
+        [[characters.deercry,360,135],[characters.deer,-500,-500],[characters.tree,80,140]],
         [[characters.deercry,"...Stupid...lights...","",""],
          [characters.girlE,"Hello!","",""],
          [characters.deercry,"Oh, hey.","",""],
@@ -142,7 +142,7 @@ var rooms = [
          [characters.deercry,"It's just a little further forward.","Could you help break me free?","My antlers are caught."],
          [characters.girlE,"Of course!","",""]],
         [
-            new Enemy(240,125,60,60,"img/sprites/lights_tree_1.PNG","img/sprites/lights_tree_2.PNG",0,0,1,1,1,100,false),//lights_tree
+            new Enemy(360,125,60,60,"img/sprites/lights_tree_1.PNG","img/sprites/lights_tree_2.PNG",0,0,1,1,1,100,false),//lights_tree
         ],
         [
             //no fixed_areas
