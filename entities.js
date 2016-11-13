@@ -37,7 +37,7 @@ class Enemy extends Entity {
             var dy = (player.y + (player.h/2))-(this.y + (this.h/2));
             var dx = (player.x + (player.w/2))-(this.x + (this.w/2));
             this.aimangle = Math.atan2(dy,dx);
-            enemyBullets.push(new Bullet(this,10,10,"img/test/test_entity.png","enmy",80,4,this.dmg)); //80f = 2 sec
+            enemyBullets.push(new Bullet(this,10,10,"img/sprites/fireball.PNG","enmy",80,4,this.dmg)); //80f = 2 sec
         }
         this.actcount--;
     }
@@ -163,7 +163,7 @@ class Player extends Character {
     doAttack() {
         if (this.bulletcatch <= 0 && playerBullets.length < this.bulletmax) {
             this.bulletcatch = 15;
-            playerBullets.push(new Bullet(this,10,10,"img/test/test_entity.png","plyr",80,4,this.dmg)); //80f = 2 sec
+            playerBullets.push(new Bullet(this,10,10,"img/sprites/fireball.PNG","plyr",80,4,this.dmg)); //80f = 2 sec
             console.log(playerBullets);
             console.log(playerBullets.length);
         }
