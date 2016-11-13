@@ -18,8 +18,14 @@ class Entity {
 
 //ENEMY SETUP
 class Enemy extends Entity {
-    constructor(x,y,w,h,sprite,spdX,spdY,hp,atk,dmg,xp,do_atk) {
-        super(x,y,w,h,sprite);
+    constructor(x,y,w,h,spritenorm,spriteanim,spdX,spdY,hp,atk,dmg,xp,do_atk) {
+        super(x,y,w,h);
+        this.spritenorm = new Image();
+        this.spriteanim = new Image();
+        this.spritenorm.src = spritenorm;
+        this.spriteanim.src = spriteanim;
+        this.track = "norm";
+        this.animcount = 15;
         this.spdX = spdX;
         this.spdY = spdY;
         this.hp = hp;
@@ -41,6 +47,18 @@ class Enemy extends Entity {
         }
         this.actcount--;
     }
+    anim_check() {
+        if (this.animcount <= 0) {
+            if (this.track === "norm") {
+                this.track = "anim";
+            } else {
+               this.track = "norm";
+            }
+            this.animcount = 15;
+        }
+        this.animcount--;
+        
+    }
     updatePos() {
         if (this.x <= 0 || this.x >= curroom.map.w - this.w) {
             this.spdX = -this.spdX;
@@ -50,13 +68,18 @@ class Enemy extends Entity {
         this.y += this.spdY;
     }
     draw() {
-        ctx.drawImage(this.sprite,this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
+        if (this.track === "norm") {
+            ctx.drawImage(this.spritenorm,this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
+        } else {
+            ctx.drawImage(this.spriteanim,this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
+        }
     }
     update() {
         if (this.hp <= 0) {
             this.removeMark = true;
         }
         this.doAttackCheck();
+        this.anim_check();
         this.updatePos();
         this.draw();
     }
@@ -96,7 +119,7 @@ class Character extends Entity {
             if (this.track === "norm") {
                 this.track = "anim";
             } else {
-               this.track = "norm" 
+               this.track = "norm";
             }
             this.animcount = 15;
         }
