@@ -95,5 +95,5 @@ var rooms = [
         [[characters.boyM,"Emily come back!","",""]],
         {},
         {},
-    ),
+    )
 ];
