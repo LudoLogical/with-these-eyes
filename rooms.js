@@ -119,7 +119,7 @@ var rooms = [
             //no fixed_areas
         }
     ),
-    new Room(500,200,"img/bg/snow_2.png",characters.girlE,20,90,485,105,15,20,song.adventure,0,
+    new Room(500,200,"img/bg/snow_2.png",characters.girlE,20,90,485,105,15,20,songs.adventure,0,
         [[characters.deercry,240,70]],
         [[characters.deercry,"...stupid...lights...","",""],
          [characters.girlE,"Hello!","",""],
