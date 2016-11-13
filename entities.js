@@ -18,13 +18,14 @@ class Entity {
 
 //ENEMY SETUP
 class Enemy extends Entity {
-    constructor(x,y,w,h,sprite,spdX,spdY,hp,atk,dmg) {
+    constructor(x,y,w,h,sprite,spdX,spdY,hp,atk,dmg,xp) {
         super(x,y,w,h,sprite);
         this.spdX = spdX;
         this.spdY = spdY;
         this.hp = hp;
         this.atk = atk; //contact
         this.dmg = dmg; //bullet
+        this.xp = xp;
         this.removeMark = false;
     }
     updatePos() {
@@ -101,7 +102,7 @@ class Player extends Character {
         super(x,y,w,h,spriteleft,spriteright,spritespeak,spd);
         this.hp = 50;
         this.power = 100;
-        this.xp = 0;
+        this.xp = 0; //levelup = 100xp * curlevel
         this.gold = 0;
         this.lv = 1;
         this.aimangle = 0;
@@ -133,7 +134,6 @@ class Player extends Character {
                 if (testcollisionrect(this,dummy)) {
                     canMove = false;
                 }
-                
             }
         }
         return canMove;
@@ -172,6 +172,10 @@ class Player extends Character {
         }
     }
     update() {
+        if (this.xp >= this.lv*100) {
+            this.xp -= this.lv*100;
+            this.lv ++;
+        }
         if (writing === false) {
             this.updatePos();
         }

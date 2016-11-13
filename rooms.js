@@ -33,10 +33,12 @@ class Room {
         player.y = y;
     }
     begin() {
-        if (cursong) { fadeOut(2000); }
         curroom = this;
-        cursong = this.musicstart;
-        fadeIn(cursong,2000);
+        if (cursong && cursong != this.musicstart) {
+            fadeOut(2000); 
+            cursong = this.musicstart;
+            fadeIn(cursong,2000);
+        }
         this.setPlayerInfo(this.playerx,this.playery);
         doDialogue(this.dialoguestart);
     }
@@ -68,11 +70,23 @@ var rooms = [
          [characters.door,"(The door can't move, but","somehow attacks you","anyway.)"],
          [characters.girlE,"It's a battle then... Let's go!","",""]],
         { 
-            door: new Enemy(460,60,40,80,"img/sprites/door_action.png",0,0,1,1,1),
+            door: new Enemy(460,60,40,80,"img/sprites/door_action.png",0,0,1,1,1,7000),
         },
         {
             snow1: new Entity(115,20,40,35),
             snow2: new Entity(380,150,20,20),
         }
     ),
+    /*new Room(r_w,r_h,"thing.png",characters.girlE,x,y,fx,fy,fw,fh,songs.adventure,0,
+        [[characters.girlE,"Let's go get some food!","",""],
+         [characters.door,"(The door can't move, but","somehow attacks you","anyway.)"],
+         [characters.girlE,"It's a battle then... Let's go!","",""]],
+        { 
+            door: new Enemy(460,60,40,80,"img/sprites/door_action.png",0,0,1,1,1),
+        },
+        {
+            snow1: new Entity(115,20,40,35),
+            snow2: new Entity(380,150,20,20),
+        }
+    ),*/
 ];

@@ -90,7 +90,7 @@ var drawUI = function() {
     ctx.fillStyle = "yellow";
     ctx.strokeStyle = "yellow";
     ctx.strokeRect(ctx.canvas.width-172,90,150,9);
-    ctx.fillRect(ctx.canvas.width-172,90,100,9);
+    ctx.fillRect(ctx.canvas.width-172,90,(player.xp*1.5)/player.lv,9);
     ctx.fillStyle = "white";
     ctx.font = "15px 'Muli'";
     ctx.fillText("XP",ctx.canvas.width-200,100);

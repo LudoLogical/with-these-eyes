@@ -51,6 +51,7 @@ var main = function () {
                 player.hp -= curroom.enemies[e].atk;
             }
             if (curroom.enemies[e].removeMark) {
+                player.xp += curroom.enemies[e].xp;
                 delete curroom.enemies[e];
             }
         }
