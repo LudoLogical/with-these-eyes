@@ -52,12 +52,17 @@ class Room {
             this.character_imp[c][0].y = this.character_imp[c][2];
             
         }
-        characters.carpet.x = this.fin.x-15;
-        characters.carpet.y = this.fin.y-12.5;//470,92.5,
+        
+        characters.carpet.x = -500;
+        characters.carpet.y = -500;
         doDialogue(this.dialoguestart);
     }
     checkFinish() {
-        if (testcollisionrect(this.fin,player)) {
+        if (this.enemies.length === 0 && characters.carpet.x === -500) {
+            characters.carpet.x = this.fin.x-15;
+            characters.carpet.y = this.fin.y-12.5;
+        }
+        if (this.enemies.length === 0 && testcollisionrect(this.fin,player)) {
             for (var c in this.character_imp) {
             this.character_imp[c][0].x = -500;
             this.character_imp[c][0].y = -500;
@@ -77,13 +82,13 @@ var rooms = [
          [characters.girlE,"I'll be fiiiiine!","See you in a little!","",[songs.welcomeHome,"fade"]],
          [characters.boyM,"...","","",[characters.girlE,"down",5,[characters.girlE,"right",40,[characters.girlE,"up",4,[characters.girlE,"right",5,"remove"]]]]],
          [characters.boyM,"I have to keep her safe...","","",[songs.sheHasLeft,"play"]]],
-        { 
+        [ 
             //noenemies
-        },
-        {
-            standleft: new Entity(165,205,30,30),
-            standright: new Entity(305,205,35,30),
-        }
+        ],
+        [
+            new Entity(165,205,30,30),//standleft
+            new Entity(305,205,35,30),//standright
+        ]
     ),
     new Room(500,200,"img/bg/snow_1.png",characters.girlE,20,90,485,105,15,20,songs.adventure,2,
         [[characters.snowman,320,125]],
@@ -96,12 +101,12 @@ var rooms = [
          [characters.girlE,"Thanks!","Wait a sec...","I don't have a key."],
          [characters.snowman,"If only there was a way","to break through...",""],
          [characters.girlE,"(Left mouse button to fire)","",""]],
-        { 
-            door: new Enemy(460,75,40,80,"img/sprites/door_action.png",0,0,1,1,1,7000),
-        },
-        {
+        [ 
+            new Enemy(460,75,40,80,"img/sprites/door_action.png",0,0,1,1,1,7000),//door
+        ],
+        [
             //no fixed_areas
-        }
+        ]
     ),
     new Room(500,200,"img/bg/snow_1.png",characters.boyM,20,90,485,105,15,20,songs.adventure,3,
         [],
@@ -112,15 +117,15 @@ var rooms = [
          [characters.snowman,"I was built here.","I can't move.",""],
          [characters.boyM,"Well, you need to go.","You're messing up","my front yard."],
          [characters.snowman,"I was here first!","",""]],
-        {
-            snowman: new Enemy(320,125,27.5,45,"img/sprites/snowman_bad_1.png",0,0,1,1,1,100,true),
-        },
-        {
+        [
+            new Enemy(320,125,27.5,45,"img/sprites/snowman_bad_1.png",0,0,1,1,1,100,true),//snowman
+        ],
+        [
             //no fixed_areas
-        }
+        ]
     ),
     new Room(500,200,"img/bg/snow_2.png",characters.girlE,20,60,485,75,15,20,songs.adventure,0,
-        [[characters.deercry,240,135],[characters.lightstree,240,125]],
+        [[characters.deercry,240,135]],
         [[characters.deercry,"...Stupid...lights...","",""],
          [characters.girlE,"Hello!","",""],
          [characters.deercry,"Oh, hey.","",""],
@@ -129,7 +134,11 @@ var rooms = [
          [characters.girlE,"It's nice to meet you, Chris.","Do you know how to","get to the market?"],
          [characters.deercry,"It's just a little further forward.","Could you help break me free?","My antlers are caught."],
          [characters.girlE,"Of course!","",""]],
-        {},
-        {}
+        [
+            new Enemy(240,125,60,60,"img/sprites/lights_tree_1.PNG",0,0,1,1,1,100,false),//lights_tree
+        ],
+        [
+            //no fixed_areas
+        ]
     ),
 ];

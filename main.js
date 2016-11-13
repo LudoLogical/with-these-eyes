@@ -51,7 +51,7 @@ var main = function () {
             }
             if (curroom.enemies[e].removeMark) {
                 player.xp += curroom.enemies[e].xp;
-                delete curroom.enemies[e];
+                curroom.enemies.splice(e,1);
             }
         }
         
