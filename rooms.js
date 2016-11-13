@@ -92,7 +92,8 @@ var rooms = [
     ),
     new Room(500,200,"img/bg/snow_tut_1.png",characters.boyM,20,90,485,90,15,20,songs.adventure,0,
         [],
-        [[characters.boyM,"Emily come back!","",""]],
+        [[characters.boyM,"Emily come back!","",""],
+         [characters.boyM,"Hey, who are you?","",""]],
         {},
         {}
     ),
