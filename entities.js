@@ -260,6 +260,8 @@ class Player extends Character {
         if (this.xp >= this.lv*100) {
             this.xp -= this.lv*100;
             this.lv ++;
+            this.hp = this.lv*50;
+            this.dmg ++;
         }
         this.anim_check();
         if (writing === false) {

@@ -65,7 +65,7 @@ var drawUI = function() {
     ctx.fillStyle = "red";
     ctx.strokeStyle = "red"
     ctx.strokeRect(ctx.canvas.width-172,50,150,9);
-    if (player.hp > 0) { ctx.fillRect(ctx.canvas.width-172,50,player.hp*3,9); }
+    if (player.hp > 0) { ctx.fillRect(ctx.canvas.width-172,50,player.hp*(3/player.lv),9); }
     ctx.fillStyle = "white";
     ctx.font = "15px 'Muli'";
     ctx.fillText("HP",ctx.canvas.width-200,60);

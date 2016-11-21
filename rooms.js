@@ -34,6 +34,7 @@ class Room {
         player.spritespeak = this.playas.spritespeak;
         player.x = x;
         player.y = y;
+        // opt. width and height adjustments for characters
     }
     begin() {
         curroom = this;
@@ -112,7 +113,7 @@ var rooms = [
          [characters.snowman,"If only there was a way","to break through...",""],
          [characters.girlE,"(Left mouse button to fire)","",""]],
         [ 
-            new Enemy(460,75,40,80,"img/sprites/door_action.png","img/sprites/door_action.png",0,0,1,1,1,50,false),//door
+            new Enemy(460,75,40,80,"img/sprites/door_action.png","img/sprites/door_action.png",0,0,1,0,0,50,false),//door
         ],
         [
             //no fixed_areas
@@ -128,7 +129,7 @@ var rooms = [
          [characters.boyM,"Well, you need to go.","You're messing up","my front yard."],
          [characters.snowmanmad,"I was here first!","",""]],
         [
-            new Enemy(320,125,27.5,45,"img/sprites/snowman_bad_1.png","img/sprites/snowman_bad_2.png",0,0,1,1,1,100,"snow"),//snowman
+            new Enemy(320,125,27.5,45,"img/sprites/snowman_bad_1.png","img/sprites/snowman_bad_2.png",0,0,5,2,10,100,"snow"),//snowman
         ],
         [
             //no fixed_areas
@@ -145,7 +146,7 @@ var rooms = [
          [characters.deercry,"It's just a little further forward.","Could you help break me free?","My antlers are caught."],
          [characters.girlE,"Of course!","",""]],
         [
-            new Enemy(360,125,60,60,"img/sprites/lights_tree_1.PNG","img/sprites/lights_tree_2.PNG",0,0,1,1,1,100,false),//lights_tree
+            new Enemy(360,125,60,60,"img/sprites/lights_tree_1.PNG","img/sprites/lights_tree_2.PNG",0,0,1,0,0,50,false),//lights_tree
         ],
         [
             //no fixed_areas
@@ -159,7 +160,7 @@ var rooms = [
          [characters.boyM,"Wow... you're just standing","here crying...","Alone."],
          [characters.deercry,"Hey!  Don't make fun of","me when you have no idea","what I've been through!"]],
         [
-            new Enemy(360,125,60,60,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG",0,0,1,1,1,100,"tear"),//evildeer
+            new Enemy(360,125,60,60,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG",0,0,10,4,20,300,"tear"),//evildeer
         ],
         [
             //no fixed_areas
@@ -190,8 +191,8 @@ var rooms = [
         [characters.gnomeredmad,"So you aren't going to","buy anything?",""],
         [characters.gnomebluemad,"Well, in that case,","get out of here.",""]],
         [
-            new Enemy(442,0,33,45,"img/sprites/gnomered_1.PNG","img/sprites/gnomered_2.PNG",0,0,1,1,1,100,"shovel"),//gnomered
-            new Enemy(442,115,33,45,"img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_2.PNG",0,0,1,1,1,100,"shovel"),//gnomeblue
+            new Enemy(442,0,33,45,"img/sprites/gnomered_1.PNG","img/sprites/gnomered_2.PNG",0,0,15,6,30,100,"shovel"),//gnomered
+            new Enemy(442,115,33,45,"img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_2.PNG",0,0,15,6,30,100,"shovel"),//gnomeblue
         ],
         [
             new Entity(480,0,20,45),//shoptop
