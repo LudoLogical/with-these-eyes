@@ -13,6 +13,12 @@ var doTitleScreen = function() {
     ctx.textAlign = "start";
     if (enterpress) {
         rooms[0].begin();
+        wasd = {
+            w: new Entity(player.x+1.5,player.y-35,30,30,"img/controls/w.png"),
+            a: new Entity(player.x-35,player.y+7.5,30,30,"img/controls/a.png"),
+            s: new Entity(player.x+1.5,player.y+50,30,30,"img/controls/s.png"),
+            d: new Entity(player.x+38,player.y+7.5,30,30,"img/controls/d.png"),
+        };
         spamcatch = 7;
         gameStart = true;
     }

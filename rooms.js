@@ -112,7 +112,7 @@ var rooms = [
          [characters.snowman,"If only there was a way","to break through...",""],
          [characters.girlE,"(Left mouse button to fire)","",""]],
         [ 
-            new Enemy(460,75,40,80,"img/sprites/door_action.png","img/sprites/door_action.png",0,0,1,1,1,7000),//door
+            new Enemy(460,75,40,80,"img/sprites/door_action.png","img/sprites/door_action.png",0,0,1,1,1,50,false),//door
         ],
         [
             //no fixed_areas
@@ -128,7 +128,7 @@ var rooms = [
          [characters.boyM,"Well, you need to go.","You're messing up","my front yard."],
          [characters.snowmanmad,"I was here first!","",""]],
         [
-            new Enemy(320,125,27.5,45,"img/sprites/snowman_bad_1.png","img/sprites/snowman_bad_2.png",0,0,1,1,1,100,true,"snow"),//snowman
+            new Enemy(320,125,27.5,45,"img/sprites/snowman_bad_1.png","img/sprites/snowman_bad_2.png",0,0,1,1,1,100,"snow"),//snowman
         ],
         [
             //no fixed_areas
@@ -159,7 +159,7 @@ var rooms = [
          [characters.boyM,"Wow... you're just standing","here crying...","Alone."],
          [characters.deercry,"Hey!  Don't make fun of","me when you have no idea","what I've been through!"]],
         [
-            new Enemy(360,125,60,60,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG",0,0,1,1,1,100,true,"tear"),//evildeer
+            new Enemy(360,125,60,60,"img/sprites/deer_2.PNG","img/sprites/deer_2.PNG",0,0,1,1,1,100,"tear"),//evildeer
         ],
         [
             //no fixed_areas
@@ -175,7 +175,8 @@ var rooms = [
             //noenemies
         ],
         [
-            //no fixed_areas
+            new Entity(480,0,20,45),//shoptop
+            new Entity(480,100,20,100),//shopbottom 
         ]
     ),
     new Room(500,200,"img/bg/snow_3.png",characters.boyM,20,60,485,65,15,20,songs.adventure,7,
@@ -189,11 +190,12 @@ var rooms = [
         [characters.gnomeredmad,"So you aren't going to","buy anything?",""],
         [characters.gnomebluemad,"Well, in that case,","get out of here.",""]],
         [
-            new Enemy(442,0,33,45,"img/sprites/gnomered_1.PNG","img/sprites/gnomered_2.PNG",0,0,1,1,1,100,true,"shovel"),//gnomered
-            new Enemy(442,115,33,45,"img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_2.PNG",0,0,1,1,1,100,true,"shovel"),//gnomeblue
+            new Enemy(442,0,33,45,"img/sprites/gnomered_1.PNG","img/sprites/gnomered_2.PNG",0,0,1,1,1,100,"shovel"),//gnomered
+            new Enemy(442,115,33,45,"img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_2.PNG",0,0,1,1,1,100,"shovel"),//gnomeblue
         ],
         [
-            //no fixed_areas
+            new Entity(480,0,20,45),//shoptop
+            new Entity(480,100,20,100),//shopbottom 
         ]
     ),
     new Room(500,200,"img/bg/market.png",characters.boyM,30,80,15,92.5,15,20,songs.adventure,8,
@@ -209,7 +211,8 @@ var rooms = [
             //no enemies
         ],
         [
-            //no fixed_areas
+            new Entity(0,0,500,65),//insidetop
+            new Entity(0,130,500,70),//insidebottom 
         ]
     ),
     new Room(500,200,"img/bg/snow_3.png",characters.girlE,485,65,15,60,15,20,songs.adventure,9,

@@ -18,7 +18,7 @@ class Entity {
 
 //ENEMY SETUP
 class Enemy extends Entity {
-    constructor(x,y,w,h,spritenorm,spriteanim,spdX,spdY,hp,atk,dmg,xp,do_atk,bullet_type) {
+    constructor(x,y,w,h,spritenorm,spriteanim,spdX,spdY,hp,atk,dmg,xp,bullet_type) {
         super(x,y,w,h);
         this.spritenorm = new Image();
         this.spriteanim = new Image();
@@ -34,17 +34,16 @@ class Enemy extends Entity {
         this.actcount = 80;
         this.aimangle = 0;
         this.xp = xp;
-        this.do_atk = do_atk;
         this.bullet_type = bullet_type;
         this.removeMark = false;
     }
     doAttackCheck() {
-        if (this.actcount <= 0 && writing === false && this.do_atk) {
+        if (this.actcount <= 0 && writing === false && this.bullet_type) {
             this.actcount = 80;
             var dy = (player.y + (player.h/2))-(this.y + (this.h/2));
             var dx = (player.x + (player.w/2))-(this.x + (this.w/2));
             this.aimangle = Math.atan2(dy,dx);
-            enemyBullets.push(new Bullet(this,10,10,"enmy",80,4,this.dmg)); //80f = 2 sec
+            enemyBullets.push(new Bullet(this,10,10,"enmy",60,6,this.dmg)); //60f = 1.5 sec
         }
         this.actcount--;
     }
@@ -186,7 +185,7 @@ class Player extends Character {
     doAttack() {
         if (this.bulletcatch <= 0 && playerBullets.length < this.bulletmax) {
             this.bulletcatch = 15;
-            playerBullets.push(new Bullet(this,10,10,"plyr",80,4,this.dmg)); //80f = 2 sec
+            playerBullets.push(new Bullet(this,10,10,"plyr",60,6,this.dmg)); //60f = 1.5 sec
         }
     }
     testmobility() {
@@ -272,7 +271,7 @@ class Player extends Character {
 }
 
 //ENTITY CREATION
-var player = new Player(215,220,33,45,true,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5,"img/sprites/boy_left.png","img/sprites/boy_right.png");
+var player = new Player(-500,-500,33,45,true,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5,"img/sprites/boy_left.png","img/sprites/boy_right.png");
 var characters = {
     carpet: new Character(-500,-500,30,45,true,"img/sprites/carpet.png","img/sprites/carpet.png","",0,"img/sprites/carpet.png","img/sprites/carpet.png"),
     boyM: new Character(-500,-500,33,45,true,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5,"img/sprites/boy_left.png","img/sprites/boy_right.png"),
@@ -292,9 +291,4 @@ var characters = {
     lumberjack: new Character(-500,-500,33,45,"img/sprites/lumberjack.PNG","img/sprites/lumberjack.PNG","img/sprites/lumberjack_speak.PNG",0,"img/sprites/lumberjack.PNG","img/sprites/lumberjack.PNG"),
     banker: new Character(-500,-500,33,45,"img/sprites/banker.PNG","img/sprites/banker.PNG","img/sprites/banker_speak.PNG",0,"img/sprites/banker.PNG","img/sprites/banker.PNG"),
 };
-var wasd = {
-    w: new Entity(player.x+1.5,player.y-35,30,30,"img/controls/w.png"),
-    a: new Entity(player.x-35,player.y+7.5,30,30,"img/controls/a.png"),
-    s: new Entity(player.x+1.5,player.y+50,30,30,"img/controls/s.png"),
-    d: new Entity(player.x+38,player.y+7.5,30,30,"img/controls/d.png"),
-};
+var wasd = {};

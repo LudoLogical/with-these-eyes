@@ -62,7 +62,7 @@ var main = function () {
         drawUI();
         
         //DRAW DIRECTIONAL KEYS IF NOT LEARNED
-        if (moved === false && writing === false) {
+        if (moved === false && writing === false && gameStart === true) {
             for (var b in wasd) {
                 wasd[b].update();
             }
