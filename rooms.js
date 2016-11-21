@@ -126,8 +126,8 @@ var rooms = [
          [characters.snowman,"I'm Florence.","Nice to meet you!",""],
          [characters.boyM,"I'm Matt.","What are you doing","outside my house?"],
          [characters.snowman,"I was built here.","I can't move.",""],
-         [characters.boyM,"Well, you need to go.","You're messing up","my front yard."],
-         [characters.snowmanmad,"I was here first!","",""]],
+         [characters.boyM,"Well, you need to go.","You're messing up","my front yard.",[songs.welcomeHome,"fade"]],
+         [characters.snowmanmad,"I was here first!","","",[songs.cryingWithMyHeart,"play"]]],
         [
             new Enemy(320,125,27.5,45,"img/sprites/snowman_bad_1.png","img/sprites/snowman_bad_2.png",0,0,5,2,10,100,"snow"),//snowman
         ],
@@ -135,7 +135,7 @@ var rooms = [
             //no fixed_areas
         ]
     ),
-    new Room(500,200,"img/bg/snow_2.png",characters.girlE,20,60,485,75,15,20,songs.adventure,4,
+    new Room(500,200,"img/bg/snow_2.png",characters.girlE,20,60,485,75,15,20,songs.greetingsMisterDeer,4,
         [[characters.deercry,360,135],[characters.deer,-500,-500],[characters.tree,80,140]],
         [[characters.deercry,"...Stupid...lights...","",""],
          [characters.girlE,"Hello!","",""],

@@ -9,9 +9,11 @@ class Song {
 
 //AUDIO CREATION
 var songs = { // volume 0.2 original mp3 // volume 1 beepbox wav
-    adventure: new Song("songs/adventure.wav",44.3), // 44.8 sec original mp3 // 44.3 sec beepbox wav
-    sheHasLeft: new Song("songs/she_has_left.wav",27.3), // 54.7 original mp3 // 27.3 sec beepbox wav
-    welcomeHome: new Song("songs/welcome_home.wav",20.1), // 42.7 original mp3 // 20.1 sec beepbox wav
+    adventure: new Song("songs/adventure.wav",44.3),
+    cryingWithMyHeart: new Song("songs/crying_with_my_heart.wav",20.1),
+    greetingsMisterDeer: new Song("songs/greetings_mister_deer.wav",12.6),
+    sheHasLeft: new Song("songs/she_has_left.wav",27.35),
+    welcomeHome: new Song("songs/welcome_home.wav",20.1),
 };
 
 //ADDITIONAL VARS
