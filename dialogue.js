@@ -1,5 +1,7 @@
 //GENERAL VARS
 var towrite = [];
+var written = ["","",""];
+var line_animID = [0,0]; //line,letter
 var writing = false;
 var writingID = 0;
 var spamcatch = 0;
@@ -19,13 +21,15 @@ var doDialogue = function(alltext) {
         ctx.fillRect(ctx.canvas.width/2 - 200 + 12.5,ctx.canvas.height - 125 + 12.5,75,75);
         ctx.drawImage(towrite[writingID][0].spritespeak,ctx.canvas.width/2 - 200 + 12.5,ctx.canvas.height - 125 + 12.5,75,75);
         ctx.font = "20px 'Muli'";
-        ctx.fillText(towrite[writingID][1],ctx.canvas.width/2 - 100,ctx.canvas.height-93);
-        ctx.fillText(towrite[writingID][2],ctx.canvas.width/2 - 100,ctx.canvas.height-68);
-        ctx.fillText(towrite[writingID][3],ctx.canvas.width/2 - 100,ctx.canvas.height-43);
+        ctx.fillText(written[0],ctx.canvas.width/2 - 100,ctx.canvas.height-93);
+        ctx.fillText(written[1],ctx.canvas.width/2 - 100,ctx.canvas.height-68);
+        ctx.fillText(written[2],ctx.canvas.width/2 - 100,ctx.canvas.height-43);
         ctx.drawImage(cont,ctx.canvas.width/2 + 200 + 12.5,ctx.canvas.height - 100,30,50);
         
         //CHECK FOR ADVANCE OR FINISH
-        if (enterpress && spamcatch < 1 && textlock === false) {
+        if (enterpress && spamcatch < 1 && textlock === false && line_animID[0] === 2  && written[2].length === towrite[writingID][3].length) {
+            line_animID = [0,0];
+            written = ["","",""];
             if (towrite[writingID + 1]) {
                 writingID ++;
                 spamcatch = 7;
@@ -37,6 +41,15 @@ var doDialogue = function(alltext) {
                 towrite = [];
                 writingID = 0;
             }
+        } else if (line_animID[0] != 2 || written[2].length < towrite[writingID][3].length) {
+            if (line_animID[0] != 2 && written[line_animID[0]].length >= towrite[writingID][line_animID[0]+1].length) {
+                line_animID[0] ++;
+                line_animID[1] = 0;
+            }
+            if (towrite[writingID][line_animID[0]+1] != "") {
+                written[line_animID[0]] = written[line_animID[0]] + towrite[writingID][line_animID[0]+1][line_animID[1]];
+            }
+            line_animID[1] ++;
         }
     } else if (alltext) {
         writing = true;
