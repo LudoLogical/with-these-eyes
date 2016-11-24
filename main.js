@@ -69,15 +69,9 @@ var main = function () {
         }
     }
     
-    //DRAW TEXT BOX, STOP CONSISTANT ENTER COMMANDS, CHECK LOCKED ADVANCEMENT
+    //DRAW TEXT BOX, STOP CONSISTANT ENTER COMMANDS, HANDLE DIALOGUE
     doDialogue();
     spamcatch --;
-    textlock = false;
-    for (var a in characters) {
-        if (characters[a].movecount != 0) {
-            textlock = true;
-        }
-    }
     
     //HANDLE MUSIC INFO FADE OUT
     doRepeatMusic();

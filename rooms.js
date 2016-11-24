@@ -72,7 +72,7 @@ class Room {
                     characters.deercry.x = -500;
                     characters.deercry.y = -500;
                     characters.deer.x = 360;
-                    characters.deer.y = 135;
+                    characters.deer.y = 130;
                 }
             }
             if (testcollisionrect(this.fin,player)) {
@@ -138,7 +138,7 @@ var rooms = [
         ]
     ),
     new Room(500,200,"img/bg/snow_2.png",characters.girlE,20,60,485,75,15,20,songs.greetingsMisterDeer,4,
-        [[characters.deercry,360,135],[characters.deer,-500,-500],[characters.tree,80,140]],
+        [[characters.deercry,360,130],[characters.deer,-500,-500],[characters.tree,80,140]],
         [[characters.deercry,"...Stupid...lights...","",""],
          [characters.girlE,"Hello!","",""],
          [characters.deercry,"Oh, hey.","",""],
@@ -148,7 +148,7 @@ var rooms = [
          [characters.deercry,"It's just a little further forward.","Could you help break me free?","My antlers are caught."],
          [characters.girlE,"Of course!","",""]],
         [
-            new Enemy(360,125,58,59.3,"img/sprites/lights_tree_1.PNG","img/sprites/lights_tree_2.PNG",0,0,1,0,0,50,false),//lights_tree
+            new Enemy(360,130,58,59.3,"img/sprites/lights_tree_1.PNG","img/sprites/lights_tree_2.PNG",0,0,1,0,0,50,false),//lights_tree
         ],
         [
             //no fixed_areas
@@ -169,7 +169,7 @@ var rooms = [
         ]
     ),
     new Room(500,200,"img/bg/snow_3.png",characters.girlE,20,60,485,65,15,20,songs.adventure,6,
-        [[characters.gnomered,442,0],[characters.gnomeblue,442,115]],
+        [[characters.gnomered,452,2.5],[characters.gnomeblue,452,117.5]],
         [[characters.girlE,"Oh yay! The market.","",""],
          [characters.gnomered,"Welcome to Gnome-Mart!","We have the best deals!",""],
          [characters.girlE,"I'm looking for some veggies.","",""],
@@ -193,8 +193,8 @@ var rooms = [
         [characters.gnomeredmad,"So you aren't going to","buy anything?",""],
         [characters.gnomebluemad,"Well, in that case,","get out of here.",""]],
         [
-            new Enemy(442,0,32,45,"img/sprites/gnomered_1.PNG","img/sprites/gnomered_2.PNG",0,0,15,6,30,100,"shovel"),//gnomered
-            new Enemy(442,115,32,45,"img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_2.PNG",0,0,15,6,30,100,"shovel"),//gnomeblue
+            new Enemy(452,2.5,26.8,45,"img/sprites/gnomered_1.PNG","img/sprites/gnomered_2.PNG",0,0,15,6,30,100,"shovel"),//gnomered
+            new Enemy(452,117.5,26.8,45,"img/sprites/gnomeblue_1.PNG","img/sprites/gnomeblue_2.PNG",0,0,15,6,30,100,"shovel"),//gnomeblue
         ],
         [
             new Entity(480,0,20,45),//shoptop

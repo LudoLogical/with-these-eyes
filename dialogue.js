@@ -24,7 +24,9 @@ var doDialogue = function(alltext) {
         ctx.fillText(written[0],ctx.canvas.width/2 - 100,ctx.canvas.height-93);
         ctx.fillText(written[1],ctx.canvas.width/2 - 100,ctx.canvas.height-68);
         ctx.fillText(written[2],ctx.canvas.width/2 - 100,ctx.canvas.height-43);
-        ctx.drawImage(cont,ctx.canvas.width/2 + 200 + 12.5,ctx.canvas.height - 100,30,50);
+        if (textlock === false && line_animID[0] === 2  && written[2].length === towrite[writingID][3].length) {
+            ctx.drawImage(cont,ctx.canvas.width/2 + 200 + 12.5,ctx.canvas.height - 90,30,30);
+        }
         
         //CHECK FOR ADVANCE OR FINISH
         if (enterpress && spamcatch < 1 && textlock === false && line_animID[0] === 2  && written[2].length === towrite[writingID][3].length) {
@@ -64,6 +66,7 @@ var doAction = function(actorlist) {
         actorlist[0].movedir = actorlist[1];
         actorlist[0].movecount = actorlist[2];
         actorlist[0].afteraction = actorlist[3];
+        textlock = true;
     } else if (actorlist[1] === "play") {
         fadeIn(actorlist[0],2000);
     } else if (actorlist[1] === "fade") {
@@ -77,6 +80,7 @@ var resolveAction = function(actor) {
         actor.x = -500;
         actor.y = -500;
         actor.afteraction = "";
+        textlock = false;
     } else if (actor.afteraction[1]) {
         doAction(actor.afteraction);
     }
