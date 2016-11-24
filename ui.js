@@ -14,10 +14,10 @@ var doTitleScreen = function() {
     if (enterpress) {
         rooms[0].begin();
         wasd = {
-            w: new Entity(player.x+1.5,player.y-35,30,30,"img/controls/w.png"),
-            a: new Entity(player.x-35,player.y+7.5,30,30,"img/controls/a.png"),
-            s: new Entity(player.x+1.5,player.y+50,30,30,"img/controls/s.png"),
-            d: new Entity(player.x+38,player.y+7.5,30,30,"img/controls/d.png"),
+            w: new Entity(player.x+1,player.y-25,20,20,"img/controls/w.png"),
+            a: new Entity(player.x-30,player.y+12.5,20,20,"img/controls/a.png"),
+            s: new Entity(player.x+1,player.y+50,20,20,"img/controls/s.png"),
+            d: new Entity(player.x+32,player.y+12.5,20,20,"img/controls/d.png"),
         };
         spamcatch = 7;
         gameStart = true;
