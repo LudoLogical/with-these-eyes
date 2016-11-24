@@ -275,7 +275,7 @@ class Player extends Character {
 //ENTITY CREATION
 var player = new Player(-500,-500,22,45,true,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5,"img/sprites/boy_left.png","img/sprites/boy_right.png");
 var characters = {
-    carpet: new Character(-500,-500,55.9,45,true,"img/sprites/carpet.png","img/sprites/carpet.png","",0,"img/sprites/carpet.png","img/sprites/carpet.png"),
+    carpet: new Character(-500,-500,30,45,true,"img/sprites/carpet.png","img/sprites/carpet.png","",0,"img/sprites/carpet.png","img/sprites/carpet.png"),
     boyM: new Character(-500,-500,22,45,true,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5,"img/sprites/boy_left.png","img/sprites/boy_right.png"),
     girlE: new Character(-500,-500,29,45,true,"img/sprites/girl_left.png","img/sprites/girl_right.png","img/sprites/girl_speak.png",5,"img/sprites/girl_left.png","img/sprites/girl_right.png"),
     door: new Character(-500,-500,46,80,false,"img/sprites/door_action.png","img/sprites/door_action.png","img/sprites/door_speak.png",0,"img/sprites/door_action.png","img/sprites/door_action.png"),

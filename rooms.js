@@ -115,7 +115,7 @@ var rooms = [
          [characters.snowman,"If only there was a way","to break through...",""],
          [characters.girlE,"(Left mouse button to fire)","",""]],
         [ 
-            new Enemy(455,69,46,80,"img/sprites/door_action.png","img/sprites/door_action.png",0,0,1,0,0,50,false),//door
+            new Enemy(490,62,46,80,"img/sprites/door_action.png","img/sprites/door_action.png",0,0,1,0,0,50,false),//door
         ],
         [
             //no fixed_areas
