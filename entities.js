@@ -1,17 +1,22 @@
 //ENTITIES SETUP
 class Entity {
-    constructor(x,y,w,h,sprite) {
+    constructor(x,y,w,h,sprite,track) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
         this.sprite = new Image();
         this.sprite.src = sprite;
+        this.track = track;
     }
     draw() {
         ctx.drawImage(this.sprite,this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
     }
     update() {
+        if (this.track) {
+            this.x = player.x+5.5;
+            this.y = player.y-35;
+        }
         this.draw();
     }
 }
@@ -278,7 +283,7 @@ var characters = {
     carpet: new Character(-500,-500,30,45,true,"img/sprites/carpet.png","img/sprites/carpet.png","",0,"img/sprites/carpet.png","img/sprites/carpet.png"),
     boyM: new Character(-500,-500,22,45,true,"img/sprites/boy_left.png","img/sprites/boy_right.png","img/sprites/boy_speak.png",5,"img/sprites/boy_left.png","img/sprites/boy_right.png"),
     girlE: new Character(-500,-500,29,45,true,"img/sprites/girl_left.png","img/sprites/girl_right.png","img/sprites/girl_speak.png",5,"img/sprites/girl_left.png","img/sprites/girl_right.png"),
-    door: new Character(-500,-500,46,80,false,"img/sprites/door_action.png","img/sprites/door_action.png","img/sprites/door_speak.png",0,"img/sprites/door_action.png","img/sprites/door_action.png"),
+    door: new Character(-500,-500,46,80,false,"img/sprites/door_action.png","img/sprites/door_action.png","img/extra/door_speak.png",0,"img/sprites/door_action.png","img/sprites/door_action.png"),
     snowman: new Character(-500,-500,27.5,45,false,"img/sprites/snowman_good_1.png","img/sprites/snowman_good_1.png","img/sprites/snowman_speak.PNG",0,"img/sprites/snowman_good_2.png","img/sprites/snowman_good_2.png"),
     snowmanmad: new Character(-500,-500,27.5,45,false,"img/sprites/snowman_good_1.png","img/sprites/snowman_good_1.png","img/sprites/snowmanmad_speak.PNG",0,"img/sprites/snowman_good_2.png","img/sprites/snowman_good_2.png"),
     tree: new Character(-500,-500,36,48,false,"img/sprites/tree_1.png","img/sprites/tree_1.png","img/sprites/tree_1.png",0,"img/sprites/tree_2.png","img/sprites/tree_2.png"),
@@ -293,4 +298,5 @@ var characters = {
     lumberjack: new Character(-500,-500,24,45,"img/sprites/lumberjack.PNG","img/sprites/lumberjack.PNG","img/sprites/lumberjack_speak.PNG",0,"img/sprites/lumberjack.PNG","img/sprites/lumberjack.PNG"),
     banker: new Character(-500,-500,22,44,"img/sprites/banker.PNG","img/sprites/banker.PNG","img/sprites/banker_speak.PNG",0,"img/sprites/banker.PNG","img/sprites/banker.PNG"),
 };
-var wasd = {};
+var wasd = false;
+var mouse_l = false;

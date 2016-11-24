@@ -94,7 +94,7 @@ var rooms = [
          [characters.boyM,"I can't... I can't let anything","happen to you...",""],
          [characters.girlE,"I'll be fiiiiine!","See you in a little!","",[songs.welcomeHome,"fade"]],
          [characters.boyM,"...","","",[characters.girlE,"down",5,[characters.girlE,"right",40,[characters.girlE,"up",4,[characters.girlE,"right",5,"remove"]]]]],
-         [characters.boyM,"I have to keep her safe...","","",[songs.sheHasLeft,"play"]]],
+         [characters.boyM,"I have to keep her safe...","","",[songs.sheHasLeft,"play wasd"]]],
         [ 
             //noenemies
         ],
@@ -112,8 +112,7 @@ var rooms = [
          [characters.girlE,"My name is Emily.","Do you know how to","get to the market?"],
          [characters.snowman,"Just pass through that door.","",""],
          [characters.girlE,"Thanks!","Wait a sec...","I don't have a key."],
-         [characters.snowman,"If only there was a way","to break through...",""],
-         [characters.girlE,"(Left mouse button to fire)","",""]],
+         [characters.snowman,"If only there was a way","to break through...","",[player,"mouseL"]]],
         [ 
             new Enemy(490,62,46,80,"img/sprites/door_action.png","img/sprites/door_action.png",0,0,1,0,0,50,false),//door
         ],

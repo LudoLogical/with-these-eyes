@@ -8,6 +8,7 @@ var mY = 0;
 var lastpress = "d";
 var enterpress = false;
 var moved = false;
+var clicked = false;
 
 //DOCUMENT FUNCTIONS SETUP
 document.onkeydown = function (e) {
@@ -62,5 +63,6 @@ document.onmousemove = function(mouse) {
 document.onclick = function(mouse) {
     if (writing === false && gameStart && player.hp > 0) {
         player.doAttack();
+        clicked = true;
     }
 }

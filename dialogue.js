@@ -71,6 +71,16 @@ var doAction = function(actorlist) {
         fadeIn(actorlist[0],2000);
     } else if (actorlist[1] === "fade") {
         fadeOut(2000);
+    } else if (actorlist[1] === "play wasd") {
+        fadeIn(actorlist[0],2000);
+        wasd = {
+            w: new Entity(player.x+1,player.y-25,20,20,"img/controls/w.png"),
+            a: new Entity(player.x-30,player.y+12.5,20,20,"img/controls/a.png"),
+            s: new Entity(player.x+1,player.y+50,20,20,"img/controls/s.png"),
+            d: new Entity(player.x+32,player.y+12.5,20,20,"img/controls/d.png"),
+        };
+    } else if (actorlist[1] === "mouseL") {
+        mouse_l = new Entity(player.x+5.5,player.y-35,18,30,"img/controls/leftmouse_1.png",true);
     }
 }
 
