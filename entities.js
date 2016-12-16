@@ -218,6 +218,9 @@ class Player extends Character {
                 canMove = false;
             }
         }
+        if (alpha != 0) {
+            canMove = false;
+        }
         return canMove;
     }
     updatePos() {

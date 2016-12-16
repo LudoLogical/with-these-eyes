@@ -40,15 +40,7 @@ class Room {
     }
     begin() {
         curroom = this;
-        if (!cursong) {
-            cursong = this.musicstart;
-            fadeIn(cursong,2000);
-        }
-        if (cursong && cursong != this.musicstart) {
-            fadeOut(2000); 
-            cursong = this.musicstart;
-            fadeIn(cursong,2000);
-        }
+        
         this.setPlayerInfo();
         for (var c in this.character_imp) {
             this.character_imp[c][0].x = this.character_imp[c][1];
@@ -61,7 +53,8 @@ class Room {
         
         characters.carpet.x = -500;
         characters.carpet.y = -500;
-        doDialogue(this.dialoguestart);
+        
+        alpha = 80;
     }
     checkFinish() {
         if (this.enemies.length === 0) {
@@ -76,11 +69,12 @@ class Room {
                 }
             }
             if (testcollisionrect(this.fin,player)) {
-                for (var c in this.character_imp) {
-                    this.character_imp[c][0].x = -500;
-                    this.character_imp[c][0].y = -500;
+                if (cursong && cursong != rooms[this.nextLV].musicstart) {
+                    fadeOut(2000);
                 }
-                rooms[this.nextLV].begin();
+                
+                alphamethod = "out";
+                alphaexecute = "load";
             } 
         }
     }

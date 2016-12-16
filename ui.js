@@ -11,10 +11,11 @@ var doTitleScreen = function() {
     ctx.fillText("When Two Paths Meet.",ctx.canvas.width/2,110);
     ctx.fillText("[Press Enter to begin]",ctx.canvas.width/2,ctx.canvas.height-45);
     ctx.textAlign = "start";
-    if (enterpress) {
+    if (enterpress && alpha === 0) {
         rooms[0].begin();
         spamcatch = 7;
         gameStart = true;
+        alphaexecute = "play";
     }
 }
 

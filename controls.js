@@ -16,14 +16,14 @@ document.onkeydown = function (e) {
         wpress = true;
     } else if (e.keyCode === 65) { //a
         apress = true;
-        if (writing === false) {
+        if (writing === false && alpha === 0) {
             lastpress = "a";
         }
     } else if (e.keyCode === 83) { //s
         spress = true;
     } else if (e.keyCode === 68) { //d
         dpress = true;
-        if (writing === false) {
+        if (writing === false && alpha === 0) {
             lastpress = "d";
         }
     } else if (e.keyCode === 13) { //enter

@@ -1,6 +1,9 @@
 //GENERAL VARS
 var ctx = document.getElementById("ctx").getContext("2d");
 var gameStart = false;
+var alpha = 80;
+var alphamethod = "in";
+var alphaexecute = "";
 
 //GENERAL FUNCTIONS SETUP
 var testcollisionrect = function(a,b) {
@@ -8,6 +11,35 @@ var testcollisionrect = function(a,b) {
     a.x + a.w > b.x &&
     a.y < b.y + b.h &&
     a.h + a.y > b.y;
+};
+
+var doAlpha = function() { // max alpha is 80 (2 sec)
+    if (alphamethod === "in" && alpha > 0) {
+        alpha -= 1;
+    } else if (alphamethod === "out" && alpha < 80) {
+        alpha += 1;
+    }
+    
+    if (alpha === 80 && alphamethod === "out" && alphaexecute === "load") {
+        for (var c in curroom.character_imp) {
+            curroom.character_imp[c][0].x = -500;
+            curroom.character_imp[c][0].y = -500;
+        }
+        alphamethod = "in";
+        alphaexecute = "play";
+        rooms[curroom.nextLV].begin();
+    } else if (alpha === 0 && alphamethod === "in" && alphaexecute === "play") {
+        cursong = curroom.musicstart;
+        fadeIn(cursong,2000);
+        doDialogue(curroom.dialoguestart);
+        alphaexecute = "";
+    }
+    
+    ctx.save();
+    ctx.globalAlpha = alpha/80;
+    ctx.fillStyle = "black";
+    ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
+    ctx.restore()
 };
 
 //MAIN UPDATE LOOP
@@ -84,6 +116,10 @@ var main = function () {
     if (curroom) {
         curroom.checkFinish();
     }
+    
+    //TEST ALPHA LEVEL CHANGES
+    doAlpha();
+    
 };
 
 //EXCECUTE MAIN LOOP

@@ -1,6 +1,7 @@
 //GENERAL VARS
 var towrite = [];
 var written = ["","",""];
+var spacer = 0;
 var line_animID = [0,0]; //line,letter
 var writing = false;
 var writingID = 0;
@@ -30,6 +31,7 @@ var doDialogue = function(alltext) {
         
         //CHECK FOR ADVANCE OR FINISH
         if (enterpress && spamcatch < 1 && textlock === false && line_animID[0] === 2  && written[2].length === towrite[writingID][3].length) {
+            //BEGIN NEXT SECTION OF DIALOGUE IF DONE SCROLLING AND ENTER AND NOT MOVING CHARACTERS
             line_animID = [0,0];
             written = ["","",""];
             if (towrite[writingID + 1]) {
@@ -43,20 +45,22 @@ var doDialogue = function(alltext) {
                 towrite = [];
                 writingID = 0;
             }
-        } else if (line_animID[0] != 2 || written[2].length < towrite[writingID][3].length) {
-            if (line_animID[0] != 2 && written[line_animID[0]].length >= towrite[writingID][line_animID[0]+1].length) {
+        } else if (line_animID[0] != 2 || written[2].length < towrite[writingID][3].length) { //IF STILL SCROLLING TEXT ON
+            if (line_animID[0] != 2 && written[line_animID[0]].length >= towrite[writingID][line_animID[0]+1].length) { //ADVANCE SCROLLING LINE
                 line_animID[0] ++;
                 line_animID[1] = 0;
             }
-            if (towrite[writingID][line_animID[0]+1] != "") {
+            if (towrite[writingID][line_animID[0]+1] != "" && spacer <= 0) { //ADD LETTER
                 written[line_animID[0]] = written[line_animID[0]] + towrite[writingID][line_animID[0]+1][line_animID[1]];
+                line_animID[1] ++;
+                spacer = 1;
             }
-            line_animID[1] ++;
         }
     } else if (alltext) {
         writing = true;
         towrite = alltext;
     }
+    spacer --;
 };
 
 //PREFORM ACTION FROM DODIALOGUE
