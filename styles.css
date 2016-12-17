@@ -17,14 +17,7 @@ a {
 
 canvas {
     background-color: black;
-    margin: 0;
-    padding: 0;
-}
-
-hr {
-    margin: 0 auto;
-    margin-top: -8px;
-    width: 1000px;
+    border-bottom: 2px solid white;
 }
 
 p {

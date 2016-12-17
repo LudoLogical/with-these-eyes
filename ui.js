@@ -12,6 +12,7 @@ var doTitleScreen = function() {
     ctx.fillText("[Press Enter to begin]",ctx.canvas.width/2,ctx.canvas.height-45);
     ctx.textAlign = "start";
     if (enterpress && alpha === 0) {
+        //START THE FIRST ROOM
         rooms[0].begin();
         spamcatch = 7;
         gameStart = true;

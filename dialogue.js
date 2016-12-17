@@ -35,12 +35,15 @@ var doDialogue = function(alltext) {
             line_animID = [0,0];
             written = ["","",""];
             if (towrite[writingID + 1]) {
+                //RUN IF THERE'S MORE DIALOGUE TO WRITE
                 writingID ++;
                 spamcatch = 7;
                 if (towrite[writingID][4]) {
+                    //TO ACTION HANDLER
                     doAction(towrite[writingID][4]);
                 }
             } else {
+                //IF WRITING IS DONE
                 writing = false;
                 towrite = [];
                 writingID = 0;
@@ -56,16 +59,18 @@ var doDialogue = function(alltext) {
                 spacer = 1;
             }
         }
-    } else if (alltext) {
+    } else if (alltext) { //RECEIVE INPUT
         writing = true;
         towrite = alltext;
     }
+    //DECREASE SPACER (SLOWS SCROLLING)
     spacer --;
 };
 
 //PREFORM ACTION FROM DODIALOGUE
 var doAction = function(actorlist) {
     //[character/object, action to perform, time to perform, action after performed]
+    //[song, action to perform]
     if (actorlist[1] === "left" || actorlist[1] === "right" || actorlist[1] === "up" || actorlist[1] === "down") {
         actorlist[0].movedir = actorlist[1];
         actorlist[0].movecount = actorlist[2];
@@ -77,6 +82,7 @@ var doAction = function(actorlist) {
         fadeOut(2000);
     } else if (actorlist[1] === "play wasd") {
         fadeIn(actorlist[0],2000);
+        //READY WASD (UPDATED FROM FALSE)
         wasd = {
             w: new Entity(player.x+1,player.y-25,20,20,"img/controls/w.png"),
             a: new Entity(player.x-30,player.y+12.5,20,20,"img/controls/a.png"),
@@ -84,6 +90,7 @@ var doAction = function(actorlist) {
             d: new Entity(player.x+32,player.y+12.5,20,20,"img/controls/d.png"),
         };
     } else if (actorlist[1] === "mouseL") {
+        //READY MOUSEL (UPDATED FROM FALSE)
         mouse_l = new Entity(player.x+5.5,player.y-35,18,30,"img/controls/leftmouse_1.png",true);
     }
 }

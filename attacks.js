@@ -1,6 +1,8 @@
+//GLOBAL VARS
 var playerBullets = [];
 var enemyBullets = [];
 
+//BULLET SETUP
 class Bullet extends Entity {
     constructor(source,w,h,type,dur,spd,dmg) {
         super(source.x,source.y,w,h);
@@ -17,13 +19,13 @@ class Bullet extends Entity {
         this.x += (source.w/2);
         this.y += (source.h/2);
         if (source.bullet_type === "snow") {
-            this.sprite.src = "img/sprites/snowball.png";
+            this.sprite.src = "img/bullets/snowball.png";
         } else if (source.bullet_type === "tear") {
-            this.sprite.src = "img/sprites/tears.png";
+            this.sprite.src = "img/bullets/tears.png";
         } else if (source.bullet_type === "shovel") {
-            this.sprite.src = "img/sprites/shovel.png";
+            this.sprite.src = "img/bullets/shovel.png";
         } else {
-            this.sprite.src = "img/sprites/fireball.PNG";
+            this.sprite.src = "img/bullets/fireball.PNG";
         }
     }
     testmobility() {

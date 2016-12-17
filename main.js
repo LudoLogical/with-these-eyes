@@ -13,13 +13,16 @@ var testcollisionrect = function(a,b) {
     a.h + a.y > b.y;
 };
 
+//HANDLE FADE IN/OUT AND EFFECTS IN ROOM TRANSITIONS
 var doAlpha = function() { // max alpha is 80 (2 sec)
+    //INCREMENT ALPHA
     if (alphamethod === "in" && alpha > 0) {
         alpha -= 1;
     } else if (alphamethod === "out" && alpha < 80) {
         alpha += 1;
     }
     
+    //HANDLE EFFECTS
     if (alpha === 80 && alphamethod === "out" && alphaexecute === "load") {
         for (var c in curroom.character_imp) {
             curroom.character_imp[c][0].x = -500;
@@ -35,6 +38,7 @@ var doAlpha = function() { // max alpha is 80 (2 sec)
         alphaexecute = "";
     }
     
+    //DRAW ALPHA (MUST BE LAST THING DRAWN BY MAIN)
     ctx.save();
     ctx.globalAlpha = alpha/80;
     ctx.fillStyle = "black";
@@ -117,7 +121,7 @@ var main = function () {
         curroom.checkFinish();
     }
     
-    //TEST ALPHA LEVEL CHANGES
+    //HANDLES FADE IN/OUT AND RELATED ADVANCEMENT FEATURES
     doAlpha();
     
 };
