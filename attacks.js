@@ -25,7 +25,7 @@ class Bullet extends Entity {
         } else if (source.bullet_type === "shovel") {
             this.sprite.src = "img/bullets/shovel.png";
         } else {
-            this.sprite.src = "img/bullets/fireball.PNG";
+            this.sprite.src = "img/bullets/fireball.png";
         }
     }
     testmobility() {
