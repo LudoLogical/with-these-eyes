@@ -142,7 +142,7 @@ var rooms = [
          [characters.deercry,"It's just a little further forward.","Could you help break me free?","My antlers are caught."],
          [characters.girlE,"Of course!","",""]],
         [
-            new Enemy(360,130,58,59.3,"img/characters/static/lights_tree_1.PNG","img/characters/static/lights_tree_2.PNG",0,0,1,0,0,50,false),//lights_tree
+            new Enemy(360,130,58,59.3,"img/characters/static/lights_tree_1.png","img/characters/static/lights_tree_2.PNG",0,0,1,0,0,50,false),//lights_tree
         ],
         [
             //no fixed_areas
@@ -156,7 +156,7 @@ var rooms = [
          [characters.boyM,"Wow... you're just standing","here crying...","Alone."],
          [characters.deercry,"Hey!  Don't make fun of","me when you have no idea","what I've been through!"]],
         [
-            new Enemy(360,125,51,56,"img/characters/dynamic/deer_2.PNG","img/characters/dynamic/deer_2.PNG",0,0,10,4,20,300,"tear"),//evildeer
+            new Enemy(360,125,51,56,"img/characters/dynamic/deer_2.png","img/characters/dynamic/deer_2.PNG",0,0,10,4,20,300,"tear"),//evildeer
         ],
         [
             //no fixed_areas
@@ -187,8 +187,8 @@ var rooms = [
         [characters.gnomeredmad,"So you aren't going to","buy anything?",""],
         [characters.gnomebluemad,"Well, in that case,","get out of here.",""]],
         [
-            new Enemy(452,2.5,26.8,45,"img/characters/dynamic/gnomered_1.PNG","img/characters/dynamic/gnomered_2.PNG",0,0,15,6,30,100,"shovel"),//gnomered
-            new Enemy(452,117.5,26.8,45,"img/characters/dynamic/gnomeblue_1.PNG","img/characters/dynamic/gnomeblue_2.PNG",0,0,15,6,30,100,"shovel"),//gnomeblue
+            new Enemy(452,2.5,26.8,45,"img/characters/dynamic/gnomered_1.png","img/characters/dynamic/gnomered_2.PNG",0,0,15,6,30,100,"shovel"),//gnomered
+            new Enemy(452,117.5,26.8,45,"img/characters/dynamic/gnomeblue_1.png","img/characters/dynamic/gnomeblue_2.PNG",0,0,15,6,30,100,"shovel"),//gnomeblue
         ],
         [
             new Entity(480,0,20,45),//shoptop
