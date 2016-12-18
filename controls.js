@@ -59,7 +59,6 @@ document.onmousemove = function(mouse) {
     player.aimangle = Math.atan2(angY,angX); //removed from sample WoU code to measure only in radians
     
 };
-
 document.onclick = function(mouse) {
     if (writing === false && gameStart && player.hp > 0) {
         player.doAttack();

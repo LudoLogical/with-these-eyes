@@ -21,6 +21,88 @@ class Entity {
     }
 }
 
+//BULLET VARS
+var playerBullets = [];
+var enemyBullets = [];
+
+//BULLET SETUP
+class Bullet extends Entity {
+    constructor(source,w,h,type,dur,spd,dmg) {
+        super(source.x,source.y,w,h);
+        this.sprite = new Image();
+        this.type = type;
+        this.dur = dur;
+        this.removeMark = false;
+        var angle = source.aimangle;
+        this.spdX = Math.cos(angle)*(spd); //these values can be negative as they are; only use +spd
+        this.spdY = Math.sin(angle)*(spd); //removed from sample code to measure only in radians
+        this.dmg = source.dmg;
+        this.x -= (this.w/2);
+        this.y -= (this.h/2);
+        this.x += (source.w/2);
+        this.y += (source.h/2);
+        if (source.bullet_type === "snow") {
+            this.sprite.src = "img/bullets/snowball.png";
+        } else if (source.bullet_type === "tear") {
+            this.sprite.src = "img/bullets/tears.png";
+        } else if (source.bullet_type === "shovel") {
+            this.sprite.src = "img/bullets/shovel.png";
+        } else {
+            this.sprite.src = "img/bullets/fireball.png";
+        }
+    }
+    testmobility() {
+        var canMove = true;
+        for (var f in curroom.fixed_areas) {
+            if (testcollisionrect(this,curroom.fixed_areas[f])) {
+                canMove = false;
+            }
+        }
+        return canMove;
+    }
+    updatePos() {
+        //CAN NOT BOUNCE OFF EDGES OF MAP
+        if (this.x+this.spdX < 0 || this.x+this.spdX > curroom.map.w-this.w) {
+            this.removeMark = true;
+        }
+        if (this.y+this.spdY < 0 || this.y+this.spdY > curroom.map.h-this.h) {
+            this.removeMark = true;
+        }
+        
+        //UPDATE POS
+        this.x += this.spdX;
+        this.y += this.spdY;
+        
+        //BULLETS CAN NOT MOVE THROUGH FIXED_AREAS
+        if (this.testmobility() === false) {
+            this.x -= this.spd;
+            this.y -= this.spd;
+            this.removeMark = true;
+        }
+    }
+    update() {
+        if (this.type === "plyr") {
+            for (var e in curroom.enemies) {
+                if (testcollisionrect(this,curroom.enemies[e])) {
+                    curroom.enemies[e].hp -= this.dmg;
+                    this.removeMark = true;
+                }
+            }
+        } else if (this.type === "enmy") {
+            if (testcollisionrect(this,player)) {
+                player.hp -= this.dmg;
+                this.removeMark = true;
+            }
+        }
+        this.updatePos();
+        this.draw();
+        this.dur--;
+        if (this.dur <= 0) {
+            this.removeMark = true;
+        }
+    }
+}
+
 //ENEMY SETUP
 class Enemy extends Entity {
     constructor(x,y,w,h,spritenorm,spriteanim,spdX,spdY,hp,atk,dmg,xp,bullet_type) {
@@ -273,28 +355,84 @@ class Player extends Character {
     }
 }
 
-//ENTITY CREATION
-var player = new Player(-500,-500,22,45,true,"img/characters/dynamic/boy_left.png","img/characters/dynamic/boy_right.png","img/speak/boy_speak.png",5,"img/characters/dynamic/boy_left.png","img/characters/dynamic/boy_right.png");
-var characters = {
-    carpet: new Character(-500,-500,30,45,true,"img/characters/static/carpet.png","img/characters/static/carpet.png","",0,"img/characters/static/carpet.png","img/characters/static/carpet.png"),
-    boyM: new Character(-500,-500,22,45,true,"img/characters/dynamic/boy_left.png","img/characters/dynamic/boy_right.png","img/speak/boy_speak.png",5,"img/characters/dynamic/boy_left.png","img/characters/dynamic/boy_right.png"),
-    girlE: new Character(-500,-500,29,45,true,"img/characters/dynamic/girl_left.png","img/characters/dynamic/girl_right.png","img/speak/girl_speak.png",5,"img/characters/dynamic/girl_left.png","img/characters/dynamic/girl_right.png"),
-    door: new Character(-500,-500,46,80,false,"img/characters/static/door.png","img/characters/static/door.png","",0,"img/characters/static/door.png","img/characters/static/door.png"),
-    snowman: new Character(-500,-500,27.5,45,false,"img/characters/dynamic/snowman_good_1.png","img/characters/dynamic/snowman_good_1.png","img/speak/snowman_speak.PNG",0,"img/characters/dynamic/snowman_good_2.png","img/characters/dynamic/snowman_good_2.png"),
-    snowmanmad: new Character(-500,-500,27.5,45,false,"img/characters/dynamic/snowman_good_1.png","img/characters/dynamic/snowman_good_1.png","img/speak/snowmanmad_speak.PNG",0,"img/characters/dynamic/snowman_good_2.png","img/characters/dynamic/snowman_good_2.png"),
-    tree: new Character(-500,-500,36,48,false,"img/characters/static/tree_1.png","img/characters/static/tree_1.png","",0,"img/characters/static/tree_2.png","img/characters/static/tree_2.png"),
-    christmastree: new Character(-500,-500,30,40,false,"img/characters/static/christmas_tree.png","img/characters/static/christmas_tree.png","",0,"img/characters/static/christmas_tree.png","img/characters/static/christmas_tree.png"),
-    deer: new Character(-500,-500,51,56,false,"img/characters/dynamic/deer_2.png","img/characters/dynamic/deer_2.png","img/speak/deer_speak.png",0,"img/characters/dynamic/deer_3.png","img/characters/dynamic/deer_3.png"),
-    deercry: new Character(-500,-500,51,56,false,"img/characters/dynamic/deer_2.png","img/characters/dynamic/deer_2.png","img/speak/deer_speak.png",0,"img/characters/dynamic/deer_1.png","img/characters/dynamic/deer_1.png"),
-    deermad: new Character(-500,-500,51,56,false,"img/characters/dynamic/deer_2.png","img/characters/dynamic/deer_2.png","img/speak/evildeer_speak.png",0,"img/characters/dynamic/deer_2.png","img/characters/dynamic/deer_2.png"),
-    gnomered: new Character(-500,-500,26.8,45,false,"img/characters/dynamic/gnomered_1.png","img/characters/dynamic/gnomered_1.png","img/speak/gnomered_speak.png",0,"img/characters/dynamic/gnomered_2.png","img/characters/dynamic/gnomered_2.png"),
-    gnomeblue: new Character(-500,-500,26.8,45,false,"img/characters/dynamic/gnomeblue_1.png","img/characters/dynamic/gnomeblue_1.png","img/speak/gnomeblue_speak.png",0,"img/characters/dynamic/gnomeblue_2.png","img/characters/dynamic/gnomeblue_2.png"),
-    gnomeredmad: new Character(-500,-500,26.8,45,false,"img/characters/dynamic/gnomered_1.png","img/characters/dynamic/gnomered_1.png","img/speak/gnomered_speak_mad.png",0,"img/characters/dynamic/gnomered_2.png","img/characters/dynamic/gnomered_2.png"),
-    gnomebluemad: new Character(-500,-500,26.8,45,false,"img/characters/dynamic/gnomeblue_1.png","img/characters/dynamic/gnomeblue_1.png","img/speak/gnomeblue_speak_mad.png",0,"img/characters/dynamic/gnomeblue_2.png","img/characters/dynamic/gnomeblue_2.png"),
-    lumberjack: new Character(-500,-500,24,45,"img/characters/dynamic/lumberjack.png","img/characters/dynamic/lumberjack.png","img/speak/lumberjack_speak.PNG",0,"img/characters/dynamic/lumberjack.png","img/characters/dynamic/lumberjack.png"),
-    banker: new Character(-500,-500,22,44,"img/characters/dynamic/banker.png","img/characters/dynamic/banker.png","img/speak/banker_speak.PNG",0,"img/characters/dynamic/banker.png","img/characters/dynamic/banker.png"),
-};
+//MAP SETUP
+class Map extends Entity {
+    constructor(w,h,sprite) {
+        super(0,0,w,h,sprite);
+    }
+    draw() {
+        ctx.drawImage(this.sprite,(ctx.canvas.width / 2 - player.w / 2) - player.x,(ctx.canvas.height / 2 - player.h / 2) - player.y,this.w,this.h);
+    }
+}
 
-//EMPTY VARS TO CREATE OBJECTS WITH LATER
-var wasd = false;
-var mouse_l = false;
+//ROOM VARS
+var curroom = false;
+
+//ROOM SETUP
+class Room {
+    constructor(w,h,mapsprite,playas,playerx,playery,finx,finy,finw,finh,musicstart,nextLV,character_imp,dialoguestart,enemies,fixed_areas) {
+        this.map = new Map(w,h,mapsprite);
+        this.playas = playas;
+        this.playerx = playerx;
+        this.playery = playery;
+        this.fin = new Entity(finx,finy,finw,finh);
+        this.musicstart = musicstart;
+        this.nextLV = nextLV;
+        this.character_imp = character_imp;
+        this.dialoguestart = dialoguestart;
+        this.enemies = enemies;
+        this.fixed_areas = fixed_areas;
+    }
+    setPlayerInfo() {
+        player.norm[0] = this.playas.norm[0];
+        player.norm[1] = this.playas.norm[1];
+        player.anim[0] = this.playas.anim[0];
+        player.anim[1] = this.playas.anim[1];
+        player.spritespeak = this.playas.spritespeak;
+        player.x = this.playerx;
+        player.y = this.playery;
+        player.w = this.playas.w;
+        player.h = this.playas.h;
+        // opt. width and height adjustments for characters
+    }
+    begin() {
+        curroom = this;
+        
+        this.setPlayerInfo();
+        for (var c in this.character_imp) {
+            this.character_imp[c][0].x = this.character_imp[c][1];
+            this.character_imp[c][0].y = this.character_imp[c][2];
+        }
+        
+        if (curroom === rooms[7]) {
+            characters.girlE.face = 0;
+        }
+        
+        characters.carpet.x = -500;
+        characters.carpet.y = -500;
+        
+        alpha = 80;
+    }
+    checkFinish() {
+        if (this.enemies.length === 0) {
+            if (characters.carpet.x === -500) {
+                characters.carpet.x = this.fin.x-15;
+                characters.carpet.y = this.fin.y-12.5;
+                if (curroom === rooms[3]) {
+                    characters.deercry.x = -500;
+                    characters.deercry.y = -500;
+                    characters.deer.x = 360;
+                    characters.deer.y = 130;
+                }
+            }
+            if (testcollisionrect(this.fin,player)) {
+                if (cursong && cursong != rooms[this.nextLV].musicstart) {
+                    fadeOut(2000);
+                }
+                
+                alphamethod = "out";
+                alphaexecute = "load";
+            } 
+        }
+    }
+}
