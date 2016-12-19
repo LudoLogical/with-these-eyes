@@ -61,7 +61,7 @@ class Sound {
 
 //SFX CREATION
 var sfx = {
-    player_fire: new Sound("sfx/player_fire.wav",0.15),
+    player_fire: new Sound("sfx/player_fire.wav",0.2),
     boy_talk: new Sound("sfx/boy_talk.wav",0.15),
     girl_talk: new Sound("sfx/girl_talk.wav",0.1),
     snowman_talk: new Sound("sfx/snowman_talk.wav",0.15),
