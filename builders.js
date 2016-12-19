@@ -1,3 +1,25 @@
+//AUDIO VARS
+var cursong = false;
+var cureffect = false;
+var cursongcount = 0;
+
+//MUSIC SETUP
+class Song {
+    constructor(src,resetTime) {
+        this.audio = new Audio(src);
+        this.audio.volume = 0;
+        this.resetTime = resetTime;
+    }
+}
+
+//STX SETUP
+class Sound {
+    constructor(src,volume) {
+        this.audio = new Audio(src);
+        this.audio.volume = volume;
+    }
+}
+
 //ENTITIES SETUP
 class Entity {
     constructor(x,y,w,h,sprite,track) {
@@ -175,7 +197,7 @@ class Enemy extends Entity {
 
 //CHARACTER SETUP
 class Character extends Entity {
-    constructor(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd,spriteleft_anim,spriteright_anim) {
+    constructor(x,y,w,h,passable,spd,spriteleft,spriteright,spritespeak,spriteleft_anim,spriteright_anim,speak) {
         super(x,y,w,h);
         this.passable = passable;
         this.movedir = "";
@@ -186,13 +208,25 @@ class Character extends Entity {
         this.norm = [new Image(), new Image()];
         this.anim = [new Image(), new Image()];
         this.track = "norm";
+        if (spriteright === "same") {
+            spriteright = spriteleft;
+        }
+        if (spriteright_anim === "same") {
+            spriteright_anim = spriteleft_anim;
+        }
         this.norm[0].src = spriteleft;
         this.norm[1].src = spriteright;
-        this.anim[0].src = spriteleft_anim;
-        this.anim[1].src = spriteright_anim;
+        if (spriteleft_anim && spriteright_anim) {
+            this.anim[0].src = spriteleft_anim;
+            this.anim[1].src = spriteright_anim;
+        } else {
+            this.anim[0].src = spriteleft;
+            this.anim[1].src = spriteright;
+        }
         this.spritespeak = new Image();
         this.spritespeak.src = spritespeak;
         this.animcount = 15;
+        this.speak = speak;
     }
     anim_check() {
         if (this.animcount <= 0) {

@@ -75,3 +75,39 @@ var resolveAction = function(actor) {
         doAction(actor.afteraction);
     }
 }
+
+//FADE MUSIC OUT
+var fadeOut = function(time) { //time in ms
+    $(cursong.audio).animate({volume: 0},time);
+}
+
+//FADE MUSIC IN
+var fadeIn = function(newsong,time) { //newsong is songs.songName
+    cursong = newsong;
+    cursong.audio.play();
+    $(cursong.audio).animate({volume: 1},time);
+}
+
+//REPEAT TRACKS ON LOOP WITH ZERO DELAY
+var doRepeatMusic = function() {
+    if (cursong) {
+        if (cursong.audio.currentTime >= cursong.resetTime) {
+            cursong.audio.currentTime = 0;
+        }
+    }
+}
+
+//TURN OFF ALL MUSIC, RESET ALL CURRENT TIMES
+var resetAllMusic = function() {
+    for (var s in songs) {
+        songs[s].audio.pause();
+        songs[s].audio.currentTime = 0;
+        songs[s].counter = 0;
+    }
+}
+
+//PLAY SFX
+var doSFX = function(effect) { //effect is sfx.effectName
+    effect.audio.currentTime = 0;
+    effect.audio.play();
+}
