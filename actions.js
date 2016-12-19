@@ -1,5 +1,5 @@
 //ALPHA VARS SETUP
-var alpha = 80;
+var alpha = 0;
 var alphamethod = "in";
 var alphaexecute = "";
 

@@ -28,7 +28,7 @@ var mouse_l = false;
 var rooms = [
     new Room(500,500,"img/bg/bedroom.png",characters.boyM,222,220,485,240,15,20,songs.welcomeHome,1,
         [[characters.girlE,250,220]],
-        [[characters.boyM,"It's not safe out there...","","(Press [ENTER] to advance)"],
+        [[characters.boyM,"It's not safe out there...","",""],
          [characters.girlE,"I'll only be to the market,","stop worrying about","everything so much!"],
          [characters.boyM,"I can't... I can't let anything","happen to you...",""],
          [characters.girlE,"I'll be fiiiiine!","See you in a little!","",[songs.welcomeHome,"fade"]],

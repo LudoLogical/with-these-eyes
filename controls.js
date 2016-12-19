@@ -60,8 +60,9 @@ document.onmousemove = function(mouse) {
     
 };
 document.onclick = function(mouse) {
-    if (writing === false && gameStart && player.hp > 0) {
+    if (writing === false && gameStart && player.hp > 0 && player.bulletcatch <= 0 && playerBullets.length < player.bulletmax && alpha === 0) {
         player.doAttack();
+        doSFX(sfx.player_fire);
         clicked = true;
     }
 }

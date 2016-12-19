@@ -55,8 +55,17 @@ var doDialogue = function(alltext) {
             }
             if (towrite[writingID][line_animID[0]+1] != "" && spacer <= 0) { //ADD LETTER
                 written[line_animID[0]] = written[line_animID[0]] + towrite[writingID][line_animID[0]+1][line_animID[1]];
+                if (written[line_animID[0]][line_animID[1]] != " " && written[line_animID[0]][line_animID[1]] != "." && written[line_animID[0]][line_animID[1]] != "!" && written[line_animID[0]][line_animID[1]] != "?") {
+                    if (towrite[writingID][0] === characters.boyM) {
+                        doSFX(sfx.boy_talk);
+                    } else if (towrite[writingID][0] === characters.girlE) {
+                        doSFX(sfx.girl_talk);
+                    } else if (towrite[writingID][0] === characters.snowman || towrite[writingID][0] === characters.snowmanmad) {
+                        doSFX(sfx.snowman_talk);
+                    }
+                }
                 line_animID[1] ++;
-                spacer = 1;
+                spacer = 2;
             }
         }
     } else if (alltext) { //RECEIVE INPUT

@@ -263,10 +263,8 @@ class Player extends Character {
         this.bulletmax = 2;
     }
     doAttack() {
-        if (this.bulletcatch <= 0 && playerBullets.length < this.bulletmax && alpha === 0) {
-            this.bulletcatch = 15;
-            playerBullets.push(new Bullet(this,8,8,"plyr",60,6,this.dmg)); //60f = 1.5 sec
-        }
+        this.bulletcatch = 15;
+        playerBullets.push(new Bullet(this,8,8,"plyr",60,6,this.dmg)); //60f = 1.5 sec
     }
     testmobility() {
         var canMove = true;

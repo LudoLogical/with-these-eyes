@@ -29,12 +29,14 @@ var main = function () {
             playerBullets[d].update();
             if (playerBullets[d].removeMark) {
                 playerBullets.splice(d,1);
+                doSFX(sfx.hit);
             }
         }
         for (var g in enemyBullets) {
             enemyBullets[g].update();
             if (enemyBullets[g].removeMark) {
                 enemyBullets.splice(g,1);
+                doSFX(sfx.hit);
             }
         }
         
@@ -51,6 +53,7 @@ var main = function () {
             }
             if (curroom.enemies[e].removeMark) {
                 player.xp += curroom.enemies[e].xp;
+                doSFX(sfx.destroyed);
                 curroom.enemies.splice(e,1);
             }
         }
