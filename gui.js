@@ -8,7 +8,7 @@ var doTitleScreen = function() {
     ctx.fillText("With These Eyes",ctx.canvas.width/2,80);
     ctx.fillStyle = "grey";
     ctx.font = "20px 'Muli'";
-    ctx.fillText("When Two Paths Meet.",ctx.canvas.width/2,110);
+    ctx.fillText("Headphones recommended.",ctx.canvas.width/2,110);
     ctx.fillText("[Press Enter to begin]",ctx.canvas.width/2,ctx.canvas.height-45);
     ctx.textAlign = "start";
     if (enterpress && alpha === 0) {
@@ -104,6 +104,41 @@ var drawUI = function() {
 #1e90ff
 #0eb1d2
 #78c0e0*/
+
+//DO PAUSE SCREEN
+var doPauseScreen = function() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
+    ctx.fillStyle = "white";
+    ctx.font = "50px 'Muli'";
+    ctx.textAlign = "center";
+    ctx.fillText("Game Paused",ctx.canvas.width/2,80);
+    ctx.fillStyle = "grey";
+    ctx.font = "20px 'Muli'";
+    ctx.fillText("Options and restbit.",ctx.canvas.width/2,110);
+    ctx.fillText("[Press Enter to close]",ctx.canvas.width/2,ctx.canvas.height-45);
+    ctx.textAlign = "start";
+    ctx.fillText("Music volume: ",ctx.canvas.width/2 - 200,250);
+    ctx.fillText("SFX volume: ",ctx.canvas.width/2 - 200,280);
+    ctx.fillText("Dialogue speed: ",ctx.canvas.width/2 - 200,310);
+    ctx.textAlign = "end";
+    ctx.fillStyle ="white";
+    ctx.fillText(musicVol,ctx.canvas.width/2 + 150,250);
+    ctx.fillText(sfxVol,ctx.canvas.width/2 + 150,280);
+    ctx.fillText(talkSpd,ctx.canvas.width/2 + 150,310);
+    ctx.fillStyle = "green";
+    ctx.fillRect(ctx.canvas.width/2 + 155,250-17.5,20,20);
+    ctx.fillRect(ctx.canvas.width/2 + 155,280-17.5,20,20);
+    ctx.fillRect(ctx.canvas.width/2 + 155,310-17.5,20,20);
+    ctx.fillStyle = "red";
+    ctx.fillRect(ctx.canvas.width/2 + 180,250-17.5,20,20);
+    ctx.fillRect(ctx.canvas.width/2 + 180,280-17.5,20,20);
+    ctx.fillRect(ctx.canvas.width/2 + 180,310-17.5,20,20);
+    ctx.textAlign = "start";
+    if (enterpress && spamcatch < 1) {
+        paused = false;
+    }
+}
 
 //DIALOGUE VARS
 var towrite = [];

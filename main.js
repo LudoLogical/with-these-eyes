@@ -1,6 +1,7 @@
 //GENERAL VARS
 var ctx = document.getElementById("ctx").getContext("2d");
 var gameStart = false;
+var paused = false;
 
 //GENERAL FUNCTIONS SETUP
 var testcollisionrect = function(a,b) {
@@ -20,6 +21,8 @@ var main = function () {
     } else if (player.hp <= 0) {
         doGameOverScreen();
         fadeOut(2000);
+    } else if (paused) {
+        doPauseScreen();
     } else {
         //UPDATE MAP
         curroom.map.update();
@@ -74,23 +77,21 @@ var main = function () {
         if (clicked === false && writing === false && gameStart === true && mouse_l) {
             mouse_l.update();
         }
+        
+        //DODIALOGUE
+        doDialogue();
+        //HANDLE MUSIC INFO FADE OUT
+        doRepeatMusic();
+        //CHECK FOR LEVEL ADVANCEMENT
+        if (curroom) {
+            curroom.checkFinish();
+        }
+        //HANDLES FADE IN/OUT AND RELATED ADVANCEMENT FEATURES
+        doAlpha();
     }
     
-    //DRAW TEXT BOX, STOP CONSISTANT ENTER COMMANDS, HANDLE DIALOGUE
-    doDialogue();
+    //STOP CONSISTANT ERROR COMMANDS
     spamcatch --;
-    
-    //HANDLE MUSIC INFO FADE OUT
-    doRepeatMusic();
-    
-    //CHECK FOR LEVEL ADVANCEMENT
-    if (curroom) {
-        curroom.checkFinish();
-    }
-    
-    //HANDLES FADE IN/OUT AND RELATED ADVANCEMENT FEATURES
-    doAlpha();
-    
 };
 
 //EXCECUTE MAIN LOOP

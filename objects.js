@@ -211,3 +211,8 @@ var rooms = [
         ]
 ),
 ];
+
+//OPTIONS
+var musicVol = 100;
+var sfxVol = 100;
+var talkSpd = 2;
