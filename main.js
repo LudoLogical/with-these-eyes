@@ -23,6 +23,8 @@ var main = function () {
         fadeOut(2000);
     } else if (paused) {
         doPauseScreen();
+        //HANDLE MUSIC INFO FADE OUT
+        doRepeatMusic();
     } else {
         //UPDATE MAP
         curroom.map.update();

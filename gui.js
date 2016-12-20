@@ -123,9 +123,23 @@ var doPauseScreen = function() {
     ctx.fillText("Dialogue speed: ",ctx.canvas.width/2 - 200,310);
     ctx.textAlign = "end";
     ctx.fillStyle ="white";
-    ctx.fillText(musicVol,ctx.canvas.width/2 + 150,250);
-    ctx.fillText(sfxVol,ctx.canvas.width/2 + 150,280);
-    ctx.fillText(talkSpd,ctx.canvas.width/2 + 150,310);
+    ctx.fillText(musicVol*10 + "%",ctx.canvas.width/2 + 150,250);
+    ctx.fillText(sfxVol*10 + "%",ctx.canvas.width/2 + 150,280);
+    switch(talkSpd) {
+        case 1:
+            ctx.fillText("Fast",ctx.canvas.width/2 + 150,310);
+            break;
+        case 2:
+            ctx.fillText("Medium",ctx.canvas.width/2 + 150,310);
+            break;
+        case 3:
+            ctx.fillText("Slow",ctx.canvas.width/2 + 150,310);
+            break;
+        default:
+            ctx.fillText("ERROR",ctx.canvas.width/2 + 150,310);
+            console.log("ERR: TALKSPD NOT ACCEPTABLE.");
+            break;
+    }
     ctx.fillStyle = "green";
     ctx.fillRect(ctx.canvas.width/2 + 155,250-17.5,20,20);
     ctx.fillRect(ctx.canvas.width/2 + 155,280-17.5,20,20);
@@ -201,7 +215,7 @@ var doDialogue = function(alltext) {
                     doSFX(towrite[writingID][0].speak);
                 }
                 line_animID[1] ++;
-                spacer = 2;
+                spacer = talkSpd;
             }
         }
     } else if (alltext) { //RECEIVE INPUT

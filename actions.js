@@ -85,7 +85,7 @@ var fadeOut = function(time) { //time in ms
 var fadeIn = function(newsong,time) { //newsong is songs.songName
     cursong = newsong;
     cursong.audio.play();
-    $(cursong.audio).animate({volume: 1},time);
+    $(cursong.audio).animate({volume: musicVol/10},time);
 }
 
 //REPEAT TRACKS ON LOOP WITH ZERO DELAY
@@ -110,4 +110,14 @@ var resetAllMusic = function() {
 var doSFX = function(effect) { //effect is sfx.effectName
     effect.audio.currentTime = 0;
     effect.audio.play();
+}
+
+//DO VOLUME ADJUSTMENTS
+var volumeAdjust = function() {
+    if (cursong) {
+       cursong.audio.volume = musicVol/10; 
+    }
+    for (var ss in sfx) {
+        sfx[ss].audio.volume = sfx[ss].maxvolume * (sfxVol/10);
+    }
 }

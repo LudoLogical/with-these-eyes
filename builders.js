@@ -17,6 +17,7 @@ class Sound {
     constructor(src,volume) {
         this.audio = new Audio(src);
         this.audio.volume = volume;
+        this.maxvolume = volume;
     }
 }
 
