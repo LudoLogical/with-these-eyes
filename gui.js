@@ -163,6 +163,7 @@ var writing = false;
 var writingID = 0;
 var spamcatch = 0;
 var textlock = false;
+var doSpeakNoise = true;
 var cont = new Image();
 cont.src = "img/controls/cont.png";
 
@@ -209,11 +210,26 @@ var doDialogue = function(alltext) {
                 line_animID[0] ++;
                 line_animID[1] = 0;
             }
-            if (towrite[writingID][line_animID[0]+1] != "" && spacer <= 0) { //ADD LETTER
+            if (towrite[writingID][line_animID[0]+1] != "" && spacer <= 0) { //IF THIS LINE ISN'T BLANK AND SPACER IS DONE
+                //ADD LETTER
                 written[line_animID[0]] = written[line_animID[0]] + towrite[writingID][line_animID[0]+1][line_animID[1]];
-                if (written[line_animID[0]][line_animID[1]] != " " && written[line_animID[0]][line_animID[1]] != "." && written[line_animID[0]][line_animID[1]] != "!" && written[line_animID[0]][line_animID[1]] != "?") {
+                
+                //CHECK FOR ([ WHICH STARTS LONG SEGMENTS OF TALKING STOP
+                if (written[line_animID[0]][line_animID[1]] === "(" || written[line_animID[0]][line_animID[1]] === "[") {
+                    doSpeakNoise = false;
+                }
+                
+                //IF IT'S A SPACE OR .?! DON'T DO NOISE; OTHERWISE, DO NOISE IF WE AREN'T WITHIN ()
+                if (written[line_animID[0]][line_animID[1]] != " " && written[line_animID[0]][line_animID[1]] != "." && written[line_animID[0]][line_animID[1]] != "!" && written[line_animID[0]][line_animID[1]] != "?" && doSpeakNoise) { 
                     doSFX(towrite[writingID][0].speak);
                 }
+                
+                //CHECK FOR )] WHICH ENDS LONG SEGMENTS OF TALKING STOP
+                if (written[line_animID[0]][line_animID[1]] === ")" || written[line_animID[0]][line_animID[1]] === "]") {
+                    doSpeakNoise = true;
+                }
+                
+                //HANDLE SPACER AND ADVANCE TEXT WE'RE WRITING
                 line_animID[1] ++;
                 spacer = talkSpd;
             }

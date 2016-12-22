@@ -294,11 +294,10 @@ class Player extends Character {
         this.lv = 1;
         this.aimangle = 0;
         this.dmg = 1;
-        this.bulletcatch = 0;
         this.bulletmax = 2;
     }
     doAttack() {
-        this.bulletcatch = 15;
+        this.power -= 50;
         playerBullets.push(new Bullet(this,8,8,"plyr",60,6,this.dmg)); //60f = 1.5 sec
     }
     testmobility() {
@@ -384,7 +383,9 @@ class Player extends Character {
             this.updatePos();
         }
         this.draw();
-        this.bulletcatch --;
+        if (this.power < 100) {
+            this.power ++;
+        }
     }
 }
 

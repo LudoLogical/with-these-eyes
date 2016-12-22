@@ -91,7 +91,7 @@ document.onclick = function(mouse) { //ctx.canvas.width/2 + 155,250-17.5,20,20
             talkSpd ++;
         }
         volumeAdjust();
-    } else if (writing === false && gameStart && player.hp > 0 && player.bulletcatch <= 0 && playerBullets.length < player.bulletmax && alpha === 0) {
+    } else if (writing === false && gameStart && player.hp > 0 && player.power >= 50 && playerBullets.length < player.bulletmax && alpha === 0) {
         player.doAttack();
         doSFX(sfx.player_fire);
         clicked = true;
