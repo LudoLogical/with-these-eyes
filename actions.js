@@ -4,16 +4,16 @@ var alphamethod = "in";
 var alphaexecute = "";
 
 //HANDLE FADE IN/OUT AND EFFECTS IN ROOM TRANSITIONS
-var doAlpha = function() { // max alpha is 80 (2 sec)
+var doAlpha = function() { // max alpha is 60 (1.5 sec)
     //INCREMENT ALPHA
     if (alphamethod === "in" && alpha > 0) {
         alpha -= 1;
-    } else if (alphamethod === "out" && alpha < 80) {
+    } else if (alphamethod === "out" && alpha < 60) {
         alpha += 1;
     }
     
     //HANDLE EFFECTS
-    if (alpha === 80 && alphamethod === "out" && alphaexecute === "load") {
+    if (alpha === 60 && alphamethod === "out" && alphaexecute === "load") {
         for (var c in curroom.character_imp) {
             curroom.character_imp[c][0].x = -500;
             curroom.character_imp[c][0].y = -500;
@@ -30,7 +30,7 @@ var doAlpha = function() { // max alpha is 80 (2 sec)
     
     //DRAW ALPHA (MUST BE LAST THING DRAWN BY MAIN)
     ctx.save();
-    ctx.globalAlpha = alpha/80;
+    ctx.globalAlpha = alpha/60;
     ctx.fillStyle = "black";
     ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
     ctx.restore()
@@ -53,14 +53,14 @@ var doAction = function(actorlist) {
         fadeIn(actorlist[0],2000);
         //READY WASD (UPDATED FROM FALSE)
         wasd = {
-            w: new Entity(player.x+1,player.y-25,20,20,"img/controls/w.png"),
-            a: new Entity(player.x-30,player.y+12.5,20,20,"img/controls/a.png"),
-            s: new Entity(player.x+1,player.y+50,20,20,"img/controls/s.png"),
-            d: new Entity(player.x+32,player.y+12.5,20,20,"img/controls/d.png"),
+            w: new Entity(player.x+1,player.y-25,20,20,"/img/controls/w.png"),
+            a: new Entity(player.x-30,player.y+12.5,20,20,"/img/controls/a.png"),
+            s: new Entity(player.x+1,player.y+50,20,20,"/img/controls/s.png"),
+            d: new Entity(player.x+32,player.y+12.5,20,20,"/img/controls/d.png"),
         };
     } else if (actorlist[1] === "mouseL") {
         //READY MOUSEL (UPDATED FROM FALSE)
-        mouse_l = new Entity(player.x+5.5,player.y-35,18,30,"img/controls/leftmouse_1.png",true);
+        mouse_l = new Entity(player.x+5.5,player.y-35,18,30,"/img/controls/leftmouse_1.png",true);
     }
 }
 

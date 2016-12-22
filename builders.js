@@ -65,13 +65,13 @@ class Bullet extends Entity {
         this.x += (source.w/2);
         this.y += (source.h/2);
         if (source.bullet_type === "snow") {
-            this.sprite.src = "img/bullets/snowball.png";
+            this.sprite.src = "/img/bullets/snowball.png";
         } else if (source.bullet_type === "tear") {
-            this.sprite.src = "img/bullets/tears.png";
+            this.sprite.src = "/img/bullets/tears.png";
         } else if (source.bullet_type === "shovel") {
-            this.sprite.src = "img/bullets/shovel.png";
+            this.sprite.src = "/img/bullets/shovel.png";
         } else {
-            this.sprite.src = "img/bullets/fireball.png";
+            this.sprite.src = "/img/bullets/fireball.png";
         }
     }
     testmobility() {
@@ -288,13 +288,14 @@ class Player extends Character {
     constructor(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd,spriteleft_anim,spriteright_anim) {
         super(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd,spriteleft_anim,spriteright_anim);
         this.hp = 50;
+        this.maxhp = 50;
         this.power = 100;
+        this.maxpower = 100;
         this.xp = 0; //levelup = 100xp * curlevel
         this.gold = 0;
         this.lv = 1;
         this.aimangle = 0;
         this.dmg = 1;
-        this.bulletmax = 2;
     }
     doAttack() {
         this.power -= 50;
@@ -343,13 +344,13 @@ class Player extends Character {
                 this.x += this.spd;
             }
         }
-        if (spress && this.y <= curroom.map.h-this.spd-player.h) {
+        if (spress && this.y <= curroom.map.h-this.spd-this.h) {
             this.y += this.spd;
             if (this.testmobility() === false) {
                 this.y -= this.spd;
             }
         }
-        if (dpress && this.x <= curroom.map.w-this.spd-player.w) {
+        if (dpress && this.x <= curroom.map.w-this.spd-this.w) {
             this.x += this.spd;
             if (this.testmobility() === false) {
                 this.x -= this.spd;
@@ -359,15 +360,15 @@ class Player extends Character {
     draw() {
         if (this.track === "norm") {
             if (lastpress === "a") {
-                ctx.drawImage(this.norm[0],ctx.canvas.width / 2 - player.w / 2, ctx.canvas.height / 2 - player.h / 2, player.w, player.h);
+                ctx.drawImage(this.norm[0],ctx.canvas.width / 2 - this.w / 2, ctx.canvas.height / 2 - this.h / 2, this.w, this.h);
             } else if (lastpress === "d") {
-                ctx.drawImage(this.norm[1],ctx.canvas.width / 2 - player.w / 2, ctx.canvas.height / 2 - player.h / 2, player.w, player.h);
+                ctx.drawImage(this.norm[1],ctx.canvas.width / 2 - this.w / 2, ctx.canvas.height / 2 - this.h / 2, this.w, this.h);
             }
         } else {
             if (lastpress === "a") {
-                ctx.drawImage(this.anim[0],ctx.canvas.width / 2 - player.w / 2, ctx.canvas.height / 2 - player.h / 2, player.w, player.h);
+                ctx.drawImage(this.anim[0],ctx.canvas.width / 2 - this.w / 2, ctx.canvas.height / 2 - this.h / 2, this.w, this.h);
             } else if (lastpress === "d") {
-                ctx.drawImage(this.anim[1],ctx.canvas.width / 2 - player.w / 2, ctx.canvas.height / 2 - player.h / 2, player.w, player.h);
+                ctx.drawImage(this.anim[1],ctx.canvas.width / 2 - this.w / 2, ctx.canvas.height / 2 - this.h / 2, this.w, this.h);
             }
         }
     }
@@ -375,7 +376,10 @@ class Player extends Character {
         if (this.xp >= this.lv*100) {
             this.xp -= this.lv*100;
             this.lv ++;
-            this.hp = this.lv*50;
+            this.maxhp += 50;
+            this.maxpower += 50;
+            this.hp = this.maxhp;
+            this.power = this.maxpower;
             this.dmg ++;
         }
         this.anim_check();
@@ -383,7 +387,7 @@ class Player extends Character {
             this.updatePos();
         }
         this.draw();
-        if (this.power < 100) {
+        if (this.power < this.maxpower) {
             this.power ++;
         }
     }
@@ -445,7 +449,7 @@ class Room {
         characters.carpet.x = -500;
         characters.carpet.y = -500;
         
-        alpha = 80;
+        alpha = 60;
     }
     checkFinish() {
         if (this.enemies.length === 0) {

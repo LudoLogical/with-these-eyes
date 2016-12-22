@@ -61,7 +61,7 @@ var drawUI = function() {
     ctx.fillStyle = "red";
     ctx.strokeStyle = "red"
     ctx.strokeRect(ctx.canvas.width-172,50,150,9);
-    if (player.hp > 0) { ctx.fillRect(ctx.canvas.width-172,50,player.hp*(3/player.lv),9); }
+    if (player.hp > 0) { ctx.fillRect(ctx.canvas.width-172,50,Math.round(50*(player.hp/player.maxhp))*3,9); }
     ctx.fillStyle = "white";
     ctx.font = "15px 'Muli'";
     ctx.fillText("HP",ctx.canvas.width-200,60);
@@ -81,7 +81,7 @@ var drawUI = function() {
     ctx.fillStyle = fillact;
     ctx.strokeStyle = fillact;
     ctx.strokeRect(ctx.canvas.width-172,70,150,9);
-    if (player.power > 0) { ctx.fillRect(ctx.canvas.width-172,70,player.power*1.5,9); }
+    if (player.power > 0) { ctx.fillRect(ctx.canvas.width-172,70,Math.round(100*(player.power/player.maxpower))*1.5,9); }
     ctx.fillStyle = "white";
     ctx.font = "15px 'Muli'";
     ctx.fillText(txt,ctx.canvas.width-200,80);
@@ -165,7 +165,7 @@ var spamcatch = 0;
 var textlock = false;
 var doSpeakNoise = true;
 var cont = new Image();
-cont.src = "img/controls/cont.png";
+cont.src = "/img/controls/cont.png";
 
 //DISPLAY DIALOGUE ON SCREEN
 var doDialogue = function(alltext) {
