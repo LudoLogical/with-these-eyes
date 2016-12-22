@@ -2,7 +2,7 @@
 var songs = {
     adventure: new Song("songs/adventure.wav",44.3),
     cryingWithMyHeart: new Song("songs/crying_with_my_heart.wav",20.1),
-    greetingsMisterDeer: new Song("/songs/greetings_mister_deer.wav",12.6),
+    greetingsMisterDeer: new Song("songs/greetings_mister_deer.wav",12.6),
     sheHasLeft: new Song("songs/she_has_left.wav",27.35),
     welcomeHome: new Song("songs/welcome_home.wav",20.1),
 };
