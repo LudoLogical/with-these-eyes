@@ -65,13 +65,13 @@ class Bullet extends Entity {
         this.x += (source.w/2);
         this.y += (source.h/2);
         if (source.bullet_type === "snow") {
-            this.sprite.src = "/img/bullets/snowball.png";
+            this.sprite.src = "img/bullets/snowball.png";
         } else if (source.bullet_type === "tear") {
-            this.sprite.src = "/img/bullets/tears.png";
+            this.sprite.src = "img/bullets/tears.png";
         } else if (source.bullet_type === "shovel") {
-            this.sprite.src = "/img/bullets/shovel.png";
+            this.sprite.src = "img/bullets/shovel.png";
         } else {
-            this.sprite.src = "/img/bullets/fireball.png";
+            this.sprite.src = "img/bullets/fireball.png";
         }
     }
     testmobility() {

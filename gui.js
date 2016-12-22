@@ -165,7 +165,7 @@ var spamcatch = 0;
 var textlock = false;
 var doSpeakNoise = true;
 var cont = new Image();
-cont.src = "/img/controls/cont.png";
+cont.src = "img/controls/cont.png";
 
 //DISPLAY DIALOGUE ON SCREEN
 var doDialogue = function(alltext) {
