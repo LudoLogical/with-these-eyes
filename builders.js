@@ -44,6 +44,18 @@ class Entity {
     }
 }
 
+//DIRECTENTITY SETUP (OVERRIDE DRAW FOR ABSOLUTE POS)
+class Direct extends Entity {
+    constructor(x,y,w,h,sprite) {
+        super(x,y,w,h);
+        this.sprite = new Image();
+        this.sprite.src = sprite;
+    }
+    draw() {
+        ctx.drawImage(this.sprite,this.x,this.y,this.w,this.h);
+    }
+}
+
 //BULLET VARS
 var playerBullets = [];
 var enemyBullets = [];

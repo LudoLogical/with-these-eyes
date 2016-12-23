@@ -1,3 +1,6 @@
+//DEFINE CANVAS (FIRST FILE TO LOAD)
+var ctx = document.getElementById("ctx").getContext("2d");
+
 //GENERAL VARS
 var wpress = false;
 var apress = false;
@@ -77,17 +80,18 @@ document.onmousemove = function(mouse) {
 };
 document.onclick = function(mouse) { //ctx.canvas.width/2 + 155,250-17.5,20,20
     if (paused) {
-        if (testcollisionrect({x:mX,y:mY,w:0,h:0},{x:ctx.canvas.width/2 + 155,y:250-17.5,w:20,h:20}) && musicVol < 10) {
+        var mouse = {x:mX,y:mY,w:0,h:0};
+        if (testcollisionrect(mouse,toggles.plus1) && musicVol < 10) {
             musicVol ++;
-        } else if (testcollisionrect({x:mX,y:mY,w:0,h:0},{x:ctx.canvas.width/2 + 155,y:280-17.5,w:20,h:20}) && sfxVol < 10) {
+        } else if (testcollisionrect(mouse,toggles.plus2) && sfxVol < 10) {
             sfxVol ++;
-        } else if (testcollisionrect({x:mX,y:mY,w:0,h:0},{x:ctx.canvas.width/2 + 155,y:310-17.5,w:20,h:20}) && talkSpd > 1) {
+        } else if (testcollisionrect(mouse,toggles.plus3) && talkSpd > 1) {
             talkSpd --;
-        } else if (testcollisionrect({x:mX,y:mY,w:0,h:0},{x:ctx.canvas.width/2 + 180,y:250-17.5,w:20,h:20}) && musicVol > 0) {
+        } else if (testcollisionrect(mouse,toggles.minus1) && musicVol > 0) {
             musicVol --;
-        } else if (testcollisionrect({x:mX,y:mY,w:0,h:0},{x:ctx.canvas.width/2 + 180,y:280-17.5,w:20,h:20}) && sfxVol > 0) {
+        } else if (testcollisionrect(mouse,toggles.minus2) && sfxVol > 0) {
             sfxVol --;
-        } else if (testcollisionrect({x:mX,y:mY,w:0,h:0},{x:ctx.canvas.width/2 + 180,y:310-17.5,w:20,h:20}) && talkSpd < 3) {
+        } else if (testcollisionrect(mouse,toggles.minus3) && talkSpd < 3) {
             talkSpd ++;
         }
         volumeAdjust();

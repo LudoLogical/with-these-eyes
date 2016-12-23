@@ -1,5 +1,4 @@
 //GENERAL VARS
-var ctx = document.getElementById("ctx").getContext("2d");
 var gameStart = false;
 var paused = false;
 

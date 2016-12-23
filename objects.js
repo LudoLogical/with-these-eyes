@@ -46,15 +46,25 @@ var characters = {
 var wasd = false;
 var mouse_l = false;
 
+//ADDITIONAL OBJECTS (MOUSE INTERACTABLES)
+var toggles = {
+    plus1: new Direct(ctx.canvas.width/2 + 155,250-16,20,20,"img/controls/plus.png"),
+    plus2: new Direct(ctx.canvas.width/2 + 155,280-16,20,20,"img/controls/plus.png"),
+    plus3: new Direct(ctx.canvas.width/2 + 155,310-16,20,20,"img/controls/plus.png"),
+    minus1: new Direct(ctx.canvas.width/2 + 180,250-16,20,20,"img/controls/minus.png"),
+    minus2: new Direct(ctx.canvas.width/2 + 180,280-16,20,20,"img/controls/minus.png"),
+    minus3: new Direct(ctx.canvas.width/2 + 180,310-16,20,20,"img/controls/minus.png"),
+};
+
 //ROOM CREATION
 var rooms = [
     new Room(500,500,"img/bg/bedroom.jpg",characters.boyM,230,230,485,340,15,20,songs.welcomeHome,1,
-        [[characters.girlE,258,230]],
+        [[characters.girlE,255,230]],
         [[characters.boyM,"It's not safe out there...","","[Press P for options]"],
          [characters.girlE,"I'll only be to the market,","stop worrying about","everything so much!"],
          [characters.boyM,"I can't... I can't let anything","happen to you...",""],
          [characters.girlE,"I'll be fiiiiine!","See you in a little!","",[songs.welcomeHome,"fade"]],
-         [characters.boyM,"...","","",[characters.girlE,"down",8,[characters.girlE,"right",10,[characters.girlE,"stay",10,[characters.girlE,"down",8,[characters.girlE,"right",33,"remove"]]]]]],
+         [characters.boyM,"...","","",[characters.girlE,"down",5,[characters.girlE,"right",10,[characters.girlE,"stay",10,[characters.girlE,"down",11,[characters.girlE,"right",33,"remove"]]]]]],
          [characters.boyM,"I have to keep her safe...","","",[songs.sheHasLeft,"play wasd"]]],
         [ 
             //noenemies

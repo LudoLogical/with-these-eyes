@@ -140,14 +140,9 @@ var doPauseScreen = function() {
             console.log("ERR: TALKSPD NOT ACCEPTABLE.");
             break;
     }
-    ctx.fillStyle = "green";
-    ctx.fillRect(ctx.canvas.width/2 + 155,250-17.5,20,20);
-    ctx.fillRect(ctx.canvas.width/2 + 155,280-17.5,20,20);
-    ctx.fillRect(ctx.canvas.width/2 + 155,310-17.5,20,20);
-    ctx.fillStyle = "red";
-    ctx.fillRect(ctx.canvas.width/2 + 180,250-17.5,20,20);
-    ctx.fillRect(ctx.canvas.width/2 + 180,280-17.5,20,20);
-    ctx.fillRect(ctx.canvas.width/2 + 180,310-17.5,20,20);
+    for (var t in toggles) {
+        toggles[t].update();
+    }
     ctx.textAlign = "start";
     if (enterpress && spamcatch < 1) {
         paused = false;
