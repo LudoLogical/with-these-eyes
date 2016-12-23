@@ -48,20 +48,26 @@ var mouse_l = false;
 
 //ROOM CREATION
 var rooms = [
-    new Room(500,500,"img/bg/bedroom.png",characters.boyM,222,220,485,240,15,20,songs.welcomeHome,1,
-        [[characters.girlE,250,220]],
+    new Room(500,500,"img/bg/bedroom.jpg",characters.boyM,230,230,485,340,15,20,songs.welcomeHome,1,
+        [[characters.girlE,258,230]],
         [[characters.boyM,"It's not safe out there...","","[Press P for options]"],
          [characters.girlE,"I'll only be to the market,","stop worrying about","everything so much!"],
          [characters.boyM,"I can't... I can't let anything","happen to you...",""],
          [characters.girlE,"I'll be fiiiiine!","See you in a little!","",[songs.welcomeHome,"fade"]],
-         [characters.boyM,"...","","",[characters.girlE,"down",5,[characters.girlE,"right",40,[characters.girlE,"up",4,[characters.girlE,"right",5,"remove"]]]]],
+         [characters.boyM,"...","","",[characters.girlE,"down",8,[characters.girlE,"right",10,[characters.girlE,"stay",10,[characters.girlE,"down",8,[characters.girlE,"right",33,"remove"]]]]]],
          [characters.boyM,"I have to keep her safe...","","",[songs.sheHasLeft,"play wasd"]]],
         [ 
             //noenemies
         ],
         [
-            new Entity(165,205,30,30),//standleft
-            new Entity(305,205,35,30),//standright
+            new Entity(0,0,500,205-player.h),//wall
+            new Entity(0,110,90,300-player.h),//shelf
+            new Entity(220,205,75,20),//top of bed //player can't bang head on bed
+            new Entity(165,215,45,1),//standleft //-player.h is <1
+            new Entity(300,215,45,1),//standright //-player.h is <1
+            new Entity(10,410,55,80-player.h),//rack
+            new Entity(390,175,75,50-player.h),//desk
+            new Entity(415,190,25,1),//desk //-player.h is <1
         ]
     ),
     new Room(500,200,"img/bg/snow_1.png",characters.girlE,20,90,485,105,15,20,songs.adventure,2,
@@ -215,4 +221,4 @@ var rooms = [
 //OPTIONS
 var musicVol = 10;
 var sfxVol = 10;
-var talkSpd = 2;
+var talkSpd = 1;

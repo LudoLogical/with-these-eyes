@@ -463,7 +463,7 @@ class Room {
                     characters.deer.y = 130;
                 }
             }
-            if (testcollisionrect(this.fin,player)) {
+            if (testcollisionrect(this.fin,{x:player.x,y:player.y+35,w:player.w,h:player.h-35})) {
                 if (cursong && cursong != rooms[this.nextLV].musicstart) {
                     fadeOut(2000);
                 }

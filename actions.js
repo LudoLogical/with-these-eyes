@@ -40,7 +40,7 @@ var doAlpha = function() { // max alpha is 60 (1.5 sec)
 var doAction = function(actorlist) {
     //[character/object, action to perform, time to perform, action after performed]
     //[song, action to perform]
-    if (actorlist[1] === "left" || actorlist[1] === "right" || actorlist[1] === "up" || actorlist[1] === "down") {
+    if (actorlist[1] === "left" || actorlist[1] === "right" || actorlist[1] === "up" || actorlist[1] === "down" || actorlist[1] === "stay") {
         actorlist[0].movedir = actorlist[1];
         actorlist[0].movecount = actorlist[2];
         actorlist[0].afteraction = actorlist[3];
