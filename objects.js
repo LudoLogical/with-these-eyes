@@ -72,12 +72,12 @@ var rooms = [
         [
             new Entity(0,0,500,205-player.h),//wall
             new Entity(0,110,90,300-player.h),//shelf
-            new Entity(220,205,75,20),//top of bed //player can't bang head on bed
-            new Entity(165,215,45,1),//standleft //-player.h is <1
-            new Entity(300,215,45,1),//standright //-player.h is <1
+            new Entity(220,220,75,5,220-player.h),//top of bed //player can't bang head on bed
+            new Entity(165,215,45,5),//standleft //-player.h is <1
+            new Entity(300,215,45,5),//standright //-player.h is <1
             new Entity(10,410,55,80-player.h),//rack
             new Entity(390,175,75,50-player.h),//desk
-            new Entity(415,190,25,1),//desk //-player.h is <1
+            new Entity(415,190,25,5),//desk //-player.h is <1
         ]
     ),
     new Room(500,200,"img/bg/snow_1.png",characters.girlE,20,90,485,105,15,20,songs.adventure,2,

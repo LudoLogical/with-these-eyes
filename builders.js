@@ -23,13 +23,17 @@ class Sound {
 
 //ENTITIES SETUP
 class Entity {
-    constructor(x,y,w,h,sprite,track) {
+    constructor(x,y,w,h,sprite,track) { //sprite can also be used for alty in small collisions
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
-        this.sprite = new Image();
-        this.sprite.src = sprite;
+        if (isNaN(sprite)) {
+            this.sprite = new Image();
+            this.sprite.src = sprite;
+        } else {
+            this.alty = sprite;
+        }
         this.track = track;
     }
     draw() {
@@ -117,10 +121,12 @@ class Bullet extends Entity {
     }
     update() {
         if (this.type === "plyr") {
-            for (var e in curroom.enemies) {
-                if (testcollisionrect(this,curroom.enemies[e])) {
-                    curroom.enemies[e].hp -= this.dmg;
-                    this.removeMark = true;
+            for (var e in curobjs) {
+                if (curobjs[e] instanceof Enemy) {
+                    if (testcollisionrect(this,curobjs[e])) {
+                        curobjs[e].hp -= this.dmg;
+                        this.removeMark = true;
+                    }
                 }
             }
         } else if (this.type === "enmy") {
@@ -316,22 +322,29 @@ class Player extends Character {
     testmobility() {
         var canMove = true;
         for (var f in curroom.fixed_areas) {
-            if (testcollisionrect(this,curroom.fixed_areas[f])) {
+            if (curroom.fixed_areas[f].alty && this.y+this.h > curroom.fixed_areas[f].y+curroom.fixed_areas[f].h) {
+                if (testcollisionrect(this,curroom.fixed_areas[f],true)) {
+                    canMove = false;
+                }
+            } else if (testcollisionrect(this,curroom.fixed_areas[f])) {
                 canMove = false;
             }
         }
-        for (var g in curroom.enemies) {
-            if (curroom.enemies[g].spdX === 0 && curroom.enemies[g].spdY === 0) {
-                var dummy = {
-                    x: curroom.enemies[g].x+5,
-                    y: curroom.enemies[g].y+5,
-                    w: curroom.enemies[g].w-5,
-                    h: curroom.enemies[g].h-5,
-                }
-                if (testcollisionrect(this,dummy)) {
-                    canMove = false;
-                }
+        for (var g in curobjs) {
+            if (curobjs[g] instanceof Enemy) {
+                if (curobjs[g].spdX === 0 && curobjs[g].spdY === 0) {
+                    var dummy = {
+                        x: curobjs[g].x+5,
+                        y: curobjs[g].y+5,
+                        w: curobjs[g].w-5,
+                        h: curobjs[g].h-5,
+                    }
+                    if (testcollisionrect(this,dummy)) {
+                        canMove = false;
+                    }
+                } 
             }
+            
         }
         for (var c in characters) {
             if (testcollisionrect(this,characters[c]) && characters[c].passable === false) {
@@ -417,6 +430,7 @@ class Map extends Entity {
 
 //ROOM VARS
 var curroom = false;
+var curobjs = [];
 
 //ROOM SETUP
 class Room {
@@ -452,11 +466,18 @@ class Room {
         for (var c in this.character_imp) {
             this.character_imp[c][0].x = this.character_imp[c][1];
             this.character_imp[c][0].y = this.character_imp[c][2];
+            curobjs.push(this.character_imp[c][0]);
         }
         
         if (curroom === rooms[7]) {
             characters.girlE.face = 0;
         }
+        
+        for (var en in this.enemies) {
+            curobjs.push(this.enemies[en])
+        }
+        
+        curobjs.push(player);
         
         characters.carpet.x = -500;
         characters.carpet.y = -500;
@@ -464,7 +485,13 @@ class Room {
         alpha = 60;
     }
     checkFinish() {
-        if (this.enemies.length === 0) {
+        var areEnemies = false;
+        for (var j in curobjs) {
+            if (curobjs[j] instanceof Enemy) {
+                areEnemies = true;
+            }
+        }
+        if (!areEnemies) {
             if (characters.carpet.x === -500) {
                 characters.carpet.x = this.fin.x-15;
                 characters.carpet.y = this.fin.y-12.5;

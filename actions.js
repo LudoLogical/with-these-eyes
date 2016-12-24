@@ -20,6 +20,7 @@ var doAlpha = function() { // max alpha is 60 (1.5 sec)
         }
         alphamethod = "in";
         alphaexecute = "play";
+        curobjs = [];
         rooms[curroom.nextLV].begin();
     } else if (alpha === 0 && alphamethod === "in" && alphaexecute === "play") {
         cursong = curroom.musicstart;

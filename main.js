@@ -3,11 +3,18 @@ var gameStart = false;
 var paused = false;
 
 //GENERAL FUNCTIONS SETUP
-var testcollisionrect = function(a,b) {
-    return a.x < b.x + b.w &&
-    a.x + a.w > b.x &&
-    a.y < b.y + b.h &&
-    a.h + a.y > b.y;
+var testcollisionrect = function(a,b,override) { //override is used for **lines** the player can not cross with their feet (i.e. bedframe)
+    if (override) {
+        return a.x < b.x + b.w &&
+        a.x + a.w > b.x &&
+        a.y < b.alty + b.h &&
+        a.h + a.y > b.alty;
+    } else {
+        return a.x < b.x + b.w &&
+        a.x + a.w > b.x &&
+        a.y < b.y + b.h &&
+        a.h + a.y > b.y;
+    }
 };
 
 //MAIN UPDATE LOOP
@@ -28,6 +35,9 @@ var main = function () {
         //UPDATE MAP
         curroom.map.update();
         
+        //UPDATE CARPET
+        characters.carpet.update();
+        
         //UPDATE BULLETS
         for (var d in playerBullets) {
             playerBullets[d].update();
@@ -44,31 +54,36 @@ var main = function () {
             }
         }
         
-        //UPDATE CHARACTERS
-        for (var c in characters) {
-            characters[c].update();
-        }
-        
-        //UPDATE ENTITIES, TEST COLLISIONS
-        for (var e in curroom.enemies) {
-            curroom.enemies[e].update();
-            if (testcollisionrect(player,curroom.enemies[e])) {
-                player.hp -= curroom.enemies[e].atk;
+        //SORT CUROBJS IN ORDER BASED ON Y POSITION
+        curobjs.sort(function(a,b) {
+            if (a.y+a.h < b.y+b.h) { //WE'RE COMPARING THEIR FEET
+                return -1;
             }
-            if (curroom.enemies[e].removeMark) {
-                player.xp += curroom.enemies[e].xp;
-                doSFX(sfx.destroyed);
-                curroom.enemies.splice(e,1);
+            if (a.y+a.h > b.y+b.h) { //WE'RE COMPARING THEIR FEET
+                return 1;
+            }
+            return 0; //IF SAME NUMBER
+        });
+        
+        //UPDATE ALL OTHER ACTIVE OBJECTS
+        for (var o in curobjs) {
+            curobjs[o].update();
+            if (curobjs[o] instanceof Enemy) {
+                if (testcollisionrect(player,curobjs[o])) {
+                    player.hp -= curobjs[o].atk;
+                }
+                if (curobjs[o].removeMark) {
+                    player.xp += curobjs[o].xp;
+                    doSFX(sfx.destroyed);
+                    curobjs.splice(o,1);
+                }
             }
         }
-        
-        //UPDATE PLAYER
-        player.update();
         
         //DRAW USER INTERFACE
         drawUI();
         
-        //DRAW DIRECTIONAL KEYS IF NOT LEARNED
+        //DRAW DIRECTIONAL KEYS AND MOUSE IF NOT LEARNED
         if (moved === false && writing === false && gameStart === true && wasd) {
             for (var b in wasd) {
                 wasd[b].update();
