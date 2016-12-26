@@ -33,7 +33,7 @@ var doGameOverScreen = function() {
     ctx.fillText("They fell then and there, and it was finished.",ctx.canvas.width/2,110);
     ctx.fillText("[Press Enter to reload]",ctx.canvas.width/2,ctx.canvas.height-45);
     ctx.textAlign = "start";
-    if (enterpress && player.hp === 0) {
+    if (enterpress && player.hp <= 0) {
         location.reload();
     }
 }

@@ -3,12 +3,22 @@ var gameStart = false;
 var paused = false;
 
 //GENERAL FUNCTIONS SETUP
-var testcollisionrect = function(a,b,override) { //override is used for **lines** the player can not cross with their feet (i.e. bedframe)
-    if (override) {
+var testcollisionrect = function(a,b,override) {
+    
+    //**lines** the player can not cross with their feet (i.e. bedframe)
+    if (override === "line") {
         return a.x < b.x + b.w &&
         a.x + a.w > b.x &&
         a.y < b.alty + b.h &&
         a.h + a.y > b.alty;
+        
+    //2.5d perspective uses alternate check for curobj characters
+    } else if (override === "perspective") {
+        return a.x < b.x + b.w &&
+        a.x + a.w > b.x &&
+        a.y+a.standY < b.y + b.h && //+standY and then -standY for 2nd half
+        a.h + a.y > b.y+b.standY; //+standY and then -standY for 1st half
+        
     } else {
         return a.x < b.x + b.w &&
         a.x + a.w > b.x &&
@@ -69,7 +79,7 @@ var main = function () {
         for (var o in curobjs) {
             curobjs[o].update();
             if (curobjs[o] instanceof Enemy) {
-                if (testcollisionrect(player,curobjs[o])) {
+                if (testcollisionrect(player,curobjs[o],"perspective")) {
                     player.hp -= curobjs[o].atk;
                 }
                 if (curobjs[o].removeMark) {

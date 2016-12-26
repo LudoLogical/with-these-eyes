@@ -21,24 +21,24 @@ var sfx = {
 };
 
 //ENTITY CREATION
-var player = new Player(-500,-500,22,45,true,5,"img/characters/dynamic/boy_left.png","img/characters/dynamic/boy_right.png","img/speak/boy_speak.png",false,false);
+var player = new Player(-500,-500,22,45,35,true,5,"img/characters/dynamic/boy_left.png","img/characters/dynamic/boy_right.png","img/speak/boy_speak.png",false,false);
 var characters = {
-    carpet: new Character(-500,-500,30,45,true,0,"img/characters/static/carpet.png","same","none",false,false),
-    boyM: new Character(-500,-500,22,45,true,5,"img/characters/dynamic/boy_left.png","img/characters/dynamic/boy_right.png","img/speak/boy_speak.png",false,false,sfx.boy_talk),
-    girlE: new Character(-500,-500,29,45,true,5,"img/characters/dynamic/girl_left.png","img/characters/dynamic/girl_right.png","img/speak/girl_speak.png",false,false,sfx.girl_talk),
-    door: new Character(-500,-500,46,80,false,0,"img/characters/static/door.png","same","none",false,false),
-    snowman: new Character(-500,-500,27.5,45,false,0,"img/characters/dynamic/snowman_good_1.png","same","img/speak/snowman_speak.PNG","img/characters/dynamic/snowman_good_2.png","same",sfx.snowman_talk),
-    snowmanmad: new Character(-500,-500,27.5,45,false,0,"img/characters/dynamic/snowman_good_1.png","same","img/speak/snowmanmad_speak.PNG","img/characters/dynamic/snowman_good_2.png","same",sfx.snowman_talk),
-    tree: new Character(-500,-500,36,48,false,0,"img/characters/static/tree_1.png","same","none","img/characters/static/tree_2.png","same"),
-    christmastree: new Character(-500,-500,30,40,false,0,"img/characters/static/christmas_tree.png","same","none",false,false),
-    deer: new Character(-500,-500,51,56,false,0,"img/characters/dynamic/deer_2.png","same","img/speak/deer_speak.png","img/characters/dynamic/deer_3.png","same",sfx.deer_talk),
-    deercry: new Character(-500,-500,51,56,false,0,"img/characters/dynamic/deer_2.png","same","img/speak/deer_speak.png","img/characters/dynamic/deer_1.png","same",sfx.deer_talk),
-    deermad: new Character(-500,-500,51,56,false,0,"img/characters/dynamic/deer_2.png","same","img/speak/evildeer_speak.png",false,false,sfx.deer_talk),
-    gnomered: new Character(-500,-500,26.8,45,false,0,"img/characters/dynamic/gnomered_1.png","same","img/speak/gnomered_speak.png","img/characters/dynamic/gnomered_2.png","same",sfx.gnomered_talk),
-    gnomeblue: new Character(-500,-500,26.8,45,false,0,"img/characters/dynamic/gnomeblue_1.png","same","img/speak/gnomeblue_speak.png","img/characters/dynamic/gnomeblue_2.png","same",sfx.gnomeblue_talk),
-    gnomeredmad: new Character(-500,-500,26.8,45,false,0,"img/characters/dynamic/gnomered_1.png","same","img/speak/gnomered_speak_mad.png","img/characters/dynamic/gnomered_2.png","same",sfx.gnomered_talk),
-    gnomebluemad: new Character(-500,-500,26.8,45,false,0,"img/characters/dynamic/gnomeblue_1.png","same","img/speak/gnomeblue_speak_mad.png","img/characters/dynamic/gnomeblue_2.png","same",sfx.gnomeblue_talk),
-    lumberjack: new Character(-500,-500,24,45,false,0,"img/characters/dynamic/lumberjack.png","same","img/speak/lumberjack_speak.PNG",false,false),
+    carpet: new Character(-500,-500,30,45,0,true,0,"img/characters/static/carpet.png","same","none",false,false),
+    boyM: new Character(-500,-500,22,45,35,true,5,"img/characters/dynamic/boy_left.png","img/characters/dynamic/boy_right.png","img/speak/boy_speak.png",false,false,sfx.boy_talk),
+    girlE: new Character(-500,-500,29,45,35,true,5,"img/characters/dynamic/girl_left.png","img/characters/dynamic/girl_right.png","img/speak/girl_speak.png",false,false,sfx.girl_talk),
+    door: new Character(-500,-500,46,80,0,false,0,"img/characters/static/door.png","same","none",false,false),
+    snowman: new Character(-500,-500,27.5,45,35,false,0,"img/characters/dynamic/snowman_good_1.png","same","img/speak/snowman_speak.PNG","img/characters/dynamic/snowman_good_2.png","same",sfx.snowman_talk),
+    snowmanmad: new Character(-500,-500,27.5,45,35,false,0,"img/characters/dynamic/snowman_good_1.png","same","img/speak/snowmanmad_speak.PNG","img/characters/dynamic/snowman_good_2.png","same",sfx.snowman_talk),
+    tree: new Character(-500,-500,36,48,38,false,0,"img/characters/static/tree_1.png","same","none","img/characters/static/tree_2.png","same"),
+    christmastree: new Character(-500,-500,30,40,30,false,0,"img/characters/static/christmas_tree.png","same","none",false,false),
+    deer: new Character(-500,-500,51,56,46,false,0,"img/characters/dynamic/deer_2.png","same","img/speak/deer_speak.png","img/characters/dynamic/deer_3.png","same",sfx.deer_talk),
+    deercry: new Character(-500,-500,51,56,46,false,0,"img/characters/dynamic/deer_2.png","same","img/speak/deer_speak.png","img/characters/dynamic/deer_1.png","same",sfx.deer_talk),
+    deermad: new Character(-500,-500,51,56,46,false,0,"img/characters/dynamic/deer_2.png","same","img/speak/evildeer_speak.png",false,false,sfx.deer_talk),
+    gnomered: new Character(-500,-500,26.8,45,35,false,0,"img/characters/dynamic/gnomered_1.png","same","img/speak/gnomered_speak.png","img/characters/dynamic/gnomered_2.png","same",sfx.gnomered_talk),
+    gnomeblue: new Character(-500,-500,26.8,45,35,false,0,"img/characters/dynamic/gnomeblue_1.png","same","img/speak/gnomeblue_speak.png","img/characters/dynamic/gnomeblue_2.png","same",sfx.gnomeblue_talk),
+    gnomeredmad: new Character(-500,-500,26.8,45,35,false,0,"img/characters/dynamic/gnomered_1.png","same","img/speak/gnomered_speak_mad.png","img/characters/dynamic/gnomered_2.png","same",sfx.gnomered_talk),
+    gnomebluemad: new Character(-500,-500,26.8,45,35,false,0,"img/characters/dynamic/gnomeblue_1.png","same","img/speak/gnomeblue_speak_mad.png","img/characters/dynamic/gnomeblue_2.png","same",sfx.gnomeblue_talk),
+    lumberjack: new Character(-500,-500,24,45,35,false,0,"img/characters/dynamic/lumberjack.png","same","img/speak/lumberjack_speak.PNG",false,false),
     banker: new Character(-500,-500,22,44,false,0,"img/characters/dynamic/banker.png","same","img/speak/banker_speak.PNG",false,false),
 };
 
@@ -71,12 +71,12 @@ var rooms = [
         ],
         [
             new Entity(0,0,500,205-player.h),//wall
-            new Entity(0,110,90,300-player.h),//shelf
+            new Entity(0,110,90,300-player.h+5),//shelf
             new Entity(220,220,75,5,220-player.h),//top of bed //player can't bang head on bed
             new Entity(165,215,45,5),//standleft //-player.h is <1
             new Entity(300,215,45,5),//standright //-player.h is <1
-            new Entity(10,410,55,80-player.h),//rack
-            new Entity(390,175,75,50-player.h),//desk
+            new Entity(10,410,55,80-player.h+5),//rack
+            new Entity(390,175,75,50-player.h+5),//desk
             new Entity(415,190,25,5),//desk //-player.h is <1
         ]
     ),
@@ -91,7 +91,7 @@ var rooms = [
          [characters.girlE,"Thanks!","Wait a sec...","I don't have a key."],
          [characters.snowman,"If only there was a way","to break through...","",[player,"mouseL"]]],
         [ 
-            new Enemy(490,62,46,80,"img/characters/static/door.png","img/characters/static/door.png",0,0,1,0,0,50,false),//door
+            new Enemy(499,62,46,80,0,"img/characters/static/door.png","img/characters/static/door.png",0,0,1,0,0,50,false),//door
         ],
         [
             //no fixed_areas
@@ -107,7 +107,7 @@ var rooms = [
          [characters.boyM,"Well, you need to go.","You're messing up","my front yard.",[songs.welcomeHome,"fade"]],
          [characters.snowmanmad,"I was here first!","","",[songs.cryingWithMyHeart,"play"]]],
         [
-            new Enemy(320,125,27.5,45,"img/characters/dynamic/snowman_bad_1.png","img/characters/dynamic/snowman_bad_2.png",0,0,5,2,10,100,"snow"),//snowman
+            new Enemy(320,125,27.5,45,35,"img/characters/dynamic/snowman_bad_1.png","img/characters/dynamic/snowman_bad_2.png",0,0,5,2,10,100,"snow"),//snowman
         ],
         [
             //no fixed_areas
@@ -124,7 +124,7 @@ var rooms = [
          [characters.deercry,"It's just a little further forward.","Could you help break me free?","My antlers are caught."],
          [characters.girlE,"Of course!","",""]],
         [
-            new Enemy(360,130,58,59.3,"img/characters/static/lights_tree_1.png","img/characters/static/lights_tree_2.png",0,0,1,0,0,50,false),//lights_tree
+            new Enemy(360,130,58,59.3,0,"img/characters/static/lights_tree_1.png","img/characters/static/lights_tree_2.png",0,0,1,0,0,50,false),//lights_tree
         ],
         [
             //no fixed_areas
@@ -138,7 +138,7 @@ var rooms = [
          [characters.boyM,"Wow... you're just standing","here crying...","Alone."],
          [characters.deercry,"Hey!  Don't make fun of","me when you have no idea","what I've been through!"]],
         [
-            new Enemy(360,125,51,56,"img/characters/dynamic/deer_2.png","img/characters/dynamic/deer_2.png",0,0,10,4,20,300,"tear"),//evildeer
+            new Enemy(360,125,51,56,46,"img/characters/dynamic/deer_2.png","img/characters/dynamic/deer_2.png",0,0,10,4,20,300,"tear"),//evildeer
         ],
         [
             //no fixed_areas
@@ -169,8 +169,8 @@ var rooms = [
         [characters.gnomeredmad,"So you aren't going to","buy anything?",""],
         [characters.gnomebluemad,"Well, in that case,","get out of here.",""]],
         [
-            new Enemy(452,2.5,26.8,45,"img/characters/dynamic/gnomered_1.png","img/characters/dynamic/gnomered_2.png",0,0,15,6,30,100,"shovel"),//gnomered
-            new Enemy(452,117.5,26.8,45,"img/characters/dynamic/gnomeblue_1.png","img/characters/dynamic/gnomeblue_2.png",0,0,15,6,30,100,"shovel"),//gnomeblue
+            new Enemy(452,2.5,26.8,45,35,"img/characters/dynamic/gnomered_1.png","img/characters/dynamic/gnomered_2.png",0,0,15,6,30,100,"shovel"),//gnomered
+            new Enemy(452,117.5,26.8,45,35,"img/characters/dynamic/gnomeblue_1.png","img/characters/dynamic/gnomeblue_2.png",0,0,15,6,30,100,"shovel"),//gnomeblue
         ],
         [
             new Entity(480,0,20,45),//shoptop

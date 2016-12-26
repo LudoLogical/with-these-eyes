@@ -28,7 +28,7 @@ class Entity {
         this.y = y;
         this.w = w;
         this.h = h;
-        if (isNaN(sprite)) {
+        if (isNaN(sprite) && sprite) {
             this.sprite = new Image();
             this.sprite.src = sprite;
         } else {
@@ -101,10 +101,10 @@ class Bullet extends Entity {
     }
     updatePos() {
         //CAN NOT BOUNCE OFF EDGES OF MAP
-        if (this.x+this.spdX < 0 || this.x+this.spdX > curroom.map.w-this.w) {
+        if (this.x+this.spdX < 0 || this.x+this.spdX > curroom.map.w-this.w+5) { //to allow door to be hit
             this.removeMark = true;
         }
-        if (this.y+this.spdY < 0 || this.y+this.spdY > curroom.map.h-this.h) {
+        if (this.y+this.spdY < 0 || this.y+this.spdY > curroom.map.h-this.h+5) { //to allow door to be hit
             this.removeMark = true;
         }
         
@@ -146,8 +146,9 @@ class Bullet extends Entity {
 
 //ENEMY SETUP
 class Enemy extends Entity {
-    constructor(x,y,w,h,spritenorm,spriteanim,spdX,spdY,hp,atk,dmg,xp,bullet_type) {
+    constructor(x,y,w,h,standY,spritenorm,spriteanim,spdX,spdY,hp,atk,dmg,xp,bullet_type) {
         super(x,y,w,h);
+        this.standY = standY;
         this.spritenorm = new Image();
         this.spriteanim = new Image();
         this.spritenorm.src = spritenorm;
@@ -216,8 +217,9 @@ class Enemy extends Entity {
 
 //CHARACTER SETUP
 class Character extends Entity {
-    constructor(x,y,w,h,passable,spd,spriteleft,spriteright,spritespeak,spriteleft_anim,spriteright_anim,speak) {
+    constructor(x,y,w,h,standY,passable,spd,spriteleft,spriteright,spritespeak,spriteleft_anim,spriteright_anim,speak) {
         super(x,y,w,h);
+        this.standY = standY;
         this.passable = passable;
         this.movedir = "";
         this.movecount = 0;
@@ -242,8 +244,10 @@ class Character extends Entity {
             this.anim[0].src = spriteleft;
             this.anim[1].src = spriteright;
         }
-        this.spritespeak = new Image();
-        this.spritespeak.src = spritespeak;
+        if (spritespeak != "none") {
+            this.spritespeak = new Image();
+            this.spritespeak.src = spritespeak;
+        }
         this.animcount = 15;
         this.speak = speak;
     }
@@ -303,8 +307,8 @@ class Character extends Entity {
 
 //PLAYER SETUP
 class Player extends Character {
-    constructor(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd,spriteleft_anim,spriteright_anim) {
-        super(x,y,w,h,passable,spriteleft,spriteright,spritespeak,spd,spriteleft_anim,spriteright_anim);
+    constructor(x,y,w,h,standY,passable,spriteleft,spriteright,spritespeak,spd,spriteleft_anim,spriteright_anim) {
+        super(x,y,w,h,standY,passable,spriteleft,spriteright,spritespeak,spd,spriteleft_anim,spriteright_anim);
         this.hp = 50;
         this.maxhp = 50;
         this.power = 100;
@@ -323,7 +327,7 @@ class Player extends Character {
         var canMove = true;
         for (var f in curroom.fixed_areas) {
             if (curroom.fixed_areas[f].alty && this.y+this.h > curroom.fixed_areas[f].y+curroom.fixed_areas[f].h) {
-                if (testcollisionrect(this,curroom.fixed_areas[f],true)) {
+                if (testcollisionrect(this,curroom.fixed_areas[f],"line")) {
                     canMove = false;
                 }
             } else if (testcollisionrect(this,curroom.fixed_areas[f])) {
@@ -339,16 +343,14 @@ class Player extends Character {
                         w: curobjs[g].w-5,
                         h: curobjs[g].h-5,
                     }
-                    if (testcollisionrect(this,dummy)) {
+                    if (testcollisionrect(this,dummy,"perspective")) {
                         canMove = false;
                     }
                 } 
-            }
-            
-        }
-        for (var c in characters) {
-            if (testcollisionrect(this,characters[c]) && characters[c].passable === false) {
-                canMove = false;
+            } else if (curobjs[g] instanceof Character) {
+                if (testcollisionrect(this,curobjs[g],"perspective") && curobjs[g].passable === false) {
+                    canMove = false;
+                }
             }
         }
         if (alpha != 0) {
@@ -440,6 +442,7 @@ class Room {
         this.playerx = playerx;
         this.playery = playery;
         this.fin = new Entity(finx,finy,finw,finh);
+        this.fin.standY = 0;
         this.musicstart = musicstart;
         this.nextLV = nextLV;
         this.character_imp = character_imp;
@@ -502,7 +505,7 @@ class Room {
                     characters.deer.y = 130;
                 }
             }
-            if (testcollisionrect(this.fin,{x:player.x,y:player.y+35,w:player.w,h:player.h-35})) {
+            if (testcollisionrect(this.fin,player,"perspective")) {
                 if (cursong && cursong != rooms[this.nextLV].musicstart) {
                     fadeOut(2000);
                 }
