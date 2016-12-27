@@ -34,7 +34,7 @@ document.onkeydown = function (e) {
             enterpress = true;
             break;
         case 80: //p
-            paused = true;
+            //pause
         default: break;
     }
     
@@ -79,25 +79,38 @@ document.onmousemove = function(mouse) {
     
 };
 document.onclick = function(mouse) { //ctx.canvas.width/2 + 155,250-17.5,20,20
-    if (paused) {
+    if (gameStart && player.hp > 0 && alpha === 0) {
+        //SET UP MOUSE FOR COLLISION TESTS
         var mouse = {x:mX,y:mY,w:0,h:0};
-        if (testcollisionrect(mouse,toggles.plus1) && musicVol < 10) {
-            musicVol ++;
-        } else if (testcollisionrect(mouse,toggles.plus2) && sfxVol < 10) {
-            sfxVol ++;
-        } else if (testcollisionrect(mouse,toggles.plus3) && talkSpd > 1) {
-            talkSpd --;
-        } else if (testcollisionrect(mouse,toggles.minus1) && musicVol > 0) {
-            musicVol --;
-        } else if (testcollisionrect(mouse,toggles.minus2) && sfxVol > 0) {
-            sfxVol --;
-        } else if (testcollisionrect(mouse,toggles.minus3) && talkSpd < 3) {
-            talkSpd ++;
+        
+        //TOGGLE PAUSE/OPTIONS MENU
+        if (testcollisionrect(mouse,cog)) {
+            paused = !paused;
+            return;
         }
-        volumeAdjust();
-    } else if (writing === false && gameStart && player.hp > 0 && player.power >= 50 && alpha === 0) {
-        player.doAttack();
-        doSFX(sfx.player_fire);
-        clicked = true;
+        
+        //DO PAUSE OPTIONS; TOGGLE SETTINGS
+        if (paused) {
+            if (testcollisionrect(mouse,toggles.plus1) && musicVol < 10) {
+                musicVol ++;
+            } else if (testcollisionrect(mouse,toggles.plus2) && sfxVol < 10) {
+                sfxVol ++;
+            } else if (testcollisionrect(mouse,toggles.plus3) && talkSpd > 1) {
+                talkSpd --;
+            } else if (testcollisionrect(mouse,toggles.minus1) && musicVol > 0) {
+                musicVol --;
+            } else if (testcollisionrect(mouse,toggles.minus2) && sfxVol > 0) {
+                sfxVol --;
+            } else if (testcollisionrect(mouse,toggles.minus3) && talkSpd < 3) {
+                talkSpd ++;
+            }
+            volumeAdjust();
+        
+        //DO ATTACK FOR PLAYER
+        } else if (writing === false && player.power >= 50) {
+            player.doAttack();
+            doSFX(sfx.player_fire);
+            clicked = true;
+        }
     }
 }

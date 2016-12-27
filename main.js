@@ -79,8 +79,16 @@ var main = function () {
         for (var o in curobjs) {
             curobjs[o].update();
             if (curobjs[o] instanceof Enemy) {
-                if (testcollisionrect(player,curobjs[o],"perspective")) {
+                var dummy = {
+                    x: curobjs[o].x-5,
+                    y: curobjs[o].y-5,
+                    w: curobjs[o].w+10,
+                    h: curobjs[o].h+10,
+                    standY: curobjs[o].standY,
+                }
+                if (testcollisionrect(player,dummy,"perspective")) {
                     player.hp -= curobjs[o].atk;
+                    console.log(player.hp)
                 }
                 if (curobjs[o].removeMark) {
                     player.xp += curobjs[o].xp;

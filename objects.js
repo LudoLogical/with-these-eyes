@@ -42,6 +42,9 @@ var characters = {
     banker: new Character(-500,-500,22,44,false,0,"img/characters/dynamic/banker.png","same","img/speak/banker_speak.PNG",false,false),
 };
 
+//OPTIONS MENU BUTTON
+var cog = new Direct(10,10,40,40,"img/controls/cog.png");
+
 //EMPTY VARS TO CREATE OBJECTS WITH LATER
 var wasd = false;
 var mouse_l = false;
@@ -60,7 +63,7 @@ var toggles = {
 var rooms = [
     new Room(500,500,"img/bg/bedroom.jpg",characters.boyM,230,230,485,340,15,20,songs.welcomeHome,1,
         [[characters.girlE,255,230]],
-        [[characters.boyM,"It's not safe out there...","","[Press P for options]"],
+        [[characters.boyM,"It's not safe out there...","",""],
          [characters.girlE,"I'll only be to the market,","stop worrying about","everything so much!"],
          [characters.boyM,"I can't... I can't let anything","happen to you...",""],
          [characters.girlE,"I'll be fiiiiine!","See you in a little!","",[songs.welcomeHome,"fade"]],
@@ -70,14 +73,14 @@ var rooms = [
             //noenemies
         ],
         [
-            new Entity(0,0,500,205-player.h),//wall
+            new Entity(0,0,500,200-player.h+5),//wall
             new Entity(0,110,90,300-player.h+5),//shelf
-            new Entity(220,220,75,5,220-player.h),//top of bed //player can't bang head on bed
-            new Entity(165,215,45,5),//standleft //-player.h is <1
-            new Entity(300,215,45,5),//standright //-player.h is <1
+            new Entity(220,220,75,5,220-player.h),//top of bed (line)
+            new Entity(165,215,45,50-player.h+5),//standleft
+            new Entity(300,215,45,50-player.h+5),//standright
             new Entity(10,410,55,80-player.h+5),//rack
             new Entity(390,175,75,50-player.h+5),//desk
-            new Entity(415,190,25,5),//desk //-player.h is <1
+            new Entity(415,190,25,5),//chair (45-player.h)
         ]
     ),
     new Room(500,200,"img/bg/snow_1.png",characters.girlE,20,90,485,105,15,20,songs.adventure,2,
@@ -231,4 +234,4 @@ var rooms = [
 //OPTIONS
 var musicVol = 10;
 var sfxVol = 10;
-var talkSpd = 1;
+var talkSpd = 2;

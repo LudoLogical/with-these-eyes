@@ -96,6 +96,9 @@ var drawUI = function() {
     ctx.fillStyle = "white";
     ctx.font = "15px 'Muli'";
     ctx.fillText("XP",ctx.canvas.width-200,100);
+    
+    //COG
+    cog.update();
 }
 
 /*#f433ab
@@ -116,7 +119,7 @@ var doPauseScreen = function() {
     ctx.fillStyle = "grey";
     ctx.font = "20px 'Muli'";
     ctx.fillText("Options and restbit.",ctx.canvas.width/2,110);
-    ctx.fillText("[Press Enter to close]",ctx.canvas.width/2,ctx.canvas.height-45);
+    ctx.fillText("[Press enter or click the gear to close]",ctx.canvas.width/2,ctx.canvas.height-45);
     ctx.textAlign = "start";
     ctx.fillText("Music volume: ",ctx.canvas.width/2 - 200,250);
     ctx.fillText("SFX volume: ",ctx.canvas.width/2 - 200,280);
@@ -140,9 +143,10 @@ var doPauseScreen = function() {
             console.log("ERR: TALKSPD NOT ACCEPTABLE.");
             break;
     }
-    for (var t in toggles) {
-        toggles[t].update();
-    }
+    
+    for (var t in toggles) { toggles[t].update(); }
+    cog.update();
+    
     ctx.textAlign = "start";
     if (enterpress && spamcatch < 1) {
         paused = false;

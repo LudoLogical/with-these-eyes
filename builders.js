@@ -337,13 +337,7 @@ class Player extends Character {
         for (var g in curobjs) {
             if (curobjs[g] instanceof Enemy) {
                 if (curobjs[g].spdX === 0 && curobjs[g].spdY === 0) {
-                    var dummy = {
-                        x: curobjs[g].x+5,
-                        y: curobjs[g].y+5,
-                        w: curobjs[g].w-5,
-                        h: curobjs[g].h-5,
-                    }
-                    if (testcollisionrect(this,dummy,"perspective")) {
+                    if (testcollisionrect(this,curobjs[g],"perspective")) {
                         canMove = false;
                     }
                 } 
