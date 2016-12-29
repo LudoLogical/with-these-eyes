@@ -39,7 +39,7 @@ var characters = {
     gnomeredmad: new Character(-500,-500,26.8,45,35,false,0,"img/characters/dynamic/gnomered_1.png","same","img/speak/gnomered_speak_mad.png","img/characters/dynamic/gnomered_2.png","same",sfx.gnomered_talk),
     gnomebluemad: new Character(-500,-500,26.8,45,35,false,0,"img/characters/dynamic/gnomeblue_1.png","same","img/speak/gnomeblue_speak_mad.png","img/characters/dynamic/gnomeblue_2.png","same",sfx.gnomeblue_talk),
     lumberjack: new Character(-500,-500,24,45,35,false,0,"img/characters/dynamic/lumberjack.png","same","img/speak/lumberjack_speak.PNG",false,false),
-    banker: new Character(-500,-500,22,44,false,0,"img/characters/dynamic/banker.png","same","img/speak/banker_speak.PNG",false,false),
+    banker: new Character(-500,-500,22,44,34,false,0,"img/characters/dynamic/banker.png","same","img/speak/banker_speak.PNG",false,false),
 };
 
 //OPTIONS MENU BUTTON

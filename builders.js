@@ -23,24 +23,23 @@ class Sound {
 
 //ENTITIES SETUP
 class Entity {
-    constructor(x,y,w,h,sprite,track) { //sprite can also be used for alty in small collisions
+    constructor(x,y,w,h,alty,sprite,follow) { //sprite can also be used for alty in small collisions
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
-        if (isNaN(sprite) && sprite) {
+        if (alty) { this.alty = alty; }
+        if (sprite) {
             this.sprite = new Image();
             this.sprite.src = sprite;
-        } else {
-            this.alty = sprite;
         }
-        this.track = track;
+        this.follow = follow;
     }
     draw() {
         ctx.drawImage(this.sprite,this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
     }
     update() {
-        if (this.track) {
+        if (this.follow) {
             this.x = player.x+5.5;
             this.y = player.y-35;
         }
@@ -57,6 +56,47 @@ class Direct extends Entity {
     }
     draw() {
         ctx.drawImage(this.sprite,this.x,this.y,this.w,this.h);
+    }
+}
+
+//ANIM SETUP (BEHAVES LIKE AN ENTITY BUT IS ANIMATED)
+class Anim extends Entity {
+    constructor(x,y,w,h,alty,spritenorm,spriteanim,follow) {
+        super(x,y,w,h,alty);
+        this.spritenorm = new Image();
+        this.spriteanim = new Image();
+        this.spritenorm.src = spritenorm;
+        this.spriteanim.src = spriteanim;
+        this.follow = follow;
+        this.animcount = 15;
+        this.track = "norm";
+    }
+    anim_check() {
+        if (this.animcount <= 0) {
+            if (this.track === "norm") {
+                this.track = "anim";
+            } else {
+               this.track = "norm";
+            }
+            this.animcount = 15;
+        }
+        this.animcount--;
+        
+    }
+    draw() {
+        if (this.track === "norm") {
+            ctx.drawImage(this.spritenorm,this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
+        } else {
+            ctx.drawImage(this.spriteanim,this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
+        }
+    }
+    update() {
+        if (this.follow) {
+            this.x = player.x+5.5;
+            this.y = player.y-35;
+        }
+        this.anim_check();
+        this.draw();
     }
 }
 
@@ -229,25 +269,32 @@ class Character extends Entity {
         this.norm = [new Image(), new Image()];
         this.anim = [new Image(), new Image()];
         this.track = "norm";
-        if (spriteright === "same") {
-            spriteright = spriteleft;
+        
+        var sL = spriteleft;
+        var sR = spriteright;
+        var sLA = spriteleft_anim;
+        var sRA = spriteright_anim;
+        
+        if (sR === "same") {
+            sR = sL;
         }
-        if (spriteright_anim === "same") {
-            spriteright_anim = spriteleft_anim;
+        if (sRA === "same") {
+            sRA = sLA;
         }
-        this.norm[0].src = spriteleft;
-        this.norm[1].src = spriteright;
-        if (spriteleft_anim && spriteright_anim) {
-            this.anim[0].src = spriteleft_anim;
-            this.anim[1].src = spriteright_anim;
+        this.norm[0].src = sL;
+        this.norm[1].src = sR;
+        if (sLA && sRA) {
+            this.anim[0].src = sLA;
+            this.anim[1].src = sRA;
         } else {
-            this.anim[0].src = spriteleft;
-            this.anim[1].src = spriteright;
+            this.anim[0].src = sL;
+            this.anim[1].src = sR;
         }
         if (spritespeak != "none") {
             this.spritespeak = new Image();
             this.spritespeak.src = spritespeak;
         }
+        
         this.animcount = 15;
         this.speak = speak;
     }
@@ -417,7 +464,9 @@ class Player extends Character {
 //MAP SETUP
 class Map extends Entity {
     constructor(w,h,sprite) {
-        super(0,0,w,h,sprite);
+        super(0,0,w,h);
+        this.sprite = new Image();
+        this.sprite.src = sprite;
     }
     draw() {
         ctx.drawImage(this.sprite,(ctx.canvas.width / 2 - player.w / 2) - player.x,(ctx.canvas.height / 2 - player.h / 2) - player.y,this.w,this.h);
