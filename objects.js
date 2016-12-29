@@ -1,6 +1,7 @@
 //AUDIO CREATION
 var songs = {
     adventure: new Song("songs/adventure.wav",44.3),
+    angerMisterDeer: new Song("songs/anger_mister_deer.wav",12.6),
     cryingWithMyHeart: new Song("songs/crying_with_my_heart.wav",20.1),
     greetingsMisterDeer: new Song("songs/greetings_mister_deer.wav",12.6),
     sheHasLeft: new Song("songs/she_has_left.wav",27.35),
@@ -133,13 +134,13 @@ var rooms = [
             //no fixed_areas
         ]
     ),
-    new Room(500,200,"img/bg/snow_2.png",characters.boyM,20,60,485,75,15,20,songs.adventure,5,
+    new Room(500,200,"img/bg/snow_2.png",characters.boyM,20,60,485,75,15,20,songs.greetingsMisterDeer,5,
         [[characters.tree,80,140]],
         [[characters.boyM,"Emily?","...","Emily?"],
          [characters.boyM,"Ack!","Who are you?",""],
          [characters.deercry,"My name's Chris Mas Eve.","",""],
-         [characters.boyM,"Wow... you're just standing","here crying...","Alone."],
-         [characters.deercry,"Hey!  Don't make fun of","me when you have no idea","what I've been through!"]],
+         [characters.boyM,"Wow... you're just standing","here crying...","Alone.",[songs.greetingsMisterDeer,"fade"]],
+         [characters.deercry,"Hey!  Don't make fun of","me when you have no idea","what I've been through!",[songs.angerMisterDeer,"play"]]],
         [
             new Enemy(360,125,51,56,46,"img/characters/dynamic/deer_2.png","img/characters/dynamic/deer_2.png",0,0,10,4,20,300,"tear"),//evildeer
         ],
@@ -187,7 +188,8 @@ var rooms = [
          [characters.boyM,"Emily, you've been","so reckless.","It's dangerous out here."],
          [characters.girlE,"No it's not!","",""],
          [characters.boyM,"Are you sure?","There were so many","dangers on the way."],
-         [characters.girlE,"Of course I'm sure.","Look, I'll show you!","",[characters.girlE,"left",85,"remove"]],
+         [characters.girlE,"Of course I'm sure.","Look, I'll show you!",""],
+         [characters.boyM,"...","","",[characters.girlE,"left",85,"remove"]],
 	     [characters.boyM,"Wait!","",""]],
         [
             //no enemies
