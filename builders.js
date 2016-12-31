@@ -21,14 +21,22 @@ class Sound {
     }
 }
 
-//ENTITIES SETUP
-class Entity {
-    constructor(x,y,w,h,alty,sprite,follow) { //sprite can also be used for alty in small collisions
+//AREA SETUP (MOST SIMPLE TYPE)
+class Area {
+    constructor(x,y,w,h,alty) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
         if (alty) { this.alty = alty; }
+    }
+    
+}
+
+//ENTITIES SETUP
+class Entity extends Area {
+    constructor(x,y,w,h,sprite,follow) { //sprite can also be used for alty in small collisions
+        super(x,y,w,h);
         if (sprite) {
             this.sprite = new Image();
             this.sprite.src = sprite;
@@ -50,9 +58,7 @@ class Entity {
 //DIRECTENTITY SETUP (OVERRIDE DRAW FOR ABSOLUTE POS)
 class Direct extends Entity {
     constructor(x,y,w,h,sprite) {
-        super(x,y,w,h);
-        this.sprite = new Image();
-        this.sprite.src = sprite;
+        super(x,y,w,h,sprite);
     }
     draw() {
         ctx.drawImage(this.sprite,this.x,this.y,this.w,this.h);
@@ -61,13 +67,14 @@ class Direct extends Entity {
 
 //ANIM SETUP (BEHAVES LIKE AN ENTITY BUT IS ANIMATED)
 class Anim extends Entity {
-    constructor(x,y,w,h,alty,spritenorm,spriteanim,follow) {
-        super(x,y,w,h,alty);
-        this.spritenorm = new Image();
-        this.spriteanim = new Image();
-        this.spritenorm.src = spritenorm;
-        this.spriteanim.src = spriteanim;
-        this.follow = follow;
+    constructor(x,y,w,h,spritenorm,spriteanim,follow) {
+        super(x,y,w,h,false,follow);
+        if (spritenorm && spriteanim) {
+            this.spritenorm = new Image();
+            this.spriteanim = new Image();
+            this.spritenorm.src = spritenorm;
+            this.spriteanim.src = spriteanim;
+        }
         this.animcount = 15;
         this.track = "norm";
     }
@@ -107,8 +114,19 @@ var enemyBullets = [];
 //BULLET SETUP
 class Bullet extends Entity {
     constructor(source,w,h,type,dur,spd,dmg) {
-        super(source.x,source.y,w,h);
-        this.sprite = new Image();
+        var src = "";
+        switch(source.bullet_type) {
+            case "snow":
+                src = "img/bullets/snowball.png"; break;
+            case "tear":
+                src = "img/bullets/tears.png"; break;
+            case "shovel":
+                src = "img/bullets/shovel.png"; break;
+            default:
+                src = "img/bullets/fireball.png"; break;
+        }
+        //now use super() with the src to skip sprite assign
+        super(source.x-(w/2)+(source.w/2),source.y-(h/2)+(source.h/2),w,h,src); //adj to center of source
         this.type = type;
         this.dur = dur;
         this.removeMark = false;
@@ -116,19 +134,6 @@ class Bullet extends Entity {
         this.spdX = Math.cos(angle)*(spd); //these values can be negative as they are; only use +spd
         this.spdY = Math.sin(angle)*(spd); //removed from sample code to measure only in radians
         this.dmg = source.dmg;
-        this.x -= (this.w/2);
-        this.y -= (this.h/2);
-        this.x += (source.w/2);
-        this.y += (source.h/2);
-        if (source.bullet_type === "snow") {
-            this.sprite.src = "img/bullets/snowball.png";
-        } else if (source.bullet_type === "tear") {
-            this.sprite.src = "img/bullets/tears.png";
-        } else if (source.bullet_type === "shovel") {
-            this.sprite.src = "img/bullets/shovel.png";
-        } else {
-            this.sprite.src = "img/bullets/fireball.png";
-        }
     }
     testmobility() {
         var canMove = true;
@@ -185,16 +190,10 @@ class Bullet extends Entity {
 }
 
 //ENEMY SETUP
-class Enemy extends Entity {
+class Enemy extends Anim {
     constructor(x,y,w,h,standY,spritenorm,spriteanim,spdX,spdY,hp,atk,dmg,xp,bullet_type) {
-        super(x,y,w,h);
+        super(x,y,w,h,spritenorm,spriteanim);
         this.standY = standY;
-        this.spritenorm = new Image();
-        this.spriteanim = new Image();
-        this.spritenorm.src = spritenorm;
-        this.spriteanim.src = spriteanim;
-        this.track = "norm";
-        this.animcount = 15;
         this.spdX = spdX;
         this.spdY = spdY;
         this.hp = hp;
@@ -217,18 +216,6 @@ class Enemy extends Entity {
         }
         this.actcount--;
     }
-    anim_check() {
-        if (this.animcount <= 0) {
-            if (this.track === "norm") {
-                this.track = "anim";
-            } else {
-               this.track = "norm";
-            }
-            this.animcount = 15;
-        }
-        this.animcount--;
-        
-    }
     updatePos() {
         if (this.x <= 0 || this.x >= curroom.map.w - this.w) {
             this.spdX = -this.spdX;
@@ -236,13 +223,6 @@ class Enemy extends Entity {
         }
         this.x += this.spdX;
         this.y += this.spdY;
-    }
-    draw() {
-        if (this.track === "norm") {
-            ctx.drawImage(this.spritenorm,this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
-        } else {
-            ctx.drawImage(this.spriteanim,this.x - (player.x + (player.w / 2)) + ctx.canvas.width / 2,this.y - (player.y + (player.h / 2)) + ctx.canvas.height / 2,this.w,this.h);
-        }
     }
     update() {
         if (this.hp <= 0) {
@@ -256,59 +236,41 @@ class Enemy extends Entity {
 }
 
 //CHARACTER SETUP
-class Character extends Entity {
+class Character extends Anim {
     constructor(x,y,w,h,standY,passable,spd,spriteleft,spriteright,spritespeak,spriteleft_anim,spriteright_anim,speak) {
         super(x,y,w,h);
         this.standY = standY;
         this.passable = passable;
-        this.movedir = "";
-        this.movecount = 0;
-        this.afteraction = "";
-        this.face = 0; //0-left, 1-right
         this.spd = spd;
+        
         this.norm = [new Image(), new Image()];
         this.anim = [new Image(), new Image()];
-        this.track = "norm";
-        
-        var sL = spriteleft;
-        var sR = spriteright;
-        var sLA = spriteleft_anim;
-        var sRA = spriteright_anim;
-        
-        if (sR === "same") {
-            sR = sL;
+        if (spriteright === "same") {
+            spriteright = spriteleft;
         }
-        if (sRA === "same") {
-            sRA = sLA;
+        if (spriteright_anim === "same") {
+            spriteright_anim = spriteleft_anim;
         }
-        this.norm[0].src = sL;
-        this.norm[1].src = sR;
-        if (sLA && sRA) {
-            this.anim[0].src = sLA;
-            this.anim[1].src = sRA;
+        this.norm[0].src = spriteleft;
+        this.norm[1].src = spriteright;
+        if (spriteleft_anim && spriteright_anim) {
+            this.anim[0].src = spriteleft_anim;
+            this.anim[1].src = spriteright_anim;
         } else {
-            this.anim[0].src = sL;
-            this.anim[1].src = sR;
+            this.anim[0].src = spriteleft;
+            this.anim[1].src = spriteright;
         }
         if (spritespeak != "none") {
             this.spritespeak = new Image();
             this.spritespeak.src = spritespeak;
         }
         
-        this.animcount = 15;
         this.speak = speak;
-    }
-    anim_check() {
-        if (this.animcount <= 0) {
-            if (this.track === "norm") {
-                this.track = "anim";
-            } else {
-               this.track = "norm";
-            }
-            this.animcount = 15;
-        }
-        this.animcount--;
         
+        this.face = 0; //0-left, 1-right
+        this.movedir = "";
+        this.movecount = 0;
+        this.afteraction = "";
     }
     updatePos() {
         if (this.movecount > 0) {
@@ -464,9 +426,7 @@ class Player extends Character {
 //MAP SETUP
 class Map extends Entity {
     constructor(w,h,sprite) {
-        super(0,0,w,h);
-        this.sprite = new Image();
-        this.sprite.src = sprite;
+        super(0,0,w,h,sprite);
     }
     draw() {
         ctx.drawImage(this.sprite,(ctx.canvas.width / 2 - player.w / 2) - player.x,(ctx.canvas.height / 2 - player.h / 2) - player.y,this.w,this.h);

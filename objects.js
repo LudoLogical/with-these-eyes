@@ -74,14 +74,14 @@ var rooms = [
             //noenemies
         ],
         [
-            new Entity(0,0,500,200-player.h+5),//wall
-            new Entity(0,110,90,300-player.h+5),//shelf
-            new Entity(220,220,75,5,220-player.h),//top of bed (line)
-            new Entity(165,215,45,50-player.h+5),//standleft
-            new Entity(300,215,45,50-player.h+5),//standright
-            new Entity(10,410,55,80-player.h+5),//rack
-            new Entity(390,175,75,50-player.h+5),//desk
-            new Entity(415,190,25,5),//chair (45-player.h)
+            new Area(0,0,500,200-player.h+5),//wall
+            new Area(0,110,90,300-player.h+5),//shelf
+            new Area(220,220,75,5,220-player.h),//top of bed (line)
+            new Area(165,215,45,50-player.h+5),//standleft
+            new Area(300,215,45,50-player.h+5),//standright
+            new Area(10,410,55,80-player.h+5),//rack
+            new Area(390,175,75,50-player.h+5),//desk
+            new Area(415,190,25,5),//chair (45-player.h)
         ]
     ),
     new Room(500,200,"img/bg/snow_1.png",characters.girlE,20,90,485,105,15,20,songs.adventure,2,
@@ -158,8 +158,8 @@ var rooms = [
             //noenemies
         ],
         [
-            new Entity(480,0,20,45),//shoptop
-            new Entity(480,100,20,100),//shopbottom 
+            new Area(480,0,20,45),//shoptop
+            new Area(480,100,20,100),//shopbottom 
         ]
     ),
     new Room(500,200,"img/bg/snow_3.png",characters.boyM,20,60,485,65,15,20,songs.adventure,7,
@@ -177,8 +177,8 @@ var rooms = [
             new Enemy(452,117.5,26.8,45,35,"img/characters/dynamic/gnomeblue_1.png","img/characters/dynamic/gnomeblue_2.png",0,0,15,6,30,100,"shovel"),//gnomeblue
         ],
         [
-            new Entity(480,0,20,45),//shoptop
-            new Entity(480,100,20,100),//shopbottom 
+            new Area(480,0,20,45),//shoptop
+            new Area(480,100,20,100),//shopbottom 
         ]
     ),
     new Room(500,200,"img/bg/market.png",characters.boyM,30,80,15,92.5,15,20,songs.adventure,8,
@@ -195,8 +195,8 @@ var rooms = [
             //no enemies
         ],
         [
-            new Entity(0,0,500,65),//insidetop
-            new Entity(0,130,500,70),//insidebottom 
+            new Area(0,0,500,65),//insidetop
+            new Area(0,130,500,70),//insidebottom 
         ]
     ),
     new Room(500,200,"img/bg/snow_3.png",characters.girlE,485,65,15,60,15,20,songs.adventure,9,
